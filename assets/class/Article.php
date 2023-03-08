@@ -12,7 +12,7 @@ class Article
         $article = htmlspecialchars($article);
 
         // requete
-        $request = "INSERT INTO articles (article) VALUES (:article)";
+        $request = "INSERT INTO articles (titre, date, description, image) VALUES (:titre, NOW(), :description, :image)";
 
         $insert = $this->db->prepare($request);
 
@@ -55,3 +55,4 @@ class Article
         $this->db = null;
     }
 }
+?>

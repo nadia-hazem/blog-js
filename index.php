@@ -16,8 +16,9 @@ $user = new User($db);
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <?php include 'includes/header.php'; ?>
     
