@@ -6,7 +6,7 @@ class Article
     private $db;
 
     // création d'un article
-    public function CreateArticle($article)
+    public function createArticle($article)
     {
         // html special char
         $article = htmlspecialchars($article);
@@ -31,7 +31,7 @@ class Article
     }
 
     // suppression d'un article
-    public function DeleteArticle($id)
+    public function deleteArticle($id)
     {
         // html special char
         $id = htmlspecialchars($id);
