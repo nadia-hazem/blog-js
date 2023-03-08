@@ -34,16 +34,16 @@ class Article
 
         // requete
         $request = "INSERT INTO articles (titre, description, continent, date, id_utilisateur, image, summary) VALUES (:title, :description, :continent, NOW(), :id_utilisateur,:image, :summary)";
-                    $insert = $this->bdd->prepare($request);
+        $insert = $this->bdd->prepare($request);
 
-                    $insert->execute([
-                        'title' => $title,
-                        'description' => $description,
-                        'continent' => $continent,
-                        'id_utilisateur' => $this->id,
-                        'image' => $image,
-                        'summary' => $summary
-                    ]);
+        $insert->execute([
+            'title' => $title,
+            'description' => $description,
+            'continent' => $continent,
+            'id_utilisateur' => $this->id,
+            'image' => $image,
+            'summary' => $summary
+        ]);
 
         // echo "ok" si la requête s'est bien passée
         if ($insert) {
@@ -104,7 +104,8 @@ class Article
     }
 
     // récupération de tous les articles
-    function getAllArticles() {
+    function getAllArticles()
+    {
         // requete
         $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY date DESC";
         $select = $this->bdd->prepare($request);
@@ -122,7 +123,8 @@ class Article
     }
 
     //fonction pour récupérer la colonne description
-    function getDescription() {
+    function getDescription()
+    {
         $request = "SELECT description FROM articles";
         $select = $this->bdd->prepare($request);
         $select->execute();
@@ -132,10 +134,11 @@ class Article
         } else {
             return $description;
         }
-    } 
-    
+    }
+
     // fonction pour générer le résumé
-    function createSummary($description) {
+    function createSummary($description)
+    {
         if (is_string($description)) {
             $summary = substr(strip_tags($description), 0, 150);
             $summary .= '...';
@@ -143,7 +146,6 @@ class Article
         } else {
             return '';
         }
-
     }
 
 
