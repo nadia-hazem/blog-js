@@ -159,8 +159,6 @@ class Article
         }
     }
 
-    } 
-
     // fonction pour générer le résumé
     function createSummary($description)
     {
