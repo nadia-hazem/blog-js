@@ -1,7 +1,7 @@
 <?php
 SESSION_START();
-require '../class/DbConnect.php';
-require '../class/User.php';
+require_once '../class/DbConnect.php';
+require_once '../class/User.php';
 $db = new DbConnect();
 $user = new User($db);
 
