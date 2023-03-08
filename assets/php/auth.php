@@ -1,7 +1,7 @@
 <?php
 SESSION_START();
-require_once 'assets/class/DbConnect.php';
-require_once 'assets/class/User.php';
+require '../class/DbConnect.php';
+require '../class/User.php';
 $db = new DbConnect();
 $user = new User($db);
 
@@ -24,4 +24,3 @@ if (isset($_POST['conn'])) {
     $password = $_POST['password'];
     $user->connect($login, $password);
 }
-?>

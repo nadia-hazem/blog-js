@@ -19,30 +19,30 @@ class User
         }
     }
 
-        // Enregistrer un nouvel utilisateur
-        public function register($login, $password)
-        {   
-            // special characters
-            $login = htmlspecialchars($login);
-            $password = htmlspecialchars($password);
-            // hash password
-            $password = password_hash($password, PASSWORD_DEFAULT);
-                    
-            $register = "INSERT INTO utilisateurs (login, password) VALUES
-            (:login, :password)";
-            // préparation de la requête             
-            $insert = $this->bdd->prepare($register);
-            // exécution de la requête avec liaison des paramètres
-            $insert->execute(array(
-                ':login' => $login,
-                ':password' => $password,
-            ));
-            echo "Inscription réussie !";
-            $this->bdd = null;
-        }
+    // Enregistrer un nouvel utilisateur
+    public function register($login, $password)
+    {
+        // special characters
+        $login = htmlspecialchars($login);
+        $password = htmlspecialchars($password);
+        // hash password
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
-            // Connexion
-    public function connect($login, $password) 
+        $register = "INSERT INTO utilisateurs (login, password) VALUES
+        (:login, :password)";
+        // préparation de la requête             
+        $insert = $this->bdd->prepare($register);
+        // exécution de la requête avec liaison des paramètres
+        $insert->execute(array(
+            ':login' => $login,
+            ':password' => $password,
+        ));
+        echo "Inscription réussie !";
+        $this->bdd = null;
+    }
+
+    // Connexion
+    public function connect($login, $password)
     {
         // Récupérer le login
         $request = "SELECT * FROM utilisateurs WHERE login = :login";
@@ -61,14 +61,13 @@ class User
         $result = $select->fetch(PDO::FETCH_ASSOC);
         // verification password 
         if (password_verify($password, $result['password'])) {
-            $_SESSION['user']= [
+            $_SESSION['user'] = [
                 'id' => $result['id'],
                 'login' => $result['login'],
                 'password' => $result['password']
-            ]; 
-            echo "Connexion réussie !";     
-        }
-        else {
+            ];
+            echo "Connexion réussie !";
+        } else {
             echo "mot de passe incorrect !";
         }
         $this->bdd = null;
@@ -77,30 +76,27 @@ class User
     // Vérifier si l'utilisateur est connecté
     public function isConnected()
     {
-        if($this->id != null && $this->login != null && $this->password != null) {
+        if ($this->id != null && $this->login != null && $this->password != null) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     // Déconnexion
     public function disconnect()
-    {  
-        if($this->isConnected()) 
-            {
-                $this->id = null;
-                $this->login = null;
-                $this->password = null;
+    {
+        if ($this->isConnected()) {
+            $this->id = null;
+            $this->login = null;
+            $this->password = null;
 
             // fermeture de la connexion
             session_unset();
             session_destroy();
-            }
-            else {
-                echo "Vous n'êtes pas connecté(e) !";
-            }
+        } else {
+            echo "Vous n'êtes pas connecté(e) !";
+        }
     }
 
     // Utilisateur déjà existant?
@@ -155,32 +151,31 @@ class User
                 // ':login' => $this->['id']
             ));
 
-            $_SESSION['user']= [
+            $_SESSION['user'] = [
                 'id' => $result['id'],
                 'login' => $login,
                 'password' => $result['password']
-            ]; 
-            echo "Login changé !";     
-        }
-        else {
+            ];
+            echo "Login changé !";
+        } else {
             echo "mot de passe incorrect !";
         }
         $this->bdd = null;
     }
-    
+
     // Changer le mot de passe
     public function changePassword($oldPassword, $newPassword)
     {
         $request = "SELECT * FROM utilisateurs WHERE id = :id";
         // préparation de la requête
         $select = $this->bdd->prepare($request);
-        
+
         // special characters
         $newPassword = trim(htmlspecialchars($newPassword));
         $id = trim(htmlspecialchars($this->id));
-        
+
         $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-        
+
         $select->execute(array(
             ':id' => $this->id,
         ));
@@ -197,11 +192,10 @@ class User
                 ':password' => $newPassword
             ));
             echo 'Mot de passe changé !';
-        }
-        else {
+        } else {
             echo "mot de passe incorrect !";
         }
-    }   
+    }
 
     // Récupérer Id
     public function getId()
@@ -217,9 +211,8 @@ class User
 
     // Supprimer le compte
     public function delete()
-    {   
-        if($this->isConnected()) 
-        {   // requête de suppression
+    {
+        if ($this->isConnected()) {   // requête de suppression
             $delete = "DELETE FROM utilisateurs WHERE id = :id ";
             // préparation de la requête
             $delete = $this->bdd->prepare($delete);
@@ -231,19 +224,63 @@ class User
             $result = $delete->fetchAll();
             // vérification de la suppression
             if ($result == TRUE) {
-                echo "Utilisateur supprimé !"; 
+                echo "Utilisateur supprimé !";
                 session_destroy();
-            }
-            else{
+            } else {
                 echo "Erreur lors de la suppression de l'utilisateur !";
             }
-        }
-        else {
+        } else {
             echo "Vous devez être connecté pour supprimer votre compte !";
         }
         // fermeture de la connexion
-        $this->bdd = null; 
-    }   
-    
+        $this->bdd = null;
+    }
+
+    // vérifier que l'utilisateur connecté est admin ou modérateur
+    public function isUserMode()
+    {
+        if ($this->isConnected()) {
+            $request = "SELECT * FROM utilisateurs WHERE id = :id";
+            // préparation de la requête
+            $select = $this->bdd->prepare($request);
+            // exécution de la requête avec liaison des paramètres
+            $select->execute(array(
+                ':id' => $this->id,
+            ));
+            // récupération des résultats
+            $result = $select->fetch(PDO::FETCH_ASSOC);
+            // vérification des droits
+            if ($result['droit'] == 'admin' || $result['droit'] == 'mode') {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    // vérifier que l'utilisateur connecté est admin
+    public function isUserAdmin()
+    {
+        if ($this->isConnected()) {
+            $request = "SELECT * FROM utilisateurs WHERE id = :id";
+            // préparation de la requête
+            $select = $this->bdd->prepare($request);
+            // exécution de la requête avec liaison des paramètres
+            $select->execute(array(
+                ':id' => $this->id,
+            ));
+            // récupération des résultats
+            $result = $select->fetch(PDO::FETCH_ASSOC);
+            // vérification des droits
+            if ($result['droit'] == 'admin') {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
-?>
