@@ -13,8 +13,27 @@ $user = new User($db);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+    <?php include 'includes/header.php'; ?>
     
+    <div class="wrapper">
+        <main>
+
+            <div class="container">
+
+            </div> <!-- /container -->
+            
+        </main>
+
+        <div class="push"></div>
+
+    </div> <!-- /wrapper -->
+
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

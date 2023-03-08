@@ -5,9 +5,9 @@ class DbConnect {
 
     public function __construct() {
         $host = 'localhost';
-        $dbname = 'thomas-spinec_blog';
-        $dbuser = 'adminbdd';
-        $dbpass = 'basededonnees';
+        $dbname = 'blog';
+        $dbuser = 'root';
+        $dbpass = '';
 
         try {
             $this->bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbuser, $dbpass);
@@ -23,3 +23,5 @@ class DbConnect {
         return $this->bdd;
     }
 }
+
+?>

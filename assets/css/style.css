@@ -1,0 +1,68 @@
+
+/* maintient le footer en bas de page */
+.wrapper {
+    min-height: 100vh;
+    background:transparent;
+    margin-bottom: -50px;/* Equal to height of footer */
+} /* grace au push*/
+.footer,
+.push {
+    height: 50px;
+}
+
+.container {
+    height: 100%;
+}
+
+
+/**************MEDIAQUERY**************/
+
+@media (max-width: 767px) {
+    
+}
+
+@media (max-width: 1020px) {
+    
+    burgerButton {
+    display: block; 
+    width: 60px;
+    height: 60px;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom:5px;
+    }
+    burgerButton:hover{
+    content: '\2261';
+    }
+    burgerButton:after{
+    position: absolute;
+    left: 20px;
+    top: 3px;
+    font-size: 40px;
+    }
+    nav.open burgerButton:after {
+    content: '\00d7';
+    }
+
+    nav.close burgerButton:after {
+    content: '\2261';
+    }
+    nav.close ul { 
+    display: none; 
+    }
+    nav.open ul {
+        display: flex;
+        flex-direction: column;
+    }
+    nav.open ul li {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #fff6d4;
+    }
+    nav.open ul li:hover {
+        background-color: #e88f53;
+    }
+}
