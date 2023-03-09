@@ -1,7 +1,7 @@
 <!------------ <!DOCTYPE html> ------------>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -197,7 +197,7 @@ if (isset($_POST['create'])) {
 
                     <img id="preview" src="" alt="Image preview">
 
-                    
+
                     <input type="submit" value="Publier" name="create" class="btn">
 
 
