@@ -97,8 +97,8 @@ if (isset($_POST['create'])) {
             console.log('previewImage() function called')
             let input = event.target;
             let preview = document.getElementById('preview');
-            preview.style.whidth = '300px';
-            preview.style.height = '200px';
+            /* preview.style.whidth = '300px';
+            preview.style.height = '200px'; */
             if (input.files && input.files[0]) {
                 let reader = new FileReader();
                 

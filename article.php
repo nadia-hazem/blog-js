@@ -29,6 +29,7 @@ $id = $_GET['id'];
 <body>
 
     <?php include 'includes/header.php';
+    
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
     } else {

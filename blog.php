@@ -43,6 +43,18 @@ $user = new User($db);
                 }
                 ?>
 
+                <section id="articles">
+
+                </section>
+
+                <span id="pagination">
+
+                </span>
+
+                <section id="comments">
+
+                </section>
+
             </div> <!-- /container -->
 
         </main>

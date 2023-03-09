@@ -95,6 +95,24 @@ class Article
     
         return $article;
     }
-    
+
+    // récupération de tous les articles
+    function getAllArticles() {
+        // requete
+        $request = "SELECT articles.*, utilisateurs.login AS auteur FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY date DESC";
+
+        $select = $this->bdd->prepare($request);
+
+        // execution
+        $select->execute();
+
+        // récupération des résultats
+        $articles = $select->fetchAll(PDO::FETCH_ASSOC);
+
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+
+        return $articles;
+    }
 }
 ?>
