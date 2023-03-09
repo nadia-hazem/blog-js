@@ -95,4 +95,68 @@ class Article
 
         return $article;
     }
+
+    // récupération des articles
+    public function getAllArticles()
+    {
+        // requete
+        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY date DESC";
+
+        $select = $this->bdd->prepare($request);
+
+        // execution
+        $select->execute();
+
+        // récupération des résultats
+        $articles = $select->fetchAll(PDO::FETCH_ASSOC);
+
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+
+        return $articles;
+    }
+
+    // update d'un article
+    public function updateArticle($id, $title, $description, $image)
+    {
+        // html special char
+        $title = htmlspecialchars($title);
+        $description = htmlspecialchars($description);
+        $id = htmlspecialchars($id);
+        // si l'image est nulle, on ne change pas cette colonne, et l'array ne contient pas la clé image
+        if ($image == null) {
+            $request = "UPDATE articles SET titre = :title, description = :description WHERE id = :id";
+            // array
+            $array = [
+                'title' => $title,
+                'description' => $description,
+                'id' => $id
+            ];
+        } else {
+            $image = htmlspecialchars($image);
+
+            $request = "UPDATE articles SET titre = :title, description = :description, image = :image WHERE id = :id";
+            // array
+            $array = [
+                'title' => $title,
+                'description' => $description,
+                'image' => $image,
+                'id' => $id
+            ];
+        }
+
+        // requete
+        $update = $this->bdd->prepare($request);
+
+        // execution avec liaisons des param
+        $update->execute($array);
+
+        // echo "ok" si la requête s'est bien passée
+        if ($update) {
+            echo "ok";
+        }
+
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+    }
 }

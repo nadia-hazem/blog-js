@@ -1,39 +1,3 @@
-<!------------ <!DOCTYPE html> ------------>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Article</title>
-    <!-- CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <!-- JS -->
-    <script src="assets/js/menu.js"></script>
-
-    <script>
-        function previewImage(event) {
-            let input = event.target;
-            let preview = document.getElementById('preview');
-
-            if (input.files && input.files[0]) {
-                let reader = new FileReader();
-
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
-
-</head>
 <?php
 session_start();
 require_once 'assets/class/DbConnect.php';
@@ -67,7 +31,7 @@ if (isset($_POST['create'])) {
 
             //Récupère le nom de l'image et son chemin temporaire    
             $fileName = $_FILES['image']['name'];
-            $fileTmpName = $_FILES['image']['tmp_name'];
+
             // vérifir le type de fichier téléchargé
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $mimeType = finfo_file($finfo, $_FILES['image']['tmp_name']);
@@ -83,9 +47,8 @@ if (isset($_POST['create'])) {
             ];
 
             //Vérifie que le fichier téléchargé ne dépasse pas 4MB    
-            if (in_array($mimeType, $allowedTypes) && $file['size'] <= 4000000) {
-                $fileName = time() . '-' . $_FILES['image']['name'];
-                move_uploaded_file($tmpFile, "assets/img/$fileName");
+            if (in_array($mimeType, $allowedTypes) && $_FILES['image']['size'] <= 4000000) {
+                move_uploaded_file($tmp_name, "assets/uploads/$name");
 
                 //insère data dans la bdd
                 try {
@@ -110,42 +73,6 @@ if (isset($_POST['create'])) {
     }
 }
 ?>
-<!------------ <!DOCTYPE html> ------------>
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Article</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <!-- JS -->
-    <script src="assets/js/menu.js"></script>
-
-    <script>
-        function previewImage(event) {
-            let input = event.target;
-            let preview = document.getElementById('preview');
-
-            if (input.files && input.files[0]) {
-                let reader = new FileReader();
-
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
-
-</head>
 
 <!------------ <!DOCTYPE html> ------------>
 
@@ -169,8 +96,8 @@ if (isset($_POST['create'])) {
             console.log('previewImage() function called')
             let input = event.target;
             let preview = document.getElementById('preview');
-            preview.style.whidth = '300px';
-            preview.style.height = '200px';
+            /* preview.style.whidth = '300px';
+            preview.style.height = '200px'; */
             if (input.files && input.files[0]) {
                 let reader = new FileReader();
 
@@ -180,22 +107,22 @@ if (isset($_POST['create'])) {
                     console.log(preview);
                 };
 
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</head>
 
-                <
-                body >
+<body>
 
-                    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header.php'; ?>
 
-                    <
-                    wrapper >
+    <wrapper>
 
-                    <
-                    main >
-                    <
-                    div class = "container" >
-                    <
-                    h1 > Créer un article < /h1> <
-                    !--Affiche les messages d 'erreur et de succès -->
+        <main>
+            <div class="container">
+                <h1>Créer un article</h1>
+                <!-- Affiche les messages d'erreur et de succès -->
                 <?php
                 if (isset($errorMsg)) {
                     echo '<p class="error">' . $errorMsg;
@@ -205,74 +132,44 @@ if (isset($_POST['create'])) {
                     echo '</p>';
                 }
                 ?>
-                    <
-                    form method = "post"
-                enctype = "multipart/form-data" >
-                    <
-                    div >
-                    <
-                    label
-                for = "title" > Title < /label> <
-                    input type = "text"
-                name = "title"
-                id = "title"
-                required >
-                    <
-                    /div> <
-                    div >
-                    <
-                    label
-                for = "description" > Description < /label> <
-                    textarea name = "description"
-                id = "description"
-                cols = "30"
-                rows = "10"
-                required > < /textarea> <
-                    /div> <
-                    div >
-                    <
-                    label
-                for = "category" > Catégorie < /label> <
-                    select name = "continent"
-                id = "category" >
-                    <
-                    option value = "Europe" > Europe < /option> <
-                    option value = "Asie" > Asie < /option> <
-                    option value = "Afrique" > Afrique < /option> <
-                    option value = "Amérique/Nord" > Amérique / Nord < /option> <
-                    option value = "Amérique/Sud" > Amérique / Sud < /option> <
-                    option value = "Océanie" > Océanie < /option> <
-                    /select> <
-                    /div>
+                <form method="post" enctype="multipart/form-data">
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" required>
+                    </div>
+                    <div>
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+                    </div>
+                    <div>
+                        <label for="category">Catégorie</label>
+                        <select name="continent" id="category">
+                            <option value="Europe">Europe</option>
+                            <option value="Asie">Asie</option>
+                            <option value="Afrique">Afrique</option>
+                            <option value="Amérique/Nord">Amérique/Nord</option>
+                            <option value="Amérique/Sud">Amérique/Sud</option>
+                            <option value="Océanie">Océanie</option>
+                        </select>
+                    </div>
 
-                    <
-                    label
-                for = "image" > Télécharger une image < /label> <
-                    input type = "file"
-                id = "image"
-                name = "image"
-                accept = "img/*" >
+                    <label for="image">Télécharger une image</label>
+                    <input type="file" id="image" name="image" accept="img/*" onchange="previewImage(event)">
 
-                    <
-                    input type = "submit"
-                value = "Publier"
-                name = "create" >
+                    <img id="preview" src="" alt="Image preview">
 
-                    <
-                    /form>
 
-                    <
-                    /div>
+                    <input type="submit" value="Publier" name="create">
 
-                    <
-                    /main>
+                </form>
 
-                    <
-                    div class = "push" > < /div>
+            </div>
 
-                    <
-                    /wrapper> <
-                    /body>
+        </main>
 
-                    <
-                    /html>
+        <div class="push"></div>
+
+    </wrapper>
+</body>
+
+</html>

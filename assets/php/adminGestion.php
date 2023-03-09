@@ -30,6 +30,32 @@ if (isset($_GET['changeDroit'])) {
 
 // récupération des articles
 if (isset($_GET['articles'])) {
-    // $articles = $article->getArticles();
+    $articles = $article->getAllArticles();
     echo json_encode($articles);
+}
+
+// suppression d'un article
+if (isset($_GET['deleteArticle'])) {
+    $id = $_GET['deleteArticle'];
+    $article->deleteArticle($id);
+}
+
+// récupération d'un article à modifier
+if (isset($_GET["modifArticle"])) {
+    $id = $_GET["modifArticle"];
+    $article = $article->getArticle($id);
+    echo json_encode($article);
+}
+
+// update d'un article
+if (isset($_GET['updateArticle'])) {
+    $id = $_GET['updateArticle'];
+    $title = $_POST['titre'];
+    $description = $_POST['description'];
+    if (isset($_POST['image'])) {
+        $image = $_POST['image'];
+    } else {
+        $image = null;
+    }
+    $article->updateArticle($id, $title, $description, $image);
 }
