@@ -1,3 +1,16 @@
+<?php
+session_start();
+require_once 'assets/class/DbConnect.php';
+require_once 'assets/class/User.php';
+require_once 'assets/class/Article.php';
+$db = new DbConnect();
+$user = new User($db);
+$article = new Article($db);
+$id = $_GET['id']; 
+?>
+
+<!--<!DOCTYPE html>-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,9 +22,41 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    
+    <!-- JS -->
+    <script src="assets/js/menu.js"></script>
+
 </head>
 <body>
-    
+
+    <?php include 'includes/header.php'; ?>
+
+    <div class="wrapper">
+
+        <main>
+
+            <div class="container">
+
+                <h1>Article</h1>
+
+                <div class="article">
+
+                    <h2><?= $article->getTitre($id) ?></h2>
+
+                    <small class="article-meta">Publié le <?= $article->getArticleDate($id) ?> <br> par <?= $article->getAuteur($article); ?></small>
+
+                    <p class="article-description"><?= $article->getArticle($db) ?></p>
+
+                </div> <!-- /content -->
+
+            </div> <!-- /container -->
+
+        </main>
+
+        <div class="push"></div>
+
+    </div> <!-- /wrapper -->
+
+    <?php include 'includes/footer.php'; ?>
+
 </body>
 </html>

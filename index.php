@@ -1,11 +1,13 @@
 <?php
-SESSION_START();
+session_start();
 require_once 'assets/class/DbConnect.php';
 require_once 'assets/class/User.php';
 $db = new DbConnect();
 $user = new User($db);
-
 ?>
+
+<!--<!DOCTYPE html>-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,8 +17,11 @@ $user = new User($db);
     <title>Accueil</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- JS -->
+    <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <!-- JS -->
+    <script src="assets/js/menu.js"></script>
+
 </head>
 
 <body>
@@ -26,6 +31,8 @@ $user = new User($db);
         <main>
 
             <div class="container">
+                
+                <h1>Accueil</h1>
 
             </div> <!-- /container -->
             

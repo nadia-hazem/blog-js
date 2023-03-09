@@ -7,7 +7,7 @@ class Comment
     private $db;
 
     // création d'un commentaire lié à l'id de l'article et à l'id de l'utilisateur qui le crée
-    public function CreateComment($text, $id_utilisateur, $id_article)
+    public function createComment($text, $id_utilisateur, $id_article)
     {
         // html special char
         $text = htmlspecialchars($text);

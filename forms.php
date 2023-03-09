@@ -4,8 +4,10 @@ require_once 'assets/class/DbConnect.php';
 require_once 'assets/class/User.php';
 $db = new DbConnect();
 $user = new User($db);
-
 ?>
+
+<!--<!DOCTYPE html>-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -80,5 +82,6 @@ $user = new User($db);
     </div> <!-- /wrapper -->
 
     <?php include 'includes/footer.php'; ?>
+    
 </body>
 </html>
