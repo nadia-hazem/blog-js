@@ -55,7 +55,7 @@ $id = $_GET['id'];
 
                     <h2><?= $titre ?></h2>
 
-                    <small class="article-meta">Publié le <?= $article->getArticleDate($id) ?> <br> par <?= $article->getAuteur($article); ?></small>
+                    <small class="article-meta"></small>
 
                     <p class="article-description"><?= $article->getArticle($db) ?></p>
 
