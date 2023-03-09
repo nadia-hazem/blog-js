@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const tdDate = document.createElement("td");
           const tdGestion = document.createElement("td");
           tdGestion.setAttribute("colspan", "2");
-          // bouton modifier
+          // bouton modifier Delete et commentaire
           const btnModif = document.createElement("button");
           btnModif.setAttribute("data-id", article.id);
           btnModif.classList.add("btnModifArticle");
@@ -167,6 +167,11 @@ document.addEventListener("DOMContentLoaded", function () {
           btnDelete.classList.add("btnDeleteArticle");
           btnDelete.textContent = "Supprimer";
           tdGestion.appendChild(btnDelete);
+          const btnComments = document.createElement("button");
+          btnComments.setAttribute("data-id", data.id);
+          btnComments.classList.add("btnComments");
+          btnComments.textContent = "Commentaires";
+          tdGestion.appendChild(btnComments);
           // // //
           tdTitre.textContent = article.titre;
           tdAuteur.textContent = article.auteur;
