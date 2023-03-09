@@ -31,10 +31,10 @@
                 <li id="deconnexion" class=""><a class="" href="index.php?deconnexion=true">DECONNEXION</a></li>
 
             </ul>
-            <?php
+        <?php
         } else if ($user->isConnected()) {
 
-            ?>
+        ?>
             <ul class="">
 
                 <li class="" id="currentUser"><mark><?= $user->getLogin() ?></mark></li>
@@ -48,7 +48,7 @@
                 <li id="deconnexion" class=""><a class="" href="index.php?deconnexion=true">DECONNEXION</a></li>
 
             </ul>
-            <?php
+        <?php
         } else {
         ?>
             <ul class="nav nav-pills nav-fill">
