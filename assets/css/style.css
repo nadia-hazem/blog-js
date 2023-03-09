@@ -1,3 +1,13 @@
+/* reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+}
 
 /* maintient le footer en bas de page */
 .wrapper {
@@ -10,8 +20,105 @@
     height: 50px;
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+li {
+    list-style: none;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #B8F2E6;
+    border-bottom: 1px solid #5E6472;
+}
 .container {
     height: 100%;
+}
+
+main {
+    width: 100%;
+}
+
+mark {
+    background-color: #5E6472;
+    color: white;
+    padding: 5px 15px;
+}
+
+/*** FORMS ***/
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form select,
+form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form select {
+    width: 100%;
+}
+
+form input[type="file"] {
+    margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+/*** NAV ***/
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 20px; */
+    background-color: #fff6d4;
+    border-bottom: 1px solid #ddd;
 }
 
 
@@ -22,7 +129,7 @@
 }
 
 @media (max-width: 1020px) {
-    
+    /***mobile nav***/
     burgerButton {
     display: block; 
     width: 60px;
@@ -60,9 +167,10 @@
         width: 100%;
         text-align: center;
         padding: 10px 0;
-        border-bottom: 1px solid #fff6d4;
+        border-bottom: 1px solid #d9f9fe;
     }
     nav.open ul li:hover {
-        background-color: #e88f53;
+        background-color: #53c8e8;
     }
+    /***end mobile nav***/
 }

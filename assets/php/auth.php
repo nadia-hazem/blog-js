@@ -2,6 +2,8 @@
 SESSION_START();
 require_once '../class/DbConnect.php';
 require_once '../class/User.php';
+
+
 $db = new DbConnect();
 $user = new User($db);
 

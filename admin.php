@@ -9,9 +9,10 @@ $user = new User($db);
 if (!$user->isUserAdmin()) {
     header('Location: index.php');
 }
-
-
 ?>
+
+<!--<!DOCTYPE html>-->
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,8 +25,10 @@ if (!$user->isUserAdmin()) {
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- JS -->
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/admin.js"></script>
+
 
 </head>
 
@@ -33,9 +36,11 @@ if (!$user->isUserAdmin()) {
     <?php include 'includes/header.php'; ?>
 
     <div class="wrapper">
+
         <main>
 
             <div class="container">
+
 
                 <section id="selection">
 
@@ -56,6 +61,7 @@ if (!$user->isUserAdmin()) {
                 <section id="commentaires"></section>
             </div>
 
+            </div> <!-- /container -->
         </main>
 
         <div class="push"></div>
