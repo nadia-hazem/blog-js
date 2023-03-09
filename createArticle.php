@@ -1,38 +1,3 @@
-<!------------ <!DOCTYPE html> ------------>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Article</title>
-    <!-- CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <!-- JS -->
-    <script src="assets/js/menu.js"></script>
-
-    <script>
-        function previewImage(event) {
-            let input = event.target;
-            let preview = document.getElementById('preview');
-
-            if (input.files && input.files[0]) {
-                let reader = new FileReader();
-
-                reader.onload = function(e) {
-                preview.src = e.target.result;
-                preview.style.display = 'block';
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
-
-</head>
 <?php 
 session_start(); 
 require_once 'assets/class/DbConnect.php'; 
@@ -67,13 +32,13 @@ if (isset($_POST['create'])) {
 
             //Récupère le nom de l'image et son chemin temporaire    
             $fileName = $_FILES['image']['name'];    
-            $fileTmpName = $_FILES['image']['tmp_name'];    
+    
             // vérifir le type de fichier téléchargé
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
-            $mimeType = finfo_file($finfo, $tmpFile);
+            $mimeType = finfo_file($finfo, $_FILES['image']['tmp_name']);
 
-            var_dump($mimeType);
-            die();
+            $tmp_name = $_FILES['image']['tmp_name'];
+            $name = basename($_FILES['image']['name']);
 
             $allowedTypes = [
                 'image/jpeg',
@@ -83,9 +48,8 @@ if (isset($_POST['create'])) {
             ];
 
             //Vérifie que le fichier téléchargé ne dépasse pas 4MB    
-            if (in_array($mimeType, $allowedTypes) && $file['size'] <= 4000000) {    
-                $fileName = time() . '-' . $_FILES['image']['name'];    
-                move_uploaded_file($tmpFile, "assets/img/$fileName");
+            if (in_array($mimeType, $allowedTypes) && $_FILES['image']['size'] <= 4000000) {    
+                move_uploaded_file($tmp_name, "assets/uploads/$name");
 
                 //insère data dans la bdd
                 try {    
@@ -112,6 +76,43 @@ if (isset($_POST['create'])) {
 }
 ?>
 
+<!------------ <!DOCTYPE html> ------------>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Article</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <!-- JS -->
+    <script src="assets/js/menu.js"></script>
+
+    <script>
+        function previewImage(event) {
+            console.log('previewImage() function called')
+            let input = event.target;
+            let preview = document.getElementById('preview');
+            preview.style.whidth = '300px';
+            preview.style.height = '200px';
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    console.log(preview);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</head>
 
 <body>
 
@@ -155,7 +156,10 @@ if (isset($_POST['create'])) {
                     </div>
 
                     <label for="image">Télécharger une image</label>
-                    <input type="file" id="image" name="image" accept="img/*">
+                    <input type="file" id="image" name="image" accept="img/*" onchange="previewImage(event)">
+
+                    <img id="preview" src="" alt="Image preview">
+
                     
                     <input type="submit" value="Publier" name="create">
 

@@ -22,7 +22,6 @@ $user = new User($db);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
-    <script src="assets/js/forms.js"></script>
 
 </head>
 
