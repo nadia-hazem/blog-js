@@ -1,85 +1,3 @@
-<?php 
-session_start(); 
-require_once 'assets/class/DbConnect.php'; 
-require_once 'assets/class/User.php'; 
-require_once 'assets/class/Article.php'; 
-$db = new DbConnect(); 
-$user = new User($db); 
-$article = new Article($db); 
-
- //check if form is submitted  
-if (isset($_POST['submit'])) {  
-
-    //valider les data côté serveur
-    $title = trim(strip_tags($_POST['title']));  
-    $description = trim(strip_tags($_POST['description']));  
-    $category = trim(strip_tags($_POST['continent']));  
-
-    $errorMsg = '';
-
-    //Vérifie que les champs ne sont pas vides 
-    if (empty($title) || empty($description) || empty($continent)) {  
-
-        //message d'erreur si un des champs est vide  
-        $errorMsg = "Tous les champs sont requis.";  
-
-    } else {  
-
-        //Si tous les champs sont remplis, vérifie si une img est uploadée et procède en conséquence   
-
-        if (isset($_FILES['image']) && !empty($_FILES['image']['name']) && $_FILES['image']['error'] == 0) {    
-
-            //Récupère le nom de l'image et son chemin temporaire    
-            $fileName = $_FILES['image']['name'];    
-            $fileTmpName = $_FILES['image']['tmp_name'];    
-            // vérifir le type de fichier téléchargé
-            $finfo = finfo_open(FILEINFO_MIME_TYPE);
-            $mimeType = finfo_file($finfo, $tmpFile);
-
-            $allowedTypes = [
-                'image/jpeg',
-                'image/png',
-                'image/gif'
-            ];
-
-            //Vérifie que le fichier téléchargé ne dépasse pas 2MB    
-            if (in_array($mimeType, $allowedTypes) && $file['size'] <= 4000000) {    
-                $fileName = time() . '-' . $_FILES['image']['name'];    
-                move_uploaded_file($tmpFile, "assets/img/$fileName");
-
-                //insère data dans la bdd
-                try {    
-                    $request = "INSERT INTO articles (titre, description, continent, image) VALUES (:title, :description, :continent, :image)";
-                    $insert = $this->db->prepare($request);
-
-                    $insert->execute([
-                        'title' => $title,
-                        'description' => $description,
-                        'continent' => $continent,
-                        'image' => $newFileName
-                    ]);
-                
-                    //si la data est insérée afficher message de succès et redirection
-                    if ($insert) {
-                        $_SESSION['success'] = "Article créé avec succès !";
-                        header('Location: success.php');
-                    } else {
-                        $errorMsg = "Erreur lors de la création de l'article.";
-                    }
-
-                } catch (PDOException $e) {
-                    echo $e->getMessage();
-                }
-            } else {
-                $errorMsg = "Veuillez sélectionner une image valide.";
-            }
-        } else {
-            $errorMsg = "Veuillez sélectionner une image.";
-        }
-    }
-}
-?>
-
 <!------------ <!DOCTYPE html> ------------>
 
 <!DOCTYPE html>
@@ -90,7 +8,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Article</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
@@ -115,6 +33,85 @@ if (isset($_POST['submit'])) {
     </script>
 
 </head>
+<?php 
+session_start(); 
+require_once 'assets/class/DbConnect.php'; 
+require_once 'assets/class/User.php'; 
+require_once 'assets/class/Article.php'; 
+$db = new DbConnect(); 
+$user = new User($db); 
+$article = new Article($db); 
+
+//check if form is submitted  
+if (isset($_POST['create'])) {  
+    
+    //valider les data côté serveur
+    $title = trim(strip_tags($_POST['title']));  
+    $description = trim(strip_tags($_POST['description']));  
+    $continent = trim(strip_tags($_POST['continent']));  
+    
+    $errorMsg = '';
+    
+    //Vérifie que les champs ne sont pas vides 
+    if (empty($title) || empty($description) || empty($continent)) {  
+        
+        var_dump($_POST);
+        //message d'erreur si un des champs est vide  
+        $errorMsg = "Tous les champs sont requis.";  
+
+    } else {  
+
+        //Si tous les champs sont remplis, vérifie si une img est uploadée et procède en conséquence   
+
+        if (isset($_FILES['image']) && !empty($_FILES['image']['name']) && $_FILES['image']['error'] == 0) {    
+
+            //Récupère le nom de l'image et son chemin temporaire    
+            $fileName = $_FILES['image']['name'];    
+            $fileTmpName = $_FILES['image']['tmp_name'];    
+            // vérifir le type de fichier téléchargé
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mimeType = finfo_file($finfo, $tmpFile);
+
+            var_dump($mimeType);
+            die();
+
+            $allowedTypes = [
+                'image/jpeg',
+                'image/jpg',
+                'image/png',
+                'image/gif'
+            ];
+
+            //Vérifie que le fichier téléchargé ne dépasse pas 4MB    
+            if (in_array($mimeType, $allowedTypes) && $file['size'] <= 4000000) {    
+                $fileName = time() . '-' . $_FILES['image']['name'];    
+                move_uploaded_file($tmpFile, "assets/img/$fileName");
+
+                //insère data dans la bdd
+                try {    
+                    $insert = $article->createArticle($title, $description, $continent, $fileName);
+                
+                    //si la data est insérée afficher message de succès et redirection
+                    if ($insert == "ok") {
+                        $_SESSION['success'] = "Article créé avec succès !";
+                        header('Location: blog.php');
+                    } else {
+                        $errorMsg = "Erreur lors de la création de l'article.";
+                    }
+
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+            } else {
+                $errorMsg = "Veuillez sélectionner une image valide.";
+            }
+        } else {
+            $errorMsg = "Veuillez sélectionner une image.";
+        }
+    }
+}
+?>
+
 
 <body>
 
@@ -147,13 +144,13 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div>
                         <label for="category">Catégorie</label>
-                        <select name="category" id="category">
-                            <option value="1">Europe</option>
-                            <option value="2">Asie</option>
-                            <option value="3">Afrique</option>
-                            <option value="4">Amérique/Nord</option>
-                            <option value="5">Amérique/Sud</option>
-                            <option value="5">Océanie</option>
+                        <select name="continent" id="category">
+                            <option value="Europe">Europe</option>
+                            <option value="Asie">Asie</option>
+                            <option value="Afrique">Afrique</option>
+                            <option value="Amérique/Nord">Amérique/Nord</option>
+                            <option value="Amérique/Sud">Amérique/Sud</option>
+                            <option value="Océanie">Océanie</option>
                         </select>
                     </div>
 

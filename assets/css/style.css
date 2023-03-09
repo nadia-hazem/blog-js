@@ -40,8 +40,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #fff6d4;
-    border-bottom: 1px solid #ddd;
+    background-color: #B8F2E6;
+    border-bottom: 1px solid #5E6472;
 }
 .container {
     height: 100%;
@@ -52,7 +52,8 @@ main {
 }
 
 mark {
-    background-color: #98c983;
+    background-color: #5E6472;
+    color: white;
     padding: 5px 15px;
 }
 
@@ -166,10 +167,10 @@ nav {
         width: 100%;
         text-align: center;
         padding: 10px 0;
-        border-bottom: 1px solid #fff6d4;
+        border-bottom: 1px solid #d9f9fe;
     }
     nav.open ul li:hover {
-        background-color: #e88f53;
+        background-color: #53c8e8;
     }
     /***end mobile nav***/
 }

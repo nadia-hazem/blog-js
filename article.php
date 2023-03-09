@@ -28,7 +28,20 @@ $id = $_GET['id'];
 </head>
 <body>
 
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header.php';
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    } else {
+        header('Location: blog.php');
+    }
+    $item = $article->getArticle($id);
+    $titre = $item['titre'];
+    $date = $item['date'];
+    $auteur = $item['auteur'];
+    $continent = $item['continent'];
+    $description = $item['description'];
+
+    ?>
 
     <div class="wrapper">
 
@@ -40,7 +53,7 @@ $id = $_GET['id'];
 
                 <div class="article">
 
-                    <h2><?= $article->getTitre($id) ?></h2>
+                    <h2><?= $titre ?></h2>
 
                     <small class="article-meta">Publié le <?= $article->getArticleDate($id) ?> <br> par <?= $article->getAuteur($article); ?></small>
 

@@ -35,6 +35,14 @@ $user = new User($db);
 
                 <h1>Blog</h1>
 
+                <?php
+                if ($user->isUserMode()) {
+                    ?>
+                    <button><a href="createArticle.php">Créer un article</a></button>
+                    <?php
+                }
+                ?>
+
             </div> <!-- /container -->
 
         </main>

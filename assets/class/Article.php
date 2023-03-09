@@ -20,24 +20,26 @@ class Article
     }
 
     // création d'un article
-    public function createArticle($article)
+    public function createArticle($title, $description, $continent, $image)
     {
         // html special char
-        $article = htmlspecialchars($article);
+        $title = htmlspecialchars($title);
+        $description = htmlspecialchars($description);
+        $continent = htmlspecialchars($continent);
 
         // requete
-        $request = "INSERT INTO articles (titre, date, description, image) VALUES (:titre, NOW(), :description, :image)";
+        $request = "INSERT INTO articles (titre, description, continent, image) VALUES (:title, :description, :continent, :image)";
+                    $insert = $this->bdd->prepare($request);
 
-        $insert = $this->bdd->prepare($request);
-
-        // execution avec liaisons des param
-        $insert->execute([
-            'article' => $article
-        ]);
-
+                    $insert->execute([
+                        'title' => $title,
+                        'description' => $description,
+                        'continent' => $continent,
+                        'image' => $image
+                    ]);
         // echo "ok" si la requête s'est bien passée
         if ($insert) {
-            echo "ok";
+            return "ok";
         }
 
         // fermeture de la co a la bdd
@@ -69,45 +71,6 @@ class Article
         $this->bdd = null;
     }
     
-    function getTitre($id)
-    {
-        // html special char
-        $id = htmlspecialchars($id);
-
-        // requete
-        $request = "SELECT titre FROM articles WHERE id = :id";
-        
-        $select = $this->bdd->prepare($request);
-        
-        // execution avec liaison des params
-        $select->execute([
-            'id' => $id
-        ]);
-        
-        // récupération des résultats
-        $titre = $select->fetchColumn();
-        
-        // fermeture de la co a la bdd
-        $this->bdd = null;
-        
-        return $titre;
-    }
-
-    function getArticleDate($id) {
-
-        $request = "SELECT date FROM articles WHERE id = :id";
-        $select = $this->bdd->prepare($request);
-        $select->execute(['id' => $id]);
-        $date = $select->fetchColumn();
-
-        if ($date) {
-            $dateTime = new DateTime($date);
-            return $dateTime->format('d/m/Y à H:i:s');
-        } else {
-            return null;
-        }
-    }
-
     function getArticle($id)
     {
         // html special char
@@ -132,12 +95,5 @@ class Article
         return $article;
     }
     
-    function getAuteur($article)
-    {
-        return $article['auteur'];
-    }
-    
-    
-
 }
 ?>
