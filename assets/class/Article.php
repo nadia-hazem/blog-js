@@ -28,13 +28,14 @@ class Article
         $continent = htmlspecialchars($continent);
 
         // requete
-        $request = "INSERT INTO articles (titre, description, continent, image) VALUES (:title, :description, :continent, :image)";
+        $request = "INSERT INTO articles (titre, description, continent, date, id_utilisateur, image) VALUES (:title, :description, :continent, NOW(), :id_utilisateur,:image)";
                     $insert = $this->bdd->prepare($request);
 
                     $insert->execute([
                         'title' => $title,
                         'description' => $description,
                         'continent' => $continent,
+                        'id_utilisateur' => $this->id,
                         'image' => $image
                     ]);
         // echo "ok" si la requête s'est bien passée
