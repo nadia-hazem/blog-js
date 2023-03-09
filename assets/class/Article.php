@@ -3,7 +3,13 @@
 class Article
 {
     // propriétés
-    private $db;
+    private $bdd;
+
+    // constructeur
+    public function __construct(DbConnect $db)
+    {
+        $this->bdd = $db->getBdd();
+    }
 
     // création d'un article
     public function createArticle($article)
@@ -14,7 +20,7 @@ class Article
         // requete
         $request = "INSERT INTO articles (article) VALUES (:article)";
 
-        $insert = $this->db->prepare($request);
+        $insert = $this->bdd->prepare($request);
 
         // execution avec liaisons des param
         $insert->execute([
@@ -27,7 +33,7 @@ class Article
         }
 
         // fermeture de la co a la bdd
-        $this->db = null;
+        $this->bdd = null;
     }
 
     // suppression d'un article
@@ -39,7 +45,7 @@ class Article
         // requete
         $request = "DELETE FROM articles WHERE id = :id";
 
-        $delete = $this->db->prepare($request);
+        $delete = $this->bdd->prepare($request);
 
         // execution avec liaisons des param
         $delete->execute([
@@ -52,6 +58,6 @@ class Article
         }
 
         // fermeture de la co a la bdd
-        $this->db = null;
+        $this->bdd = null;
     }
 }

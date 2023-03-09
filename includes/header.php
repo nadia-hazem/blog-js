@@ -17,7 +17,7 @@
         ?>
             <ul class="">
 
-                <li class=""><mark><?= $user->getLogin() ?></mark></li>
+                <li class="" id="currentUser"><mark><?= $user->getLogin() ?></mark></li>
 
                 <li id="accueil" class=""><a class="text-white" href="index.php">ACCUEIL</a></li>
 
@@ -36,7 +36,7 @@
         ?>
             <ul class="">
 
-                <li class=""><mark><?= $user->getLogin() ?></mark></li>
+                <li class="" id="currentUser"><mark><?= $user->getLogin() ?></mark></li>
 
                 <li id="accueil" class=""><a class="text-white" href="index.php">ACCUEIL</a></li>
 

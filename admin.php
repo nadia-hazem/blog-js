@@ -5,6 +5,12 @@ require_once 'assets/class/User.php';
 $db = new DbConnect();
 $user = new User($db);
 
+// vérification if user is admin
+if (!$user->isUserAdmin()) {
+    header('Location: index.php');
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,7 +25,7 @@ $user = new User($db);
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/js/menu.js"></script>
-    <script src="assets/js/forms.js"></script>
+    <script src="assets/js/admin.js"></script>
 
 </head>
 
@@ -31,6 +37,23 @@ $user = new User($db);
 
             <div class="container">
 
+                <section id="selection">
+
+                    <h1>Administration</h1>
+
+                    <div class="admin">
+                        <a id="users" href="">Gestion des utilisateurs</a>
+                        <a id="articles" href="">Gestion des articles</a>
+                    </div>
+                </section>
+
+                <section id="gestion">
+
+                </section>
+
+                <section id="article"></section>
+
+                <section id="commentaires"></section>
             </div>
 
         </main>

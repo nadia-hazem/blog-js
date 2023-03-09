@@ -209,7 +209,7 @@ class User
         return $this->login;
     }
 
-    // Supprimer le compte
+    // Supprimer son compte
     public function delete()
     {
         if ($this->isConnected()) {   // requête de suppression
@@ -282,5 +282,66 @@ class User
         } else {
             return false;
         }
+    }
+
+    // récupérer les utilisateurs
+    public function getUsers()
+    {
+        $request = "SELECT * FROM utilisateurs";
+        // préparation de la requête
+        $select = $this->bdd->prepare($request);
+        // exécution de la requête
+        $select->execute();
+        // récupération des résultats
+        $result = $select->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    // supprimer un utilisateur (via panel admin)
+    public function deleteUser($id)
+    {
+        // htmlspecialchar
+        $id = trim(htmlspecialchars($id));
+        // requête
+        $delete = "DELETE FROM utilisateurs WHERE id = :id ";
+        // préparation de la requête
+        $delete = $this->bdd->prepare($delete);
+        // exécution de la requête avec liaison des paramètres
+        $delete->execute(array(
+            ':id' => $id
+        ));
+        // vérification que la requête a fonctionné
+        if ($delete == TRUE) {
+            echo "ok";
+        } else {
+            echo "Erreur lors de la suppression de l'utilisateur !";
+        }
+        // fermeture de la connexion
+        $this->bdd = null;
+    }
+
+    // modifier les droits d'un utilisateurs (via panel admin)
+    public function changeDroit($id, $droit)
+    {
+        // htmlspecialchar
+        $id = trim(htmlspecialchars($id));
+        $droit = trim(htmlspecialchars($droit));
+        // requête
+        $update = "UPDATE utilisateurs SET droit=:droit WHERE id = :id";
+        // préparation de la requête
+        $update = $this->bdd->prepare($update);
+        // exécution de la requête avec liaison des paramètres
+        $update->execute(array(
+            ':id' => $id,
+            ':droit' => $droit
+        ));
+        // vérification que la requête a fonctionné
+        if ($update == TRUE) {
+            echo "ok";
+        } else {
+            echo "Erreur lors de la modification des droits de l'utilisateur !";
+        }
+        // fermeture de la connexion
+        $this->bdd = null;
     }
 }
