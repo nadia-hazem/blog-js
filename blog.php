@@ -4,6 +4,7 @@ require_once 'assets/class/DbConnect.php';
 require_once 'assets/class/User.php';
 $db = new DbConnect();
 $user = new User($db);
+$article = new Article($db);
 ?>
 
 <!--<!DOCTYPE html>-->
@@ -44,7 +45,7 @@ $user = new User($db);
                 ?>
 
                 <section id="articles">
-
+                    <?php  ?>
                 </section>
 
                 <span id="pagination">
