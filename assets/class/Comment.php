@@ -35,4 +35,3 @@ class Comment
         $this->db = null;
     }
 }
-?>
