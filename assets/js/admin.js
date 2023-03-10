@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // fonctions
   function showUsers() {
     gestion.innerHTML = "";
+    articleSection.innerHTML = "";
+    commentairesSection.innerHTML = "";
     //fetch
     fetch("assets/php/adminGestion.php?users")
       .then((response) => response.json())
@@ -120,6 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showArticles() {
     gestion.innerHTML = "";
+    articleSection.innerHTML = "";
+    commentairesSection.innerHTML = "";
     //fetch
     fetch("assets/php/adminGestion.php?articles")
       .then((response) => response.json())
@@ -152,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const tdDate = document.createElement("td");
           const tdGestion = document.createElement("td");
           tdGestion.setAttribute("colspan", "2");
-          // bouton modifier
+          // bouton modifier Delete et commentaire
           const btnModif = document.createElement("button");
           btnModif.setAttribute("data-id", article.id);
           btnModif.classList.add("btnModifArticle");
@@ -163,6 +167,11 @@ document.addEventListener("DOMContentLoaded", function () {
           btnDelete.classList.add("btnDeleteArticle");
           btnDelete.textContent = "Supprimer";
           tdGestion.appendChild(btnDelete);
+          const btnComments = document.createElement("button");
+          btnComments.setAttribute("data-id", data.id);
+          btnComments.classList.add("btnComments");
+          btnComments.textContent = "Commentaires";
+          tdGestion.appendChild(btnComments);
           // // //
           tdTitre.textContent = article.titre;
           tdAuteur.textContent = article.auteur;
@@ -175,6 +184,103 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         gestion.appendChild(table);
       });
+  }
+
+  function deleteArticle(id) {
+    fetch("assets/php/adminGestion.php?deleteArticle=" + id)
+      .then((response) => response.text())
+      .then((data) => {
+        // trim
+        data = data.trim();
+        if (data == "ok") {
+          showArticles();
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+
+  function modifArticle(id) {
+    fetch("assets/php/adminGestion.php?modifArticle=" + id)
+      .then((response) => response.json())
+      .then((data) => {
+        articleSection.innerHTML = "";
+        // création d'un formulaire
+        const form = document.createElement("form");
+        form.setAttribute("enctype", "multipart/form-data");
+        // titre
+        const labelTitre = document.createElement("label");
+        labelTitre.setAttribute("for", "titre");
+        labelTitre.textContent = "Titre";
+        const inputTitre = document.createElement("input");
+        inputTitre.setAttribute("type", "text");
+        inputTitre.setAttribute("name", "titre");
+        inputTitre.setAttribute("id", "titre");
+        inputTitre.setAttribute("value", data.titre);
+        inputTitre.setAttribute("required", "");
+        // Description
+        const labelDescription = document.createElement("label");
+        labelDescription.setAttribute("for", "description");
+        labelDescription.textContent = "Description";
+        const textareaDescription = document.createElement("textarea");
+        textareaDescription.setAttribute("name", "description");
+        textareaDescription.setAttribute("id", "description");
+        textareaDescription.setAttribute("required", "");
+        textareaDescription.textContent = data.description;
+        // image
+        const labelImage = document.createElement("label");
+        labelImage.setAttribute("for", "image");
+        labelImage.textContent = "Image";
+        const inputImage = document.createElement("input");
+        inputImage.setAttribute("type", "file");
+        inputImage.setAttribute("name", "image");
+        inputImage.setAttribute("id", "image");
+        const imgDisplay = document.createElement("img");
+        imgDisplay.setAttribute("src", "assets/uploads/" + data.image);
+        imgDisplay.setAttribute("alt", data.titre);
+        const p = document.createElement("p");
+        p.textContent = "Image actuelle";
+        // bouton
+        const btn = document.createElement("button");
+        btn.setAttribute("type", "submit");
+        btn.setAttribute("data-id", data.id);
+        btn.classList.add("updateArticle");
+        btn.textContent = "Modifier";
+        // ajout des éléments
+        form.appendChild(labelTitre);
+        form.appendChild(inputTitre);
+        form.appendChild(labelDescription);
+        form.appendChild(textareaDescription);
+        form.appendChild(labelImage);
+        form.appendChild(inputImage);
+        form.appendChild(btn);
+        articleSection.appendChild(form);
+        articleSection.appendChild(p);
+        articleSection.appendChild(imgDisplay);
+      });
+  }
+
+  function updateArticle(target, id) {
+    const form = new FormData(target);
+    // verif que les champs sont bien remplies
+    if (form.get("titre") == "" || form.get("description") == "") {
+      alert("Veuillez remplir tous les champs");
+      return;
+    } else {
+      fetch("assets/php/adminGestion.php?updateArticle=" + id, {
+        method: "POST",
+        body: form,
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          // trim
+          data = data.trim();
+          if (data == "ok") {
+            showArticles();
+            modifArticle(id);
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   }
 
   // events
@@ -195,6 +301,34 @@ document.addEventListener("DOMContentLoaded", function () {
       const select = e.target.previousElementSibling;
       const droit = select.options[select.selectedIndex].value;
       changeDroit(id, droit);
+    }
+  });
+
+  // affichage des articles
+  articles.addEventListener("click", function (e) {
+    e.preventDefault();
+    showArticles();
+  });
+
+  // suppression d'un article ou modification
+  gestion.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains("btnDeleteArticle")) {
+      const id = e.target.getAttribute("data-id");
+      deleteArticle(id);
+    } else if (e.target.classList.contains("btnModifArticle")) {
+      const id = e.target.getAttribute("data-id");
+      modifArticle(id);
+    }
+  });
+
+  // update d'un article
+  articleSection.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains("updateArticle")) {
+      const id = e.target.getAttribute("data-id");
+      const parent = e.target.parentElement;
+      updateArticle(parent, id);
     }
   });
 });
