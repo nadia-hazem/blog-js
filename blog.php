@@ -9,6 +9,8 @@ $article = new Article($db);
 $articles = $article->getAllArticles();
 $description = $article->getDescription();
 $summary = $article->createSummary($description);
+$articlesPerPage = 6;
+
 ?>
 
 <!--<!DOCTYPE html>-->
@@ -50,6 +52,8 @@ $summary = $article->createSummary($description);
                     <button class="post"><a href="createArticle.php">Créer un article</a></button>
                     <?php
                 }
+
+
                 ?>
 
                 <section class="articles">
@@ -57,14 +61,16 @@ $summary = $article->createSummary($description);
                     <?php 
                     // Récupérer le nombre total d'articles
                     $total_articles = count($article->getAllArticles());
+                    // Définir le nombre d'articles à afficher par page
+                    $num_articles = 6;
                     // Calculer le nombre total de pages
-                    $total_pages = ceil($total_articles / 5);
+                    $total_pages = ceil($total_articles / $num_articles);
                     // Récupérer le numéro de la page courante
                     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
                     // Calculer l'indice de départ pour la requête LIMIT
-                    $start_index = ($current_page - 1) * 5;
+                    $start_index = ($current_page - 1) * $num_articles;
                     // Récupérer les articles pour la page courante en utilisant LIMIT
-                    $articles = $article->getAllArticles();
+                    $articles = $article->getArticlesPerPage($start_index, $num_articles);
                     // Afficher les articles récupérés
                     foreach ($articles as $article) : 
                         ?>
@@ -91,19 +97,24 @@ $summary = $article->createSummary($description);
                     // affichage des liens de pagination
                     echo '<div id="pagination">';
                         if ($current_page > 1) {
-                            echo '<a href="?page=' . ($current_page - 1) . '">&nbsp; Page précédente &nbsp;</a>';
+                            echo '<a href="?page=' . ($current_page - 1) . ' ">&nbsp; Page précédente &nbsp;</a>';
                         }
 
                     for ($i = 1; $i <= $total_pages; $i++) {
                         if ($i == $current_page) {
-                            echo '<span class="current_page">' . $i . '</span>';
+                            echo '<span class="current_page active">' . $i . '</span>';
                         } else {
                             echo '<a href="?page=' . $i . '">' . $i . '</a>';
+                        }
+
+                        // Ajouter un tiret entre les numéros de pages
+                        if ($i < $total_pages) {
+                            echo ' - ';
                         }
                     }
 
                     if ($current_page < $total_pages) {
-                        echo '<a href="?page=' . ($current_page + 1) . '">&nbsp; Page suivante &nbsp;</a>';
+                        echo '<a href="?page=' . ($current_page + 1) . ' ">&nbsp; Page suivante &nbsp;</a>';
                     }
                     echo '</div>';
                     ?>

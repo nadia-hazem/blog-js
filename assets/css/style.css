@@ -235,6 +235,11 @@ nav {
     font-size: 1rem;
 }
 
+.current_page.active {
+    color: #65a9d7;
+    font-weight: bold;
+}
+
 /*** CARDS ***/
 
 .card {
