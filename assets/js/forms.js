@@ -39,13 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.title = "Inscription";
   }
 
-  // affichage de la section inscription par défaut
-  displayInsc();
-
   // affichage de la section connexion si choice = conn
-  if (choice === "conn") {
+  if (choice === "login") {
     displayConn();
-  } else if (choice === "insc") {
+  } else if (choice === "register") {
+    displayInsc();
+  } else {
     displayInsc();
   }
 
