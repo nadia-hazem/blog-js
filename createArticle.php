@@ -1,38 +1,37 @@
-<?php 
-session_start(); 
-require_once 'assets/class/DbConnect.php'; 
-require_once 'assets/class/User.php'; 
-require_once 'assets/class/Article.php'; 
-$db = new DbConnect(); 
-$user = new User($db); 
-$article = new Article($db); 
+<?php
+session_start();
+require_once 'assets/class/DbConnect.php';
+require_once 'assets/class/User.php';
+require_once 'assets/class/Article.php';
+$db = new DbConnect();
+$user = new User($db);
+$article = new Article($db);
 
 //check if form is submitted  
-if (isset($_POST['create'])) {  
-    
+if (isset($_POST['create'])) {
+
     //valider les data côté serveur
-    $title = trim(strip_tags($_POST['title']));  
-    $description = trim(strip_tags($_POST['description']));  
-    $continent = trim(strip_tags($_POST['continent']));  
-    
+    $title = trim(strip_tags($_POST['title']));
+    $description = trim(strip_tags($_POST['description']));
+    $continent = trim(strip_tags($_POST['continent']));
+
     $errorMsg = '';
-    
+
     //Vérifie que les champs ne sont pas vides 
-    if (empty($title) || empty($description) || empty($continent)) {  
-        
+    if (empty($title) || empty($description) || empty($continent)) {
+
         var_dump($_POST);
         //message d'erreur si un des champs est vide  
-        $errorMsg = "Tous les champs sont requis.";  
-
-    } else {  
+        $errorMsg = "Tous les champs sont requis.";
+    } else {
 
         //Si tous les champs sont remplis, vérifie si une img est uploadée et procède en conséquence   
 
-        if (isset($_FILES['image']) && !empty($_FILES['image']['name']) && $_FILES['image']['error'] == 0) {    
+        if (isset($_FILES['image']) && !empty($_FILES['image']['name']) && $_FILES['image']['error'] == 0) {
 
             //Récupère le nom de l'image et son chemin temporaire    
-            $fileName = $_FILES['image']['name'];    
-    
+            $fileName = $_FILES['image']['name'];
+
             // vérifir le type de fichier téléchargé
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $mimeType = finfo_file($finfo, $_FILES['image']['tmp_name']);
@@ -48,13 +47,13 @@ if (isset($_POST['create'])) {
             ];
 
             //Vérifie que le fichier téléchargé ne dépasse pas 4MB    
-            if (in_array($mimeType, $allowedTypes) && $_FILES['image']['size'] <= 4000000) {    
+            if (in_array($mimeType, $allowedTypes) && $_FILES['image']['size'] <= 4000000) {
                 move_uploaded_file($tmp_name, "assets/uploads/$name");
 
                 //insère data dans la bdd
-                try {    
+                try {
                     $insert = $article->createArticle($title, $description, $continent, $fileName);
-                
+
                     //si la data est insérée afficher message de succès et redirection
                     if ($insert == "ok") {
                         $_SESSION['success'] = "Article créé avec succès !";
@@ -62,7 +61,6 @@ if (isset($_POST['create'])) {
                     } else {
                         $errorMsg = "Erreur lors de la création de l'article.";
                     }
-
                 } catch (PDOException $e) {
                     echo $e->getMessage();
                 }
@@ -80,6 +78,7 @@ if (isset($_POST['create'])) {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,11 +96,11 @@ if (isset($_POST['create'])) {
             console.log('previewImage() function called')
             let input = event.target;
             let preview = document.getElementById('preview');
-            preview.style.whidth = '300px';
-            preview.style.height = '200px';
+            /* preview.style.whidth = '300px';
+            preview.style.height = '200px'; */
             if (input.files && input.files[0]) {
                 let reader = new FileReader();
-                
+
                 reader.onload = function(e) {
                     preview.src = e.target.result;
                     preview.style.display = 'block';
@@ -117,7 +116,7 @@ if (isset($_POST['create'])) {
 <body>
 
     <?php include 'includes/header.php'; ?>
-    
+
     <wrapper>
 
         <main>
@@ -126,13 +125,12 @@ if (isset($_POST['create'])) {
                 <!-- Affiche les messages d'erreur et de succès -->
                 <?php
                 if (isset($errorMsg)) {
-                    echo '<p class="error">'. $errorMsg; 
-                    echo'</p>';
-                } 
-                elseif (isset($successMsg)) {
-                    echo '<p class="success">' . $successMsg; 
-                    echo'</p>';
-                } 
+                    echo '<p class="error">' . $errorMsg;
+                    echo '</p>';
+                } elseif (isset($successMsg)) {
+                    echo '<p class="success">' . $successMsg;
+                    echo '</p>';
+                }
                 ?>
                 <form method="post" enctype="multipart/form-data">
                     <div>
@@ -160,7 +158,7 @@ if (isset($_POST['create'])) {
 
                     <img id="preview" src="" alt="Image preview">
 
-                    
+
                     <input type="submit" value="Publier" name="create">
 
                 </form>
@@ -173,4 +171,5 @@ if (isset($_POST['create'])) {
 
     </wrapper>
 </body>
+
 </html>

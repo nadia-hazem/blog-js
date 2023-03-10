@@ -61,10 +61,10 @@ if (!$user->isUserAdmin()) {
                 <section id="commentaires"></section>
             </div>
 
-            </div> <!-- /container -->
-        </main>
+    </div> <!-- /container -->
+    </main>
 
-        <div class="push"></div>
+    <div class="push"></div>
 
     </div> <!-- /wrapper -->
 
