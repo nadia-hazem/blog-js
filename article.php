@@ -6,13 +6,14 @@ require_once 'assets/class/Article.php';
 $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
-$id = $_GET['id']; 
+$id = $_GET['id'];
 ?>
 
 <!--<!DOCTYPE html>-->
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,10 +31,11 @@ $id = $_GET['id'];
     <script src="assets/js/menu.js"></script>
 
 </head>
+
 <body>
 
     <?php include 'includes/header.php';
-    
+
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
     } else {
@@ -43,7 +45,7 @@ $id = $_GET['id'];
     $titre = $item['titre'];
     $date = $item['date'];
     $auteur = $item['auteur'];
-    $continent = $item['continent'];
+    $categories = $item['categories'];
     $description = $item['description'];
     $image = $item['image'];
     ?>
@@ -52,7 +54,7 @@ $id = $_GET['id'];
 
         <main>
 
-            <?php if (!empty($item['image'])): ?>
+            <?php if (!empty($item['image'])) : ?>
                 <img class="banner" src="assets/uploads/<?= $item['image'] ?>" alt="<?= $titre ?>">
             <?php endif; ?>
 
@@ -62,7 +64,7 @@ $id = $_GET['id'];
 
                     <h1><?= $titre ?></h1>
 
-                    <small class="article-meta">Publié le <?= $date ?> par : <?= $auteur ?> | <span class="cat">catégorie : <?= $continent ?></span></small>
+                    <small class="article-meta">Publié le <?= $date ?> par : <?= $auteur ?> | <span class="cat">catégorie : <?= $categories ?></span></small>
 
                     <p class="article-description"><?= $description ?></p>
 
@@ -79,4 +81,5 @@ $id = $_GET['id'];
     <?php include 'includes/footer.php'; ?>
 
 </body>
+
 </html>

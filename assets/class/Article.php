@@ -22,24 +22,24 @@ class Article
     }
 
     // création d'un article
-    public function createArticle($title, $description, $continent, $image)
+    public function createArticle($title, $description, $categories, $image)
     {
         // html special char
         $title = htmlspecialchars($title);
         $description = htmlspecialchars($description);
-        $continent = htmlspecialchars($continent);
+        $categories = htmlspecialchars($categories);
 
         // générer summary
         $summary = $this->createSummary($description);
 
         // requete
-        $request = "INSERT INTO articles (titre, description, continent, date, id_utilisateur, image, summary) VALUES (:title, :description, :continent, NOW(), :id_utilisateur,:image, :summary)";
+        $request = "INSERT INTO articles (titre, description, categories, date, id_utilisateur, image, summary) VALUES (:title, :description, :categories, NOW(), :id_utilisateur,:image, :summary)";
         $insert = $this->bdd->prepare($request);
 
         $insert->execute([
             'title' => $title,
             'description' => $description,
-            'continent' => $continent,
+            'categories' => $categories,
             'id_utilisateur' => $this->id,
             'image' => $image,
             'summary' => $summary
