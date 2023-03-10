@@ -64,7 +64,7 @@ $summary = $article->createSummary($description);
                     // Calculer l'indice de départ pour la requête LIMIT
                     $start_index = ($current_page - 1) * 5;
                     // Récupérer les articles pour la page courante en utilisant LIMIT
-                    $articles = $article->getAllArticles($start_index, 5);
+                    $articles = $article->getAllArticles();
                     // Afficher les articles récupérés
                     foreach ($articles as $article) : 
                         ?>

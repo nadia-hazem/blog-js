@@ -97,14 +97,13 @@ class Article
         } else {
             // sinon on retourne le résultat
             return $article;
-            var_dump($article);
         }
     }
 
     // récupération de tous les articles
-    function getAllArticles($start_index = 0, $count = 5) {
+    function getAllArticles() {
         // requete
-        $request = "SELECT articles.*, utilisateurs.login AS auteur, articles.summary FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY date DESC";
+        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY date DESC";
         $select = $this->bdd->prepare($request);
         // execution
         $select->execute();
