@@ -8,6 +8,8 @@ class Article
     private $password;
     private $bdd;
 
+
+
     public function __construct(DbConnect $db)
     {
         $this->bdd = $db->getbdd();
@@ -27,17 +29,22 @@ class Article
         $description = htmlspecialchars($description);
         $continent = htmlspecialchars($continent);
 
-        // requete
-        $request = "INSERT INTO articles (titre, description, continent, date, id_utilisateur, image) VALUES (:title, :description, :continent, NOW(), :id_utilisateur,:image)";
-        $insert = $this->bdd->prepare($request);
+        // générer summary
+        $summary = $this->createSummary($description);
 
-        $insert->execute([
-            'title' => $title,
-            'description' => $description,
-            'continent' => $continent,
-            'id_utilisateur' => $this->id,
-            'image' => $image
-        ]);
+        // requete
+        $request = "INSERT INTO articles (titre, description, continent, date, id_utilisateur, image, summary) VALUES (:title, :description, :continent, NOW(), :id_utilisateur,:image, :summary)";
+                    $insert = $this->bdd->prepare($request);
+
+                    $insert->execute([
+                        'title' => $title,
+                        'description' => $description,
+                        'continent' => $continent,
+                        'id_utilisateur' => $this->id,
+                        'image' => $image,
+                        'summary' => $summary
+                    ]);
+
         // echo "ok" si la requête s'est bien passée
         if ($insert) {
             return "ok";
@@ -79,9 +86,7 @@ class Article
 
         // requete
         $request = "SELECT articles.*, utilisateurs.login AS auteur FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id WHERE articles.id = :id";
-
         $select = $this->bdd->prepare($request);
-
         // execution avec liaison des params
         $select->execute([
             'id' => $id
@@ -89,32 +94,58 @@ class Article
 
         // récupération des résultats
         $article = $select->fetch(PDO::FETCH_ASSOC);
-
-        // fermeture de la co a la bdd
-        $this->bdd = null;
-
-        return $article;
+        // Si $result produit une erreur, on retourne null
+        if (!$article) {
+            return null;
+        } else {
+            // sinon on retourne le résultat
+            return $article;
+        }
     }
 
-    // récupération des articles
-    public function getAllArticles()
-    {
+    // récupération de tous les articles
+    function getAllArticles() {
         // requete
-        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY date DESC";
-
+        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY date DESC";
         $select = $this->bdd->prepare($request);
-
         // execution
         $select->execute();
-
         // récupération des résultats
         $articles = $select->fetchAll(PDO::FETCH_ASSOC);
-
-        // fermeture de la co a la bdd
-        $this->bdd = null;
-
-        return $articles;
+        // Si $result produit une erreur, on retourne null
+        if (!$articles) {
+            return null;
+        } else {
+            // sinon on retourne le résultat
+            return $articles;
+        }
     }
+
+    //fonction pour récupérer la colonne description
+    function getDescription() {
+        $request = "SELECT description FROM articles";
+        $select = $this->bdd->prepare($request);
+        $select->execute();
+        $description = $select->fetchAll(PDO::FETCH_ASSOC);
+        if (!$description) {
+            return null;
+        } else {
+            return $description;
+        }
+    } 
+    
+    // fonction pour générer le résumé
+    function createSummary($description) {
+        if (is_string($description)) {
+            $summary = substr(strip_tags($description), 0, 150);
+            $summary .= '...';
+            return $summary;
+        } else {
+            return '';
+        }
+
+    }
+
 
     // update d'un article
     public function updateArticle($id, $title, $description, $image)
