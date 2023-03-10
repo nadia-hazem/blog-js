@@ -22,24 +22,24 @@ class Article
     }
 
     // création d'un article
-    public function createArticle($title, $description, $continent, $image)
+    public function createArticle($title, $description, $categories, $image)
     {
         // html special chars
         $title = htmlspecialchars($title);
         $description = htmlspecialchars($description);
-        $continent = htmlspecialchars($continent);
+        $categories = htmlspecialchars($categories);
 
         // générer summary
         $summary = $this->createSummary($description);
 
         // requete
-        $request = "INSERT INTO articles (titre, description, continent, date, id_utilisateur, image, summary) VALUES (:title, :description, :continent, NOW(), :id_utilisateur,:image, :summary)";
+        $request = "INSERT INTO articles (titre, description, categories, date, id_utilisateur, image, summary) VALUES (:title, :description, :categories, NOW(), :id_utilisateur,:image, :summary)";
                     $insert = $this->bdd->prepare($request);
 
                     $insert->execute([
                         'title' => $title,
                         'description' => $description,
-                        'continent' => $continent,
+                        'categories' => $categories,
                         'id_utilisateur' => $this->id,
                         'image' => $image,
                         'summary' => $summary
@@ -106,7 +106,11 @@ class Article
     // récupération de tous les articles
     function getAllArticles() {
         // requete
-        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY date DESC";
+        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
+        FROM articles 
+        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id 
+        ORDER BY date DESC";
+
         $select = $this->bdd->prepare($request);
         // execution
         $select->execute();
@@ -120,6 +124,24 @@ class Article
             return $articles;
         }
     }
+
+    public function getArticlesPerPage($start_index, $num_articles) {
+        $query = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
+        FROM articles 
+        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id 
+        ORDER BY date DESC 
+        LIMIT $start_index, $num_articles
+        ";
+        $result = $this->bdd->query($query);
+        $articles = array();
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $description = $row['description'];
+            $row['summary'] = $this->createSummary($description);
+            $articles[] = $row;
+        }
+        return $articles;
+    }
+    
 
     //fonction pour récupérer la colonne description
     function getDescription() {
