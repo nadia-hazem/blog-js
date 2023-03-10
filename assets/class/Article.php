@@ -44,6 +44,7 @@ class Article
                         'image' => $image,
                         'summary' => $summary
                     ]);
+
         // echo "ok" si la requête s'est bien passée
         if ($insert) {
             return "ok";
@@ -77,11 +78,12 @@ class Article
         // fermeture de la co a la bdd
         $this->bdd = null;
     }
-    
+
     function getArticle($id)
     {
         // html special char
         $id = htmlspecialchars($id);
+
         // requete
         $request = "SELECT articles.*, utilisateurs.login AS auteur FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id WHERE articles.id = :id";
         $select = $this->bdd->prepare($request);
@@ -89,6 +91,7 @@ class Article
         $select->execute([
             'id' => $id
         ]);
+
         // récupération des résultats
         $article = $select->fetch(PDO::FETCH_ASSOC);
         // Si $result produit une erreur, on retourne null
@@ -140,7 +143,51 @@ class Article
         } else {
             return '';
         }
+
     }
-    
+
+
+    // update d'un article
+    public function updateArticle($id, $title, $description, $image)
+    {
+        // html special char
+        $title = htmlspecialchars($title);
+        $description = htmlspecialchars($description);
+        $id = htmlspecialchars($id);
+        // si l'image est nulle, on ne change pas cette colonne, et l'array ne contient pas la clé image
+        if ($image == null) {
+            $request = "UPDATE articles SET titre = :title, description = :description WHERE id = :id";
+            // array
+            $array = [
+                'title' => $title,
+                'description' => $description,
+                'id' => $id
+            ];
+        } else {
+            $image = htmlspecialchars($image);
+
+            $request = "UPDATE articles SET titre = :title, description = :description, image = :image WHERE id = :id";
+            // array
+            $array = [
+                'title' => $title,
+                'description' => $description,
+                'image' => $image,
+                'id' => $id
+            ];
+        }
+
+        // requete
+        $update = $this->bdd->prepare($request);
+
+        // execution avec liaisons des param
+        $update->execute($array);
+
+        // echo "ok" si la requête s'est bien passée
+        if ($update) {
+            echo "ok";
+        }
+
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+    }
 }
-?>
