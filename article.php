@@ -20,6 +20,10 @@ $id = $_GET['id'];
     <title>Article</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
@@ -41,24 +45,26 @@ $id = $_GET['id'];
     $auteur = $item['auteur'];
     $continent = $item['continent'];
     $description = $item['description'];
-
+    $image = $item['image'];
     ?>
 
     <div class="wrapper">
 
         <main>
 
-            <div class="container">
+            <?php if (!empty($item['image'])): ?>
+                <img class="banner" src="assets/uploads/<?= $item['image'] ?>" alt="<?= $titre ?>">
+            <?php endif; ?>
 
-                <h1>Article</h1>
+            <div class="container">
 
                 <div class="article">
 
-                    <h2><?= $titre ?></h2>
+                    <h1><?= $titre ?></h1>
 
-                    <small class="article-meta"></small>
+                    <small class="article-meta">Publié le <?= $date ?> par : <?= $auteur ?> | <span class="cat">catégorie : <?= $continent ?></span></small>
 
-                    <p class="article-description"><?= $article->getArticle($db) ?></p>
+                    <p class="article-description"><?= $description ?></p>
 
                 </div> <!-- /content -->
 

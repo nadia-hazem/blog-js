@@ -17,6 +17,10 @@ $user = new User($db);
     <title>Accueil</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
@@ -29,18 +33,12 @@ $user = new User($db);
     
     <div class="wrapper">
         <main>
+            <div class="hero" alt="Trippy"></div>
 
             <div class="container">
                 
-                <h1>Accueil</h1>
+                <h1>Trippy</h1>
 
-                <?php
-                if ($user->isUserMode()) {
-                    ?>
-                    <button><a href="createArticle.php">Créer un article</a></button>
-                    <?php
-                }
-                ?>
 
             </div> <!-- /container -->
             

@@ -87,6 +87,10 @@ if (isset($_POST['create'])) {
     <title>Create Article</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
@@ -97,8 +101,6 @@ if (isset($_POST['create'])) {
             console.log('previewImage() function called')
             let input = event.target;
             let preview = document.getElementById('preview');
-            /* preview.style.whidth = '300px';
-            preview.style.height = '200px'; */
             if (input.files && input.files[0]) {
                 let reader = new FileReader();
                 
@@ -161,7 +163,7 @@ if (isset($_POST['create'])) {
                     <img id="preview" src="" alt="Image preview">
 
                     
-                    <input type="submit" value="Publier" name="create">
+                    <input type="submit" value="Publier" name="create" class="btn">
 
                 </form>
 

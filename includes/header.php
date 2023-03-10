@@ -15,7 +15,7 @@
         }
         if ($user->isUserAdmin()) {
         ?>
-            <ul class="">
+            <ul class="top-menu">
 
 
                 <li class="" id="currentUser"><mark><?= $user->getLogin() ?></mark></li>
