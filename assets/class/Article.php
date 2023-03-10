@@ -24,7 +24,7 @@ class Article
     // création d'un article
     public function createArticle($title, $description, $categories, $image)
     {
-        // html special char
+        // html special chars
         $title = htmlspecialchars($title);
         $description = htmlspecialchars($description);
         $categories = htmlspecialchars($categories);
