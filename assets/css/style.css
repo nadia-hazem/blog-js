@@ -247,28 +247,35 @@ mark {
 /*** BOUTON ***/
 
 button, .btn {
-    border-top: 1px solid #96d1f8;
-    background: #65a9d7;
-    background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
-    background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
-    background: -moz-linear-gradient(top, #3e779d, #65a9d7);
-    background: -ms-linear-gradient(top, #3e779d, #65a9d7);
-    background: -o-linear-gradient(top, #3e779d, #65a9d7);
-    padding: 15px 30px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    box-shadow: rgba(0,0,0,1) 0 1px 0;
-    text-shadow: rgba(0,0,0,.4) 0 1px 0;
-    width: 200px;
-    color: white;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
     font-size: 14px;
-    font-family: Helvetica, Arial, Sans-Serif;
-    text-decoration: none;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
     vertical-align: middle;
-    }
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+/* Style du bouton Modifier */
+.btn-modifier {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+/* Style du bouton Supprimer */
+.btn-supprimer {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
 button:hover, input[type="submit"]:hover {
     border-top-color: #28597a;
     background: #28597a;
