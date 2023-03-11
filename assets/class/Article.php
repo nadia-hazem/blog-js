@@ -171,7 +171,6 @@ class Article
         }
     }
 
-
     // update d'un article
     public function updateArticle($id, $title, $description, $image)
     {
