@@ -13,12 +13,12 @@ if (isset($_POST['create'])) {
     //valider les data côté serveur
     $title = trim(strip_tags($_POST['title']));
     $description = trim(strip_tags($_POST['description']));
-    $continent = trim(strip_tags($_POST['continent']));
+    $categorie = trim(strip_tags($_POST['categorie']));
 
     $errorMsg = '';
 
     //Vérifie que les champs ne sont pas vides 
-    if (empty($title) || empty($description) || empty($continent)) {
+    if (empty($title) || empty($description) || empty($categorie)) {
 
         var_dump($_POST);
         //message d'erreur si un des champs est vide  
@@ -52,7 +52,7 @@ if (isset($_POST['create'])) {
 
                 //insère data dans la bdd
                 try {
-                    $insert = $article->createArticle($title, $description, $continent, $fileName);
+                    $insert = $article->createArticle($title, $description, $categorie, $fileName);
 
                     //si la data est insérée afficher message de succès et redirection
                     if ($insert == "ok") {
@@ -145,7 +145,7 @@ if (isset($_POST['create'])) {
                     </div>
                     <div>
                         <label for="category">Catégorie</label>
-                        <select name="continent" id="category">
+                        <select name="categorie" id="category">
                             <option value="Europe">Europe</option>
                             <option value="Asie">Asie</option>
                             <option value="Afrique">Afrique</option>

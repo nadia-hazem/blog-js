@@ -36,7 +36,8 @@ if (!$user->isUserAdmin()) {
 
 </head>
 
-<body>
+<body id="admin">
+
     <?php include 'includes/header.php'; ?>
 
     <div class="wrapper">
@@ -45,30 +46,41 @@ if (!$user->isUserAdmin()) {
 
             <div class="container">
 
-
                 <section id="selection">
 
-                    <h1>Administration</h1>
+                    <h1 class="m-0">Administration</h1>
 
-                    <div class="admin">
-                        <a id="users" href="">Gestion des utilisateurs</a>
-                        <a id="articles" href="">Gestion des articles</a>
-                    </div>
-                </section>
+                    <div class="admin row m-5">
+                        <!-- <div class="col col-33 text-center border-grey radius m-5 p-3">
+                            <a id="users" href="">Gestion des utilisateurs</a>
+                        </div>
+                        <div class="col col-33 text-center border-grey radius m-5 p-3">
+                            <a id="articles" href="">Gestion des articles</a>
+                        </div> -->
 
-                <section id="gestion">
+                        <a id="users" href="" class="col text-center">
+                            <h3>Gestion des utilisateurs </h3><i class="fas fa-users"></i>
+                        </a>
 
-                </section>
+                        <a id="articles" href="" class="col text-center">
+                            <h3>Gestion des articles</h3>
+                        </a>
 
-                <section id="article"></section>
+                    </div> <!-- /admin row-->
 
-                <section id="commentaires"></section>
-            </div>
+                </section> <!-- /selection -->
 
-    </div> <!-- /container -->
-    </main>
+                <section id="gestion"> </section>
 
-    <div class="push"></div>
+                <section id="article"> </section>
+
+                <section id="commentaires"> </section>
+
+            </div> <!-- /container -->
+
+        </main>
+
+        <div class="push"></div>
 
     </div> <!-- /wrapper -->
 

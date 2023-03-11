@@ -43,7 +43,7 @@ $id = $_GET['id'];
     $titre = $item['titre'];
     $date = $item['date'];
     $auteur = $item['auteur'];
-    $continent = $item['continent'];
+    $categories = $item['categories'];
     $description = $item['description'];
     $image = $item['image'];
     ?>
@@ -62,7 +62,7 @@ $id = $_GET['id'];
 
                     <h1><?= $titre ?></h1>
 
-                    <small class="article-meta">Publié le <?= $date ?> par : <?= $auteur ?> | <span class="cat">catégorie : <?= $continent ?></span></small>
+                    <small class="article-meta">Publié le <?= $date ?> par : <?= $auteur ?> | <span class="cat">catégorie : <?= $categories ?></span></small>
 
                     <p class="article-description"><?= $description ?></p>
 

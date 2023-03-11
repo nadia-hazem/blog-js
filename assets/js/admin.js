@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateArticle(target, id) {
     const form = new FormData(target);
-    // verif que les champs sont bien remplies
+    // verif que les champs sont bien remplis
     if (form.get("titre") == "" || form.get("description") == "") {
       alert("Veuillez remplir tous les champs");
       return;
@@ -288,6 +288,9 @@ document.addEventListener("DOMContentLoaded", function () {
   users.addEventListener("click", function (e) {
     e.preventDefault();
     showUsers();
+    // ajouter une bordure sur le lien cliqué
+    users.classList.add("active");
+    articles.classList.remove("active");
   });
 
   // suppression d'un utilisateur ou changer les droits
@@ -308,6 +311,9 @@ document.addEventListener("DOMContentLoaded", function () {
   articles.addEventListener("click", function (e) {
     e.preventDefault();
     showArticles();
+    // ajouter une bordure sur le lien cliqué
+    articles.classList.add("active");
+    users.classList.remove("active");
   });
 
   // suppression d'un article ou modification
