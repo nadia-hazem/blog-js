@@ -155,7 +155,7 @@ class Article
             return $description;
         }
     } 
-    
+
     // fonction pour générer le résumé
     function createSummary($description) {
         if (is_string($description)) {
@@ -167,7 +167,6 @@ class Article
         }
 
     }
-
 
     // update d'un article
     public function updateArticle($id, $title, $description, $image)
