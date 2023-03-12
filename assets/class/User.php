@@ -122,79 +122,111 @@ class User
         $this->bdd = null;
     }
 
-    // Changer le login
-    public function changeLogin($login, $password)
+    // Modification login
+    public function updateLogin($login, $old, $password)
     {
-        $request = "SELECT * FROM utilisateurs WHERE login = :login";
+        // requête
+        $requete = "SELECT * FROM utilisateurs where login = :old";
+
         // préparation de la requête
-        $select = $this->bdd->prepare($request);
+        $select = $this->bdd->prepare($requete);
 
-        // special characters
-        $login = trim(htmlspecialchars($login));
-        $password = trim(htmlspecialchars($password));
+        // htmlspecialchars pour les paramètres
+        $old = htmlspecialchars($old);
+        $login = htmlspecialchars($login);
+        $password = htmlspecialchars($password);
 
-        // exécution de la requête avec liaison des paramètres
-        $select->execute(array(
-            ':login' => $this->login,
-        ));
-        // récupération des résultats
-        $result = $select->fetch(PDO::FETCH_ASSOC);
-        // verif password
-        if (password_verify($password, $result['password'])) {
-            $update = "UPDATE utilisateurs SET login=:login WHERE id = :id";
+        // récupération du mot de passe avec ASSOC
+        $select->execute(array(':old' => $old));
+        $fetch_assoc = $select->fetch(PDO::FETCH_ASSOC);
+        $password_hash = $fetch_assoc['password'];
+
+        if (password_verify($password, $password_hash)) {
+            // requête pour modifier le login dans la base de données
+            $requete2 = "UPDATE utilisateurs SET login=:login WHERE id=:id";
             // préparation de la requête
-            $update = $this->bdd->prepare($update);
+            $update = $this->bdd->prepare($requete2);
             // exécution de la requête avec liaison des paramètres
             $update->execute(array(
                 ':login' => $login,
-                ':id' => $result['id']
-                // ':login' => $this->['id']
+                ':id' => $this->id,
             ));
+            // récupération des données pour les attribuer aux attributs
+            $this->id = $fetch_assoc['id'];
+            $this->login = $login;
+            $this->password = $fetch_assoc['password'];
 
             $_SESSION['user'] = [
-                'id' => $result['id'],
+                'id' => $fetch_assoc['id'],
                 'login' => $login,
-                'password' => $result['password']
+                'password' => $fetch_assoc['password'],
             ];
-            echo "Login changé !";
+            // update réussie
+            $error = "ok";
+            echo $error;
         } else {
-            echo "mot de passe incorrect !";
+            $error = "incorrect";
+            echo $error; // mot de passe incorrect
         }
+
+        // fermer la connexion
         $this->bdd = null;
     }
 
-    // Changer le mot de passe
-    public function changePassword($oldPassword, $newPassword)
+    // Modification mot de passe
+    public function updatePassword($password, $newPassword)
     {
-        $request = "SELECT * FROM utilisateurs WHERE id = :id";
+        // requête
+        $requete = "SELECT * FROM utilisateurs where login = :login";
+
         // préparation de la requête
-        $select = $this->bdd->prepare($request);
+        $select = $this->bdd->prepare($requete);
 
-        // special characters
-        $newPassword = trim(htmlspecialchars($newPassword));
-        $id = trim(htmlspecialchars($this->id));
+        // htmlspecialchars pour les paramètres
+        $login = htmlspecialchars($this->login);
+        $password = htmlspecialchars($password);
+        $newPassword = htmlspecialchars($newPassword);
 
-        $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        // récupération du mot de passe avec ASSOC
+        $select->execute(array(':login' => $login));
+        $fetch_assoc = $select->fetch(PDO::FETCH_ASSOC);
+        $password_hash = $fetch_assoc['password'];
 
-        $select->execute(array(
-            ':id' => $this->id,
-        ));
-        // récupération des résultats
-        $result = $select->fetch(PDO::FETCH_ASSOC);
-        // verif password
-        if (password_verify($oldPassword, $result['password'])) {
-            $update = "UPDATE utilisateurs SET password=:password WHERE id = :id";
+        if (password_verify(
+            $password,
+            $password_hash
+        )) {
+            // requête pour modifier le mdp dans la base de données
+            $requete2 = "UPDATE utilisateurs SET password=:password WHERE id=:id";
             // préparation de la requête
-            $update = $this->bdd->prepare($update);
+            $update = $this->bdd->prepare($requete2);
+            // hash du nouveau mdp
+            $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
             // exécution de la requête avec liaison des paramètres
             $update->execute(array(
-                ':id' => $id,
-                ':password' => $newPassword
+                ':password' => $newPassword,
+                ':id' => $this->id,
             ));
-            echo 'Mot de passe changé !';
+            // récupération des données pour les attribuer aux attributs
+            $this->id = $fetch_assoc['id'];
+            $this->login = $login;
+            $this->password = $newPassword;
+
+            $_SESSION['user'] = [
+                'id' => $fetch_assoc['id'],
+                'login' => $login,
+                'password' => $newPassword,
+            ];
+            // update réussie
+            $error = "ok";
+            echo $error;
         } else {
-            echo "mot de passe incorrect !";
+            $error = "incorrect";
+            echo $error; // mot de passe incorrect
         }
+
+        // fermer la connexion
+        $this->bdd = null;
     }
 
     // Récupérer Id
