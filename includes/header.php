@@ -17,7 +17,6 @@
         ?>
             <ul class="top-menu">
 
-
                 <li class="" id="currentUser"><mark><?= $user->getLogin() ?></mark></li>
 
                 <li id="accueil" class=""><a class="" href="index.php">ACCUEIL</a></li>

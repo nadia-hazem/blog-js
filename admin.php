@@ -33,7 +33,6 @@ if (!$user->isUserAdmin()) {
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/admin.js"></script>
 
-
 </head>
 
 <body id="admin">
