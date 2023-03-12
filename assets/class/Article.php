@@ -34,6 +34,7 @@ class Article
 
         // requete
         $request = "INSERT INTO articles (titre, description, categories, date, id_utilisateur, image, summary) VALUES (:title, :description, :categories, NOW(), :id_utilisateur,:image, :summary)";
+
         $insert = $this->bdd->prepare($request);
 
         $insert->execute([
@@ -44,6 +45,7 @@ class Article
             'image' => $image,
             'summary' => $summary
         ]);
+
 
         // echo "ok" si la requête s'est bien passée
         if ($insert) {
@@ -126,6 +128,7 @@ class Article
         }
     }
 
+
     public function getArticlesPerPage($start_index, $num_articles)
     {
         $query = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
@@ -143,6 +146,7 @@ class Article
         }
         return $articles;
     }
+
 
 
     //fonction pour récupérer la colonne description
