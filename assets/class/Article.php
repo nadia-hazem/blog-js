@@ -106,8 +106,8 @@ class Article
     }
 
     // récupération de tous les articles
-    public function getAllArticles() {
-
+    public function getAllArticles()
+    {
         // requete
         $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
         FROM articles 
@@ -145,7 +145,7 @@ class Article
             $articles[] = $row;
         }
         return $articles;
-    }    
+    }
 
     //fonction pour récupérer la colonne description
     public function getDescription() {

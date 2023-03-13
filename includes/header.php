@@ -56,20 +56,22 @@
 
             <ul class="nav nav-pills nav-fill">
 
-                <li id="accueil" class=""><a class="" href="index.php">ACCUEIL</a></li>
+        <ul class="nav nav-pills nav-fill">
 
-                <li id="apropos" class=""><a class="" href="apropos.php">A PROPOS</a></li>
+            <li id="accueil" class=""><a class="" href="index.php">ACCUEIL</a></li>
 
-                <li id="blog" class=""><a class="" href="blog.php">BLOG</a></li>
+            <li id="apropos" class=""><a class="" href="apropos.php">A PROPOS</a></li>
 
-                <li id="logIn" class=""><a class="" id="loginBtn" href="forms.php?choice=login">CONNEXION</button></a></li>
+            <li id="blog" class=""><a class="" href="blog.php">BLOG</a></li>
 
-                <li id="signIn" class=""><a class="" id="registerBtn" href="forms.php?choice=register">INSCRIPTION</a></li>
+            <li id="logIn" class=""><a class="" id="loginBtn" href="forms.php?choice=login">CONNEXION</button></a></li>
 
-            </ul>
-        <?php
+            <li id="signIn" class=""><a class="" id="registerBtn" href="forms.php?choice=register">INSCRIPTION</a></li>
+
+        </ul>
+    <?php
         }
-        ?>
+    ?>
 
         </nav>
 

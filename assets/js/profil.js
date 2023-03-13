@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
   loginInput.addEventListener("blur", checkLogin);
 
   // password
-  passwordInput.addEventListener("keyup", function (e) {
+  passwordInput.addEventListener("blur", function (e) {
     checkPassword(passwordInput);
   });
 
@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
           //   console.log(response);
           if (response === "ok") {
             loginButton.nextElementSibling.innerHTML = "Modification réussie!";
+            loginInput.focus();
             // nouveau login qui remplace l'ancien
             user = loginInput.value;
             msg.textContent = user;
