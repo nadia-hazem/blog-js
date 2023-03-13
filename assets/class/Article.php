@@ -147,10 +147,8 @@ class Article
         return $articles;
     }
 
-
     //fonction pour récupérer la colonne description
-    function getDescription()
-    {
+    public function getDescription() {
         $request = "SELECT description FROM articles";
         $select = $this->bdd->prepare($request);
         $select->execute();
@@ -163,8 +161,8 @@ class Article
     }
 
     // fonction pour générer le résumé
-    function createSummary($description)
-    {
+    public function createSummary($description) {
+
         if (is_string($description)) {
             $summary = substr(strip_tags($description), 0, 150);
             $summary .= '...';
