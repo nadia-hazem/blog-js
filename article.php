@@ -3,14 +3,15 @@ session_start();
 require_once 'assets/class/DbConnect.php';
 require_once 'assets/class/User.php';
 require_once 'assets/class/Article.php';
+require_once 'assets/class/Comments.php';
 $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
+$comment = new Comments($db);
 $id = $_GET['id'];
 ?>
 
 <!--<!DOCTYPE html>-->
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -71,6 +72,39 @@ $id = $_GET['id'];
                 </div> <!-- /content -->
 
             </div> <!-- /container -->
+
+            <h2>Commentaires</h2>
+            <section class="comments bg-light border radius p-2">
+
+                <?php
+                $comments = $comment->getComments($id);
+                if (is_array($comment->getComments($id))) {
+                    $id = $comment['id'];
+                    $auteur = $comment['auteur'];
+                    $date = $comment['date'];
+                    $commentaire = $comment['commentaire'];
+
+                    echo '<div class="comment">';
+                    echo '<h3>' . $auteur . '</h3>';
+                    echo '<small class="comment-meta">Publié le ' . $date . '</small>';
+                    echo '<p>' . $commentaire . '</p>';
+                    echo '</div>';
+                }
+                ?>
+
+            </section>
+
+            <h2>Laissez un commentaire</h2>
+            <section class="container">
+
+                <form action="verification.php" method="post" class="m-auto">
+
+                    <textarea name="commentaire" cols="40" rows="10" placeholder="Votre commentaire :"></textarea>
+                    <input type="submit" class="" name="go" value="Signer">
+
+                </form>
+
+            </section>
 
         </main>
 
