@@ -108,11 +108,11 @@ class Article
     // récupération de tous les articles
     public function getAllArticles()
     {
-        // requete
-        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
+        // requete pour récup tous y compris les catégories
+        $request =
+            "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
         FROM articles 
-        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id 
-        ORDER BY date DESC";
+        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC";
 
         $select = $this->bdd->prepare($request);
         // execution
@@ -214,5 +214,24 @@ class Article
 
         // fermeture de la co a la bdd
         $this->bdd = null;
+    }
+
+    // récupération des catégorie
+    public function getCategories()
+    {
+        // requête
+        $request = "SELECT * FROM categories";
+        $select = $this->bdd->prepare($request);
+        // execution
+        $select->execute();
+        // récupération des résultats
+        $categories = $select->fetchAll(PDO::FETCH_ASSOC);
+        // Si $result produit une erreur, on retourne null
+        if (!$categories) {
+            return null;
+        } else {
+            // sinon on retourne le résultat
+            return $categories;
+        }
     }
 }

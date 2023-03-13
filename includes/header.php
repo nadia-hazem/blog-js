@@ -3,6 +3,7 @@
         <a href="index.php"><img src="assets/img/trippy.png"></a>
     </div>
 
+
     <nav id="nav" class="close ">
 
         <!-- Burger menu -->
