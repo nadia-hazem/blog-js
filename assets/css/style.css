@@ -13,21 +13,8 @@ html {
 body#admin {
   background: rgba(0, 0, 0, 0.1);
 }
-
-/*** FONTS ***/
-
-.franklin {
-  font-family: "Libre Franklin", sans-serif;
-}
-.oswald {
-  font-family: "Oswald", sans-serif;
-}
-.josefin {
-  font-family: "Josefin Sans", sans-serif;
-}
-/*body backgrounds*/
-body#admin {
-  background: rgba(0, 0, 0, 0.1);
+body#blog {
+  background: url(../img/bg-index.jpg) no-repeat center center fixed;
 }
 
 /*** FONTS ***/
@@ -53,53 +40,9 @@ body#admin {
   height: 50px;
 }
 
-/*** FLEX ***/
-
-.row {
-  display: flex;
-  justify-content: center;
-}
-.col {
-  flex: 1;
-}
-.wrap {
-  flex-wrap: wrap;
-}
-.colcenter {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.rowcenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.col-50 {
-  flex: 0 0 50%;
-  max-width: 50%;
-}
-.col-33 {
-  flex: 0 0 33.333333%;
-  max-width: 33.333333%;
-}
-.col-25 {
-  flex: 0 0 25%;
-  max-width: 25%;
-}
-.col-20 {
-  flex: 0 0 20%;
-  max-width: 20%;
-}
-.col-10 {
-  flex: 0 0 10%;
-  max-width: 10%;
-}
-
 /*** TYPO ***/
 p {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Bellota", cursive;
   font-size: 1.2rem;
   line-height: 1.5;
   margin-bottom: 1rem;
@@ -107,8 +50,67 @@ p {
 .text-center {
   text-align: center;
 }
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
 .text-mute {
   color: #adadad;
+}
+.text-white {
+  color: #fff;
+}
+.text-black {
+  color: #000;
+}
+.text-shadow {
+  text-shadow: 1px 1px 1px #000;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  margin: 0;
+}
+h1 {
+  font-size: 50px;
+  font-family: "Libre Franklin", sans-serif;
+  line-height: 50px;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+h2 {
+  font-size: 40px;
+  text-align: center;
+  color: grey;
+  padding: 2rem;
+  line-height: 40px;
+  margin: 2rem;
+}
+
+li {
+  list-style-type: none !important;
+}
+ul li a:hover {
+  color: #c4c6c9;
+}
+
+li {
+  padding: 0 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #04b8f2;
+}
+a:hover {
+  color: #c4c6c9;
 }
 
 /*** FLEX ***/
@@ -133,6 +135,10 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.col-60 {
+  flex: 0 0 60%;
+  max-width: 60%;
 }
 .col-50 {
   flex: 0 0 50%;
@@ -194,114 +200,6 @@ a {
 a:hover {
   color: #c4c6c9;
 }
-
-/*** UTILITIES ***/
-
-.deg {
-  background: #feffe8; /* Old browsers */
-  background: -moz-linear-gradient(
-    45deg,
-    #feffe8 0%,
-    #f3f4eb 43%,
-    #e3f7f1 55%,
-    #d7f4ec 100%,
-    #fcffef 100%,
-    #f4f7de 100%
-  ); /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    45deg,
-    #feffe8 0%,
-    #f3f4eb 43%,
-    #e3f7f1 55%,
-    #d7f4ec 100%,
-    #fcffef 100%,
-    #f4f7de 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    45deg,
-    #feffe8 0%,
-    #f3f4eb 43%,
-    #e3f7f1 55%,
-    #d7f4ec 100%,
-    #fcffef 100%,
-    #f4f7de 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffe8', endColorstr='#f4f7de',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-.p-0 {
-  padding: 0 !important;
-}
-.p-1 {
-  padding: 1rem !important;
-}
-.p-2 {
-  padding: 2rem !important;
-}
-.p-3 {
-  padding: 3rem !important;
-}
-.p-4 {
-  padding: 4rem !important;
-}
-.p-5 {
-  padding: 5rem !important;
-}
-
-.m-0 {
-  margin: 0 !important;
-}
-.m-1 {
-  margin: 1rem !important;
-}
-.m-2 {
-  margin: 2rem !important;
-}
-.m-3 {
-  margin: 3rem !important;
-}
-.m-4 {
-  margin: 4rem !important;
-}
-.m-5 {
-  margin: 5rem !important;
-}
-.mt-0 {
-  margin-top: 0 !important;
-}
-.mt-1 {
-  margin-top: 1rem !important;
-}
-.mt-2 {
-  margin-top: 2rem !important;
-}
-.mt-3 {
-  margin-top: 3rem !important;
-}
-.mt-4 {
-  margin-top: 4rem !important;
-}
-.mt-5 {
-  margin-top: 5rem !important;
-}
-.mb-0 {
-  margin-bottom: 0 !important;
-}
-.mb-1 {
-  margin-bottom: 1rem !important;
-}
-.mb-2 {
-  margin-bottom: 2rem !important;
-}
-.mb-3 {
-  margin-bottom: 3rem !important;
-}
-.mb-4 {
-  margin-bottom: 4rem !important;
-}
-.mb-5 {
-  margin-bottom: 5rem !important;
-}
-
 /*** UTILITIES ***/
 
 .deg {
@@ -458,6 +356,32 @@ a:hover {
 
 /*** BLOCS ***/
 
+header {
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  /*box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+}
+
+header .logo {
+  margin-right: 1rem;
+  margin-left: 2rem;
+  float: left;
+  font-size: 1.5rem;
+}
+.currentUser {
+  margin-right: 2rem;
+  margin-left: 3rem;
+  float: right;
+  font-family: "Oswald", sans-serif;
+}
+
 header ul {
   display: flex;
   justify-content: space-between;
@@ -529,34 +453,35 @@ mark {
 
 button,
 .btn {
-  border-top: 1px solid #96d1f8;
-  background: #65a9d7;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#3e779d),
-    to(#65a9d7)
-  );
-  background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
-  background: -moz-linear-gradient(top, #3e779d, #65a9d7);
-  background: -ms-linear-gradient(top, #3e779d, #65a9d7);
-  background: -o-linear-gradient(top, #3e779d, #65a9d7);
-  padding: 15px 30px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
-  width: 200px;
-  color: white;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
   font-size: 14px;
-  font-family: Helvetica, Arial, Sans-Serif;
-  text-decoration: none;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
   vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
 }
+
+/* Style du bouton Modifier */
+.btn-modifier {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+/* Style du bouton Supprimer */
+.btn-supprimer {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
 button:hover,
 input[type="submit"]:hover {
   border-top-color: #28597a;
@@ -573,6 +498,7 @@ button.post {
   top: 100px;
   right: 100px;
 }
+
 /*** FORMS ***/
 
 form {
@@ -812,37 +738,6 @@ nav {
   border-radius: 5px 5px 0 0;
 }
 
-/*** INDEX ***/
-
-.blog-slider {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fafafa;
-  border-radius: 5px;
-  margin: 0 2rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.thumb {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 1rem;
-  background: fafafa;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.thumb img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 5px 5px 0 0;
-}
-
 .thumb-content {
   padding: 10px;
 }
@@ -864,6 +759,12 @@ nav {
   font-size: 1rem;
   color: #007bff;
   text-decoration: none;
+}
+.continent {
+  color: #009fc6;
+  text-decoration: none;
+
+  text-align: center;
 }
 
 /*** ADMIN ***/
@@ -889,9 +790,43 @@ a#articles {
   margin: 0 auto 3rem;
   width: 30%;
 }
-
+.btnModifArticle,
+.btnDeleteArticle,
+.btnComments {
+  background: transparent;
+  color: black;
+  border: none;
+  font-size: 1.5rem;
+}
+.btnModifArticle:hover {
+  background: #b9e6b9;
+  border: none;
+}
+.btnDeleteArticle:hover {
+  background: rgb(240, 198, 198);
+  border: none;
+}
+.btnComments:hover {
+  background: #aef7f7;
+  border: none;
+}
 /*** BLOG ***/
+.bg-1 {
+}
+.bg-2 {
+}
+.bg-3 {
+}
 
+.blog {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-shadow: 1px 1px #000;
+}
 .articles {
   display: flex;
   flex-wrap: wrap;
@@ -917,6 +852,11 @@ a#articles {
   font-weight: bold;
 }
 
+/*** APROPPOS ***/
+
+.present ul li {
+  list-style: square !important;
+}
 /*** FOOTER ***/
 
 footer {

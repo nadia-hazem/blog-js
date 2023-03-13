@@ -80,7 +80,7 @@ class Article
         // fermeture de la co a la bdd
         $this->bdd = null;
     }
-
+    // récupération d'un article
     function getArticle($id)
     {
         // html special char
@@ -106,7 +106,7 @@ class Article
     }
 
     // récupération de tous les articles
-    function getAllArticles()
+    public function getAllArticles()
     {
         // requete
         $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
@@ -146,7 +146,6 @@ class Article
         }
         return $articles;
     }
-
 
 
     //fonction pour récupérer la colonne description
