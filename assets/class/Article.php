@@ -34,16 +34,18 @@ class Article
 
         // requete
         $request = "INSERT INTO articles (titre, description, categories, date, id_utilisateur, image, summary) VALUES (:title, :description, :categories, NOW(), :id_utilisateur,:image, :summary)";
-                    $insert = $this->bdd->prepare($request);
 
-                    $insert->execute([
-                        'title' => $title,
-                        'description' => $description,
-                        'categories' => $categories,
-                        'id_utilisateur' => $this->id,
-                        'image' => $image,
-                        'summary' => $summary
-                    ]);
+        $insert = $this->bdd->prepare($request);
+
+        $insert->execute([
+            'title' => $title,
+            'description' => $description,
+            'categories' => $categories,
+            'id_utilisateur' => $this->id,
+            'image' => $image,
+            'summary' => $summary
+        ]);
+
 
         // echo "ok" si la requête s'est bien passée
         if ($insert) {
@@ -105,6 +107,7 @@ class Article
 
     // récupération de tous les articles
     public function getAllArticles() {
+
         // requete
         $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
         FROM articles 
@@ -125,7 +128,9 @@ class Article
         }
     }
 
-    public function getArticlesPerPage($start_index, $num_articles) {
+
+    public function getArticlesPerPage($start_index, $num_articles)
+    {
         $query = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
         FROM articles 
         INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id 
@@ -153,10 +158,11 @@ class Article
         } else {
             return $description;
         }
-    } 
+    }
 
     // fonction pour générer le résumé
     public function createSummary($description) {
+
         if (is_string($description)) {
             $summary = substr(strip_tags($description), 0, 150);
             $summary .= '...';
@@ -164,7 +170,6 @@ class Article
         } else {
             return '';
         }
-
     }
 
     // update d'un article
