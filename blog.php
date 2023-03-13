@@ -123,12 +123,6 @@ $articlesPerPage = 6;
                     echo '</div>';
                     ?>
 
-                <h2>Commentaires</h2>
-                <section class="comments bg-light border radius p-2">
-                    <p></p>
-
-                </section>
-
             </div> <!-- /container -->
 
         </main>
