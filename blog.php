@@ -17,6 +17,7 @@ $articlesPerPage = 6;
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +46,7 @@ $articlesPerPage = 6;
         <main>
 
             <section class="blog">
-                
+
                 <h1>Trippy Blog</h1>
 
             </section>
@@ -54,15 +55,15 @@ $articlesPerPage = 6;
 
                 <?php
                 if ($user->isUserMode()) {
-                    ?>
-                    <button class="post"><a href="createArticle.php" class="text-white">Créer un article</a></button>
-                    <?php
+                ?>
+                    <a href="createArticle.php" class="text-white text-center"><button class="post">Créer un article</button></a>
+                <?php
                 }
                 ?>
 
                 <section class="articles my-3">
 
-                    <?php 
+                    <?php
                     // Récupérer le nombre total d'articles
                     $total_articles = count($article->getAllArticles());
                     // Définir le nombre d'articles à afficher par page
@@ -76,12 +77,12 @@ $articlesPerPage = 6;
                     // Récupérer les articles pour la page courante en utilisant LIMIT
                     $articles = $article->getArticlesPerPage($start_index, $num_articles);
                     // Afficher les articles récupérés
-                    foreach ($articles as $article) : 
-                        ?>
+                    foreach ($articles as $article) :
+                    ?>
                         <!-- CARD -->
                         <div class="card">
                             <img class="uploadedImg" src="assets/uploads/<?php echo $article['image']; ?>" alt="<?php echo $article['titre']; ?>">
-                            
+
                             <div class="card-content">
                                 <h2><?php echo $article['titre']; ?></h2>
                                 <p><small>Publié le <?php echo $article['date']; ?> par <?php echo $article['auteur']; ?></small></p>
@@ -93,35 +94,35 @@ $articlesPerPage = 6;
                             </div> <!-- /card-content -->
                         </div> <!-- /card -->
 
-                        <?php 
-                    endforeach; 
+                    <?php
+                    endforeach;
                     ?>
                 </section>
                 <?php
-                    // affichage des liens de pagination
-                    echo '<div id="pagination">';
-                        if ($current_page > 1) {
-                            echo '<a href="?page=' . ($current_page - 1) . ' ">&nbsp; Page précédente &nbsp;</a>';
-                        }
+                // affichage des liens de pagination
+                echo '<div id="pagination">';
+                if ($current_page > 1) {
+                    echo '<a href="?page=' . ($current_page - 1) . ' ">&nbsp; Page précédente &nbsp;</a>';
+                }
 
-                    for ($i = 1; $i <= $total_pages; $i++) {
-                        if ($i == $current_page) {
-                            echo '<span class="current_page active">' . $i . '</span>';
-                        } else {
-                            echo '<a href="?page=' . $i . '">' . $i . '</a>';
-                        }
-
-                        // Ajouter un tiret entre les numéros de pages
-                        if ($i < $total_pages) {
-                            echo ' - ';
-                        }
+                for ($i = 1; $i <= $total_pages; $i++) {
+                    if ($i == $current_page) {
+                        echo '<span class="current_page active">' . $i . '</span>';
+                    } else {
+                        echo '<a href="?page=' . $i . '">' . $i . '</a>';
                     }
 
-                    if ($current_page < $total_pages) {
-                        echo '<a href="?page=' . ($current_page + 1) . ' ">&nbsp; Page suivante &nbsp;</a>';
+                    // Ajouter un tiret entre les numéros de pages
+                    if ($i < $total_pages) {
+                        echo ' - ';
                     }
-                    echo '</div>';
-                    ?>
+                }
+
+                if ($current_page < $total_pages) {
+                    echo '<a href="?page=' . ($current_page + 1) . ' ">&nbsp; Page suivante &nbsp;</a>';
+                }
+                echo '</div>';
+                ?>
 
                 <h2>Commentaires</h2>
                 <section class="comments bg-light border radius p-2">
@@ -140,4 +141,5 @@ $articlesPerPage = 6;
     <?php include 'includes/footer.php'; ?>
 
 </body>
+
 </html>

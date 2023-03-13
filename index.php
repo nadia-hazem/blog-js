@@ -6,7 +6,7 @@ require_once 'assets/class/Article.php';
 $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
-$articles = $article->getArticlesPerPage(0, 5);
+$articles = $article->getArticlesPerPage(0, 4);
 $articlesPerPage = 4;
 ?>
 
@@ -156,7 +156,7 @@ $articlesPerPage = 4;
                     <li>
                         <div class="thumb ">
                             <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
-                            <div class="thumb-content ism-caption ism-caption-0">
+                            <div class="thumb-content ">
                                 <h2><?= $article_item['titre'] ?></h2>
                                 <p><?= $article_item['date'] ?></p>
                                 <p><?= $article_item['summary'] ?></p>

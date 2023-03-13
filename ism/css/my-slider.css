@@ -1,7 +1,7 @@
 .ism-slider > ol, .ism-slider > ol > li, .ism-slider > ol > li > img { width: 100%; list-style: none; margin: 0; padding: 0; }
 .ism-slider {
   height: 80vh;
-  overflow: hidden;
+/*   overflow: hidden; */
   position: relative;
   padding: 0 !important;
   -webkit-user-select: none;

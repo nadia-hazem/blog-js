@@ -1,39 +1,3 @@
-<!------------ <!DOCTYPE html> ------------>
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Article</title>
-    <!-- CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <!-- JS -->
-    <script src="assets/js/menu.js"></script>
-
-    <script>
-        function previewImage(event) {
-            let input = event.target;
-            let preview = document.getElementById('preview');
-
-            if (input.files && input.files[0]) {
-                let reader = new FileReader();
-
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
-
-</head>
 <?php
 session_start();
 require_once 'assets/class/DbConnect.php';
@@ -84,8 +48,8 @@ if (isset($_POST['create'])) {
 
             //Vérifie que le fichier téléchargé ne dépasse pas 4MB    
             if (in_array($mimeType, $allowedTypes) && $file['size'] <= 4000000) {
-                $fileName = time() . '-' . $_FILES['image']['name'];
-                move_uploaded_file($tmpFile, "assets/img/$fileName");
+                /* $fileName = time() . '-' . $_FILES['image']['name']; */
+                move_uploaded_file($tmp_name, "assets/uploads/$fileName");
 
                 //insère data dans la bdd
                 try {
@@ -154,7 +118,8 @@ if (isset($_POST['create'])) {
 
 <body>
 
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header.php';
+    $categories = $article->getCategories(); ?>
 
     <wrapper>
 
@@ -183,12 +148,9 @@ if (isset($_POST['create'])) {
                     <div>
                         <label for="category">Catégorie</label>
                         <select name="categorie" id="category">
-                            <option value="Europe">Europe</option>
-                            <option value="Asie">Asie</option>
-                            <option value="Afrique">Afrique</option>
-                            <option value="Amérique/Nord">Amérique/Nord</option>
-                            <option value="Amérique/Sud">Amérique/Sud</option>
-                            <option value="Océanie">Océanie</option>
+                            <?php foreach ($categories as $category) : ?>
+                                <option value="<?= $category['id'] ?>"><?= $category['categorie'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 

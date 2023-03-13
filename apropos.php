@@ -122,19 +122,14 @@ $user = new User($db);
 
                 <h4 class="text-center m-5"> Le projet est visible sur nos portfolios respectifs </h4>
                 <div class="row">
-                    <div class="col-10 text-center">
+                    <div class="col-25 text-center">
                         <a href="https://nadia-hazem.students-laplateforme.io/" title="Portfolio nadia" target="_blank"><img src="assets/img/logo-nadia.png" width="50px"></a>
                     </div>
-                    <div class="col-10 text-center">
+                    <div class="col-50 text-center">
                         <a href="https://github.com/nadia-hazem/blog-js" title="Github" target="_blank"><img src="assets/img/github.svg" width="50"></a>
                     </div>
-                    <div class="col-50"></div>
-                    
-                    <div class="col-10 text-center">
+                    <div class="col-25 text-center">
                         <a href="https://thomas-spinec.students-laplateforme.io/" title="Portfolio thomas" target="_blank"><img src="assets/img/logo-thomas.png" width="100px"></a>
-                    </div>
-                    <div class="col-10 text-center">
-                        <a href="https://github.com/thomas-spinec/blog-js" title="Github" target="_blank"><img src="assets/img/github.svg" width="50"></a>                    
                     </div>
                 </div> <!-- /row -->
             </div>
