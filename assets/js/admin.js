@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("assets/php/adminGestion.php?users")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         // création d'un tableau
         const table = document.createElement("table");
         const tr = document.createElement("tr");
@@ -128,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("assets/php/adminGestion.php?articles")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         // création d'un tableau
         const table = document.createElement("table");
         const tr = document.createElement("tr");
