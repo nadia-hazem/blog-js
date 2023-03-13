@@ -55,7 +55,7 @@
 
             <li id="profil" class=""><a class="" href="profil.php"></i>PROFIL</a></li>
 
-            <li id="livre" class=""><a class="" href="blog.php">BLOG</a></li>
+            <li id="blog" class=""><a class="" href="blog.php">BLOG</a></li>
 
             <li id="deconnexion" class=""><a class="" href="index.php?deconnexion=true">DECONNEXION</a></li>
 

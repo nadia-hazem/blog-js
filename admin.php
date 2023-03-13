@@ -23,6 +23,8 @@ if (!$user->isUserAdmin()) {
     <title>Administration</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,14 +51,18 @@ if (!$user->isUserAdmin()) {
 
                     <h1 class="m-0">Administration</h1>
 
-                    <div class="admin row">
+                    <div class="admin wrap row">
 
                         <a id="users" href="" class="col text-center p-1">
                             <h3>Gestion des utilisateurs </h3><i class="fas fa-users"></i>
                         </a>
 
                         <a id="articles" href="" class="col text-center p-1">
-                            <h3>Gestion des articles</h3>
+                            <h3>Gestion des articles</h3><i class="fas fa-file"></i>
+                        </a>
+
+                        <a id="categories" href="" class="col text-center p-1">
+                            <h3>Gestion des catégories</h3><i class="fas fa-tags"></i>
                         </a>
 
                     </div> <!-- /admin row-->

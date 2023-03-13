@@ -157,18 +157,15 @@ document.addEventListener("DOMContentLoaded", function () {
           // bouton modifier Delete et commentaire
           const btnModif = document.createElement("button");
           btnModif.setAttribute("data-id", article.id);
-          btnModif.classList.add("btnModifArticle");
-          btnModif.textContent = "🖉";
+          btnModif.classList.add("fas", "fa-pen", "btnModifArticle");
           tdGestion.appendChild(btnModif);
           const btnDelete = document.createElement("button");
           btnDelete.setAttribute("data-id", article.id);
-          btnDelete.classList.add("btnDeleteArticle");
-          btnDelete.textContent = "🗑";
+          btnDelete.classList.add("fas", "fa-trash", "btnDeleteArticle");
           tdGestion.appendChild(btnDelete);
           const btnComments = document.createElement("button");
           btnComments.setAttribute("data-id", data.id);
-          btnComments.classList.add("btnComments");
-          btnComments.textContent = "💬";
+          btnComments.classList.add("fas", "fa-comment-dots", "btnComments");
           tdGestion.appendChild(btnComments);
           // // //
           tdTitre.textContent = article.titre;

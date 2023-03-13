@@ -57,7 +57,7 @@ $articlesPerPage = 6;
                 <?php
                 if ($user->isUserMode()) {
                 ?>
-                    <button class="post"><a href="createArticle.php" class="text-white">Créer un article</a></button>
+                    <a href="createArticle.php" class="text-white text-center"><button class="post">Créer un article</button></a>
                 <?php
                 }
                 ?>
@@ -87,6 +87,8 @@ $articlesPerPage = 6;
                             <div class="card-content">
                                 <h2><?php echo $article['titre']; ?></h2>
                                 <p><small>Publié le <?php echo $article['date']; ?> par <?php echo $article['auteur']; ?></small></p>
+                                <br>
+                                <p><small>Catégorie : <?php echo $article['categ'] ?></small></p>
                                 <br>
 
                                 <p><?php echo $article['summary']; ?></p>

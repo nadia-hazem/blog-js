@@ -87,7 +87,9 @@ class Article
         $id = htmlspecialchars($id);
 
         // requete
-        $request = "SELECT articles.*, utilisateurs.login AS auteur FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id WHERE articles.id = :id";
+        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
+        FROM articles 
+        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id WHERE articles.id = :id";
         $select = $this->bdd->prepare($request);
         // execution avec liaison des params
         $select->execute([
@@ -110,7 +112,7 @@ class Article
     {
         // requete pour récup tous y compris les catégories
         $request =
-            "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
+            "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
         FROM articles 
         INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC";
 
@@ -131,10 +133,10 @@ class Article
 
     public function getArticlesPerPage($start_index, $num_articles)
     {
-        $query = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
+        $query =
+            "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
         FROM articles 
-        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id 
-        ORDER BY date DESC 
+        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC 
         LIMIT $start_index, $num_articles
         ";
         $result = $this->bdd->query($query);
@@ -148,7 +150,8 @@ class Article
     }
 
     //fonction pour récupérer la colonne description
-    public function getDescription() {
+    public function getDescription()
+    {
         $request = "SELECT description FROM articles";
         $select = $this->bdd->prepare($request);
         $select->execute();
@@ -161,7 +164,8 @@ class Article
     }
 
     // fonction pour générer le résumé
-    public function createSummary($description) {
+    public function createSummary($description)
+    {
 
         if (is_string($description)) {
             $summary = substr(strip_tags($description), 0, 150);
@@ -233,5 +237,6 @@ class Article
             // sinon on retourne le résultat
             return $categories;
         }
+        $this->bdd = null;
     }
 }
