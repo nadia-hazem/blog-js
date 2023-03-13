@@ -87,7 +87,9 @@ $articlesPerPage = 6;
                                 <h2><?php echo $article['titre']; ?></h2>
                                 <p><small>Publié le <?php echo $article['date']; ?> par <?php echo $article['auteur']; ?></small></p>
                                 <br>
-
+                                <p><small>Catégories : <?php echo $article['categ']; ?></small></p>
+                                <br>
+                                
                                 <p><?php echo $article['summary']; ?></p>
                                 <a href="article.php?id=<?php echo $article['id']; ?>">Lire la suite</a>
 
