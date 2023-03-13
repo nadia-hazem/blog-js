@@ -78,7 +78,7 @@ class Article
         // fermeture de la co a la bdd
         $this->bdd = null;
     }
-
+    // récupération d'un article
     function getArticle($id)
     {
         // html special char
@@ -104,7 +104,7 @@ class Article
     }
 
     // récupération de tous les articles
-    function getAllArticles() {
+    public function getAllArticles() {
         // requete
         $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
         FROM articles 
@@ -140,11 +140,10 @@ class Article
             $articles[] = $row;
         }
         return $articles;
-    }
-    
+    }    
 
     //fonction pour récupérer la colonne description
-    function getDescription() {
+    public function getDescription() {
         $request = "SELECT description FROM articles";
         $select = $this->bdd->prepare($request);
         $select->execute();
@@ -157,7 +156,7 @@ class Article
     } 
 
     // fonction pour générer le résumé
-    function createSummary($description) {
+    public function createSummary($description) {
         if (is_string($description)) {
             $summary = substr(strip_tags($description), 0, 150);
             $summary .= '...';

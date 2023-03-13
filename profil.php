@@ -17,10 +17,12 @@ $user = new User($db);
     <title>Profil</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@300&family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- JS -->
@@ -35,9 +37,15 @@ $user = new User($db);
 
         <main>
 
-            <div class="container">
+            <section class="hero">
 
                 <h1>Profil</h1>
+
+            </section>
+
+            <div class="container">
+
+                <!-- contenu -->
 
             </div> <!-- /container -->
 
