@@ -109,7 +109,7 @@ class Article
     public function getAllArticles()
     {
         // requete
-        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
+        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H:%i') as date, utilisateurs.login AS auteur, articles.summary 
         FROM articles 
         INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id 
         ORDER BY date DESC";
@@ -131,7 +131,7 @@ class Article
 
     public function getArticlesPerPage($start_index, $num_articles)
     {
-        $query = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H-%i') as date, utilisateurs.login AS auteur, articles.summary 
+        $query = "SELECT articles.*, DATE_FORMAT(articles.date, '%d/%m/%Y %H:%i') as date, utilisateurs.login AS auteur, articles.summary 
         FROM articles 
         INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id 
         ORDER BY date DESC 
