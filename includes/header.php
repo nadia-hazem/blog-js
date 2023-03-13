@@ -3,7 +3,6 @@
         <a href="index.php"><img src="assets/img/trippy.png"></a>
     </div>
 
-
     <nav id="nav" class="close ">
 
         <!-- Burger menu -->
@@ -21,41 +20,56 @@
         if ($user->isUserAdmin()) {
         ?>
 
+            <ul class="top-menu">
+
+                <li id="accueil" class=""><a class="" href="index.php">ACCUEIL</a></li>
+
+                <li id="apropos" class=""><a class="" href="apropos.php">A PROPOS</a></li>
+
+                <li id="profil" class=""><a class="" href="profil.php"></i>PROFIL</a></li>
+
+                <li id="blog" class=""><a class="" href="blog.php">BLOG</a></li>
+
+                <li id="admin" class=""><a class="" href="admin.php">ADMIN</a></li>
+
+                <li id="deconnexion" class=""><a class="" href="index.php?deconnexion=true">DECONNEXION</a></li>
+
+            </ul>
+    </nav>
+
     <div class="currentUser">
         <p id="currentUser"><mark><?= $user->getLogin() ?></mark></p>
     </div>
-            
-        <?php
+
+<?php
         } else if ($user->isConnected()) {
-        ?>
+?>
 
-            <nav id="nav" class="close ">
+    <nav id="nav" class="close ">
 
-                <ul class="">
-                    
-                    <li id="accueil" class=""><a class="" href="index.php">ACCUEIL</a></li>
-                    
-                    <li id="apropos" class=""><a class="" href="apropos.php">A PROPOS</a></li>
-                    
-                    <li id="profil" class=""><a class="" href="profil.php"></i>PROFIL</a></li>
-                    
-                    <li id="blog" class=""><a class="" href="blog.php">BLOG</a></li>
-                    
-                    <li id="deconnexion" class=""><a class="" href="index.php?deconnexion=true">DECONNEXION</a></li>
-                    
-                </ul>
-            </nav>
+        <ul class="">
 
-            <div class="currentUser">
-                <p id="currentUser"><mark><?= $user->getLogin() ?></mark></p>
-            </div>
+            <li id="accueil" class=""><a class="" href="index.php">ACCUEIL</a></li>
 
-        <?php
+            <li id="apropos" class=""><a class="" href="apropos.php">A PROPOS</a></li>
+
+            <li id="profil" class=""><a class="" href="profil.php"></i>PROFIL</a></li>
+
+            <li id="livre" class=""><a class="" href="blog.php">BLOG</a></li>
+
+            <li id="deconnexion" class=""><a class="" href="index.php?deconnexion=true">DECONNEXION</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="currentUser">
+        <p id="currentUser"><mark><?= $user->getLogin() ?></mark></p>
+    </div>
+
+<?php
         } else {
-        ?>
-        <nav id="nav" class="close ">
-
-            <ul class="nav nav-pills nav-fill">
+?>
+    <nav id="nav" class="close ">
 
         <ul class="nav nav-pills nav-fill">
 
@@ -74,7 +88,7 @@
         }
     ?>
 
-        </nav>
+    </nav>
 
 
 </header>
