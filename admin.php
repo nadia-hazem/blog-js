@@ -26,7 +26,7 @@ if (!$user->isUserAdmin()) {
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@300&family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- JS -->
@@ -49,19 +49,13 @@ if (!$user->isUserAdmin()) {
 
                     <h1 class="m-0">Administration</h1>
 
-                    <div class="admin row m-5">
-                        <!-- <div class="col col-33 text-center border-grey radius m-5 p-3">
-                            <a id="users" href="">Gestion des utilisateurs</a>
-                        </div>
-                        <div class="col col-33 text-center border-grey radius m-5 p-3">
-                            <a id="articles" href="">Gestion des articles</a>
-                        </div> -->
+                    <div class="admin row">
 
-                        <a id="users" href="" class="col text-center">
+                        <a id="users" href="" class="col text-center p-1">
                             <h3>Gestion des utilisateurs </h3><i class="fas fa-users"></i>
                         </a>
 
-                        <a id="articles" href="" class="col text-center">
+                        <a id="articles" href="" class="col text-center p-1">
                             <h3>Gestion des articles</h3>
                         </a>
 

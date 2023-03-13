@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const btnDelete = document.createElement("button");
           btnDelete.setAttribute("data-id", user.id);
           btnDelete.classList.add("btnDelete");
-          btnDelete.textContent = "Supprimer";
+          btnDelete.textContent = "❌";
           tdDelete.appendChild(btnDelete);
           // création d'un select avec comme option user, mode et admin
           const select = document.createElement("select");
@@ -160,17 +160,17 @@ document.addEventListener("DOMContentLoaded", function () {
           const btnModif = document.createElement("button");
           btnModif.setAttribute("data-id", article.id);
           btnModif.classList.add("btnModifArticle");
-          btnModif.textContent = "Modifier";
+          btnModif.textContent = "🖉";
           tdGestion.appendChild(btnModif);
           const btnDelete = document.createElement("button");
           btnDelete.setAttribute("data-id", article.id);
           btnDelete.classList.add("btnDeleteArticle");
-          btnDelete.textContent = "Supprimer";
+          btnDelete.textContent = "🗑";
           tdGestion.appendChild(btnDelete);
           const btnComments = document.createElement("button");
           btnComments.setAttribute("data-id", data.id);
           btnComments.classList.add("btnComments");
-          btnComments.textContent = "Commentaires";
+          btnComments.textContent = "💬";
           tdGestion.appendChild(btnComments);
           // // //
           tdTitre.textContent = article.titre;
@@ -237,6 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const imgDisplay = document.createElement("img");
         imgDisplay.setAttribute("src", "assets/uploads/" + data.image);
         imgDisplay.setAttribute("alt", data.titre);
+        imgDisplay.style.width = "100%";
         const p = document.createElement("p");
         p.textContent = "Image actuelle";
         // bouton

@@ -24,17 +24,19 @@ $articlesPerPage = 6;
     <title>Blog</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@300&family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
 </head>
 
-<body>
+<body id="blog">
 
     <?php include 'includes/header.php'; ?>
 
@@ -42,21 +44,23 @@ $articlesPerPage = 6;
 
         <main>
 
-            <div class="container">
+            <section class="blog">
+                
+                <h1>Trippy Blog</h1>
 
-                <h1>Blog</h1>
+            </section>
+
+            <div class="container">
 
                 <?php
                 if ($user->isUserMode()) {
                     ?>
-                    <button class="post"><a href="createArticle.php">Créer un article</a></button>
+                    <button class="post"><a href="createArticle.php" class="text-white">Créer un article</a></button>
                     <?php
                 }
-
-
                 ?>
 
-                <section class="articles">
+                <section class="articles my-3">
 
                     <?php 
                     // Récupérer le nombre total d'articles
@@ -119,8 +123,10 @@ $articlesPerPage = 6;
                     echo '</div>';
                     ?>
 
-                <section id="comments">
-                    <!--Commentaires ici-->
+                <h2>Commentaires</h2>
+                <section class="comments bg-light border radius p-2">
+                    <p></p>
+
                 </section>
 
             </div> <!-- /container -->
