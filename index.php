@@ -6,7 +6,7 @@ require_once 'assets/class/Article.php';
 $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
-$articles = $article->getArticlesPerPage(0, 5);
+$articles = $article->getArticlesPerPage(0, 4);
 $articlesPerPage = 4;
 ?>
 
@@ -169,15 +169,14 @@ $articlesPerPage = 4;
                     $articles = $article->getArticlesPerPage(0, $articlesPerPage);
                     $articlesPerPage = 10;
                     foreach ($articles as $key => $article_item) { ?>
-                        <li>
-                            <div class="thumb ">
-                                <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
-                                <div class="thumb-content">
-                                    <h2><?= $article_item['titre'] ?></h2>
-                                    <p><?= $article_item['date'] ?></p>
-                                    <p><?= $article_item['summary'] ?></p>
-                                    <?php echo '<a href="article.php?id=' . $article_item['id'] . '">Lire la suite</a>'; ?>
-                                </div>
+                    <li>
+                        <div class="thumb ">
+                            <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
+                            <div class="thumb-content ">
+                                <h2><?= $article_item['titre'] ?></h2>
+                                <p><?= $article_item['date'] ?></p>
+                                <p><?= $article_item['summary'] ?></p>
+                                <?php echo '<a href="article.php?id=' . $article_item['id'] . '">Lire la suite</a>';?>
                             </div>
                         </li>
                 </ol>

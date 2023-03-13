@@ -119,6 +119,15 @@ $articlesPerPage = 6;
                         echo ' - ';
                     }
                 }
+<<<<<<< HEAD
+=======
+
+                if ($current_page < $total_pages) {
+                    echo '<a href="?page=' . ($current_page + 1) . ' ">&nbsp; Page suivante &nbsp;</a>';
+                }
+                echo '</div>';
+                ?>
+>>>>>>> 89a2d1e (resolution de bugs)
 
                 if ($current_page < $total_pages) {
                     echo '<a href="?page=' . ($current_page + 1) . ' ">&nbsp; Page suivante &nbsp;</a>';

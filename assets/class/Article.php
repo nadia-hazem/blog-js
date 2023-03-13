@@ -89,7 +89,13 @@ class Article
         // requete
         $request = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
         FROM articles 
+<<<<<<< HEAD
         INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id WHERE articles.id = :id";
+=======
+        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id
+        WHERE articles.id = :id";
+
+>>>>>>> 89a2d1e (resolution de bugs)
         $select = $this->bdd->prepare($request);
         // execution avec liaison des params
         $select->execute([
@@ -108,11 +114,18 @@ class Article
     }
 
     // récupération de tous les articles
+<<<<<<< HEAD
     public function getAllArticles()
     {
         // requete pour récup tous y compris les catégories
         $request =
             "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
+=======
+    public function getAllArticles() {
+
+        // requete
+        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
+>>>>>>> 89a2d1e (resolution de bugs)
         FROM articles 
         INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC";
 
@@ -133,10 +146,16 @@ class Article
 
     public function getArticlesPerPage($start_index, $num_articles)
     {
+<<<<<<< HEAD
         $query =
             "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
         FROM articles 
         INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC 
+=======
+        $query = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
+        FROM articles 
+        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC
+>>>>>>> 89a2d1e (resolution de bugs)
         LIMIT $start_index, $num_articles
         ";
         $result = $this->bdd->query($query);
@@ -220,8 +239,13 @@ class Article
         $this->bdd = null;
     }
 
+<<<<<<< HEAD
     // récupération des catégorie
     public function getCategories()
+=======
+    // récupération des catégories
+    public function getCategories() 
+>>>>>>> 89a2d1e (resolution de bugs)
     {
         // requête
         $request = "SELECT * FROM categories";
@@ -236,7 +260,11 @@ class Article
         } else {
             // sinon on retourne le résultat
             return $categories;
+<<<<<<< HEAD
         }
+=======
+        } 
+>>>>>>> 89a2d1e (resolution de bugs)
         $this->bdd = null;
     }
 }

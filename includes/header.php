@@ -38,6 +38,23 @@
             </ul>
     </nav>
 
+            <ul class="top-menu">
+
+                <li id="accueil" class=""><a class="" href="index.php">ACCUEIL</a></li>
+
+                <li id="apropos" class=""><a class="" href="apropos.php">A PROPOS</a></li>
+
+                <li id="profil" class=""><a class="" href="profil.php"></i>PROFIL</a></li>
+
+                <li id="blog" class=""><a class="" href="blog.php">BLOG</a></li>
+
+                <li id="admin" class=""><a class="" href="admin.php">ADMIN</a></li>
+
+                <li id="deconnexion" class=""><a class="" href="index.php?deconnexion=true">DECONNEXION</a></li>
+
+            </ul>
+    </nav>
+
     <div class="currentUser">
         <p id="currentUser"><mark><?= $user->getLogin() ?></mark></p>
     </div>
@@ -90,6 +107,5 @@
     ?>
 
     </nav>
-
 
 </header>

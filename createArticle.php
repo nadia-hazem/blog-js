@@ -48,9 +48,14 @@ if (isset($_POST['create'])) {
             ];
 
             //Vérifie que le fichier téléchargé ne dépasse pas 4MB    
+<<<<<<< HEAD
             if (in_array($mimeType, $allowedTypes) && $_FILES['image']['size'] <= 4000000) {
                 // $fileName = time() . '-' . $_FILES['image']['name'];
 
+=======
+            if (in_array($mimeType, $allowedTypes) && $file['size'] <= 4000000) {
+                /* $fileName = time() . '-' . $_FILES['image']['name']; */
+>>>>>>> 89a2d1e (resolution de bugs)
                 move_uploaded_file($tmp_name, "assets/uploads/$fileName");
 
                 //insère data dans la bdd
@@ -120,10 +125,15 @@ if (isset($_POST['create'])) {
 
 <body>
 
+<<<<<<< HEAD
     <?php
     include 'includes/header.php';
     $categories = $article->getCategories();
     ?>
+=======
+    <?php include 'includes/header.php';
+    $categories = $article->getCategories(); ?>
+>>>>>>> 89a2d1e (resolution de bugs)
 
     <wrapper>
 
