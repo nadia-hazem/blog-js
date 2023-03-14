@@ -3,14 +3,16 @@ session_start();
 require_once 'assets/class/DbConnect.php';
 require_once 'assets/class/User.php';
 require_once 'assets/class/Article.php';
+require_once 'assets/class/Comments.php';
 $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
-$id = $_GET['id'];
+$comment = new Comments($db);
+
+$id_article = $_GET['id'];
 ?>
 
 <!--<!DOCTYPE html>-->
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -71,6 +73,57 @@ $id = $_GET['id'];
                 </div> <!-- /content -->
 
             </div> <!-- /container -->
+
+            <h2>Commentaires</h2>
+            <section id="comments" class="container bg-light border radius p-2">
+
+                <?php
+                $comments = $comment->getComments($id);
+                if ($comments !== null) {
+                    foreach($comments as $comment):
+                        $id = $comment['id'];
+                        $auteur = $comment['auteur'];
+                        $date = $comment['date'];
+                        $commentaire = $comment['commentaire'];
+                        $sujet = $comment['sujet'];
+                        ?>
+                        <div class="comment">
+                        <h3><?=$sujet?></h3>
+                        <small class="comment-meta">Publié le <?=$date?></small>
+                        <p><?=$commentaire?></p>
+                        <hr>
+                        </div>
+                    <?php
+                    endforeach;
+                } else {
+                    echo '<p>Aucun commentaire trouvé, soyez le premier !</p>';
+                }
+                ?>
+
+            </section>
+
+            <h2>Laissez un commentaire</h2>
+            <section class="container">
+                <?php
+                if (!$user->isConnected()) {
+                    echo '<p>Vous devez être connecté pour laisser un commentaire.</p>';
+                }
+                else {
+                ?>
+                <form action="assets/php/leaveComment.php" method="post" class="m-auto">
+
+                    <input type="hidden" name="id_article" value="<?= $id_article ?>">
+                    <input type="sujet" class="" name="sujet" placeholder="Sujet">
+                    <label for="commentaire">Votre commentaire :</label>
+                    <textarea name="commentaire" cols="40" rows="10"></textarea>
+                    <input type="submit" class="" name="submit" value="Signer">
+
+                </form>
+                <?php
+                }
+                ?>
+
+            </section>
 
         </main>
 
