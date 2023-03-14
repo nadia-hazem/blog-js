@@ -24,7 +24,7 @@ class Comments
     public function getComments($id)
     {
 
-        $request = "SELECT commentaires.*, DATE_FORMAT(commentaires.date, '%d %m %Y %H:%i') as date, utilisateurs.login AS auteur FROM commentaires INNER JOIN utilisateurs ON commentaires.id_utilisateur = utilisateurs.id WHERE commentaires.id_article = :id ORDER BY date DESC";
+        $request = "SELECT commentaires.*, DATE_FORMAT(commentaires.date, '- %d %m %Y %H:%i -') as date, utilisateurs.login AS auteur FROM commentaires INNER JOIN utilisateurs ON commentaires.id_utilisateur = utilisateurs.id WHERE commentaires.id_article = :id ORDER BY date DESC";
         // requete
         $select = $this->bdd->prepare($request);
         // execution avec liaison des params
@@ -67,7 +67,7 @@ class Comments
     }
 
     // création d'un commentaire lié à l'id de l'article et à l'id de l'utilisateur qui le crée
-    public function addComment($sujet, $commentaire, $date, $id_utilisateur, $id_article)
+    public function addComment($sujet, $commentaire, $id_article, $id_utilisateur)
     {
         // html special char
         $sujet = htmlspecialchars($sujet);
@@ -76,7 +76,7 @@ class Comments
         $id_article = htmlspecialchars($id_article);
 
         // requete
-        $request = "INSERT INTO commentaires (sujet, commentaire, date, id_utilisateur, id_article) VALUES (:sujet, :commentaire, :date, :id_utilisateur, :id_article)";
+        $request = "INSERT INTO commentaires (sujet, commentaire, date, id_utilisateur, id_article) VALUES (:sujet, :commentaire, NOW(), :id_utilisateur, :id_article)";
 
         $insert = $this->bdd->prepare($request);
 
@@ -84,9 +84,8 @@ class Comments
         $insert->execute([
             'sujet' => $sujet,
             'commentaire' => $commentaire,
-            'date' => $date,
             'id_utilisateur' => $id_utilisateur,
-            'id_article' => $id_article
+            'id_article' => $id_article,
         ]);
 
         // echo "ok" si la requete s'est bien passée
@@ -95,7 +94,8 @@ class Comments
         } else {
             echo "erreur";
         }
-    }
+        $this->bdd = null;
+    } 
 
     // fonction pour supprimer un commentaire
     public function deleteComment($id)
