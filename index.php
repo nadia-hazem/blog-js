@@ -14,6 +14,7 @@ $articlesPerPage = 4;
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +31,7 @@ $articlesPerPage = 4;
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- ism -->
-    <link rel="stylesheet" href="ism/css/my-slider.css"/>
+    <link rel="stylesheet" href="ism/css/my-slider.css" />
     <script src="ism/js/ism-2.2.min.js"></script>
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
@@ -39,29 +40,29 @@ $articlesPerPage = 4;
 
 <body>
     <?php include 'includes/header.php'; ?>
-    
+
     <div class="wrapper">
         <main>
 
             <!-- SLIDER -->
             <div class="ism-slider" data-play_type="loop" id="my-slider">
                 <ol>
-                    <?php 
-                    $articles = $article->getArticlesPerPage(0, 4); 
+                    <?php
+                    $articles = $article->getArticlesPerPage(0, 4);
                     foreach ($articles as $key => $article) { ?>
-                    <li>
-                        <img src="assets/uploads/<?= $article['image'] ?>" alt="<?= $article['titre'] ?>">
-                        <div class="ism-caption ism-caption-0">
-                        <h1><?= $article['titre'] ?></h1>
-                        <p><?= $article['date'] ?></p>
-                        <a href="article.php?id=<?= $article['id'] ?>">Lire la suite</a>
-                        </div>
-                    </li>
+                        <li>
+                            <img src="assets/uploads/<?= $article['image'] ?>" alt="<?= $article['titre'] ?>">
+                            <div class="ism-caption ism-caption-0">
+                                <h1><?= $article['titre'] ?></h1>
+                                <p><?= $article['date'] ?></p>
+                                <a href="article.php?id=<?= $article['id'] ?>">Lire la suite</a>
+                            </div>
+                        </li>
                     <?php } ?>
                 </ol>
             </div>
-            
-            
+
+
             <section class="">
                 <div class="container">
                     <h1 class="franklin">Trippy Le blog de voyage</h1>
@@ -70,11 +71,11 @@ $articlesPerPage = 4;
                             <img src="assets/img/stamp.png" width="80%" alt="Tampons de douane">
                         </div>
                         <div class="col-60 mt-4">
-                        <h3>Si vous êtes passionné(e) de voyage et que vous cherchez des idées d'itinéraires, des astuces pour économiser de l'argent et des conseils pour découvrir des endroits incroyables dans le monde entier, vous êtes au bon endroit !</h3>
+                            <h3>Si vous êtes passionné(e) de voyage et que vous cherchez des idées d'itinéraires, des astuces pour économiser de l'argent et des conseils pour découvrir des endroits incroyables dans le monde entier, vous êtes au bon endroit !</h3>
 
-                        <p>Sur ce blog, nous partageons nos aventures de voyage et nos expériences, ainsi que nos coups de cœur et nos déceptions. Que vous soyez à la recherche d'inspiration pour votre prochaine destination ou que vous souhaitiez simplement en savoir plus sur les voyages, vous trouverez ici une mine d'informations pour vous aider à planifier votre prochaine aventure.</p>
+                            <p>Sur ce blog, nous partageons nos aventures de voyage et nos expériences, ainsi que nos coups de cœur et nos déceptions. Que vous soyez à la recherche d'inspiration pour votre prochaine destination ou que vous souhaitiez simplement en savoir plus sur les voyages, vous trouverez ici une mine d'informations pour vous aider à planifier votre prochaine aventure.</p>
 
-                        <p>En parcourant notre blog, vous découvrirez des récits de voyages passionnants, des astuces pour voyager à petit budget, des guides et des conseils pour la sécurité en voyage et bien plus encore.</p>
+                            <p>En parcourant notre blog, vous découvrirez des récits de voyages passionnants, des astuces pour voyager à petit budget, des guides et des conseils pour la sécurité en voyage et bien plus encore.</p>
                         </div>
                     </div>
                 </div>
@@ -87,26 +88,29 @@ $articlesPerPage = 4;
                     <div class="row ">
                         <div class="col card mx-2">
                             <a href="#"><img src="assets/img/conseils.png" alt="guide">
-                            <div class="card-content">
-                                <h3 class="text-center my-1">Guide voyage</h3>
+                                <div class="card-content">
+                                    <h3 class="text-center my-1">Guide voyage</h3>
 
-                            </div></a>
+                                </div>
+                            </a>
                         </div> <!-- /col -->
 
                         <div class="col card mx-2">
                             <a href="#"><img src="assets/img/inspiration.png" alt="inspiration">
-                            <div class="card-content">
-                                <h3 class="text-center my-1">Inspirations</h3>                                
+                                <div class="card-content">
+                                    <h3 class="text-center my-1">Inspirations</h3>
 
-                            </div></a>
+                                </div>
+                            </a>
                         </div> <!-- /col -->
 
                         <div class="col card mx-2">
                             <a href="#"><img src="assets/img/bonsplans.png" alt="bons plans">
-                            <div class="card-content">
-                                <h3 class="text-center my-1">Bons plans</h3>
+                                <div class="card-content">
+                                    <h3 class="text-center my-1">Bons plans</h3>
 
-                            </div></a>
+                                </div>
+                            </a>
                         </div> <!-- /col -->
 
                     </div> <!-- /row -->
@@ -117,34 +121,46 @@ $articlesPerPage = 4;
                 <h2>Destinations</h2>
 
                 <div class="row m-2 py-5">
-                    <a href="#"><div class="col continent px-3">
-                        <img src="assets/img/afrique.png" width="130px" alt="Afrique">
-                        <h3>Afrique</h3>
-                    </div></a>
-                    <a href="#"><div class="col continent px-3">
-                        <img src="assets/img/ameriquenord.png" width="130px" alt="Amérique du Nord">
-                        <h3>Amérique/Nord</h3>
-                    </div></a>
-                    <a href="#"><div class="col continent px-3">
-                        <img src="assets/img/ameriquesud.png" width="130px" alt="Amérique du Sud">
-                        <h3>Amérique/Sud</h3>
-                    </div></a>
-                    <a href="#"><div class="col continent px-3">
-                        <img src="assets/img/asie.png" width="130px" alt="Asie">
-                        <h3>Asie</h3>
-                    </div></a>
-                    <a href="#"><div class="col continent px-3">
-                        <img src="assets/img/europe.png" width="130px" alt="Europe">
-                        <h3>Europe</h3>
-                    </div></a>
-                    <a href="#"><div class="col continent px-3">
-                        <img src="assets/img/oceanie.png" width="130px" alt="Océanie">
-                        <h3>Océanie</h3>
-                    </div></a>
+                    <a href="#">
+                        <div class="col continent px-3">
+                            <img src="assets/img/afrique.png" width="130px" alt="Afrique">
+                            <h3>Afrique</h3>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="col continent px-3">
+                            <img src="assets/img/ameriquenord.png" width="130px" alt="Amérique du Nord">
+                            <h3>Amérique/Nord</h3>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="col continent px-3">
+                            <img src="assets/img/ameriquesud.png" width="130px" alt="Amérique du Sud">
+                            <h3>Amérique/Sud</h3>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="col continent px-3">
+                            <img src="assets/img/asie.png" width="130px" alt="Asie">
+                            <h3>Asie</h3>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="col continent px-3">
+                            <img src="assets/img/europe.png" width="130px" alt="Europe">
+                            <h3>Europe</h3>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="col continent px-3">
+                            <img src="assets/img/oceanie.png" width="130px" alt="Océanie">
+                            <h3>Océanie</h3>
+                        </div>
+                    </a>
                 </div>
             </section>
-            
-            
+
+
             <h2 class="title">Derniers articles</h2>
             <section class="blog-slider">
                 <ol>
@@ -153,44 +169,33 @@ $articlesPerPage = 4;
                     $articles = $article->getArticlesPerPage(0, $articlesPerPage);
                     $articlesPerPage = 10;
                     foreach ($articles as $key => $article_item) { ?>
-                    <li>
-                        <div class="thumb ">
-                            <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
-                            <div class="thumb-content ism-caption ism-caption-0">
-                                <h2><?= $article_item['titre'] ?></h2>
-                                <p><?= $article_item['date'] ?></p>
-                                <p><?= $article_item['summary'] ?></p>
-                                <?php echo '<a href="article.php?id=' . $article_item['id'] . '">Lire la suite</a>';?>
+                        <li>
+                            <div class="thumb ">
+                                <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
+                                <div class="thumb-content">
+                                    <h2><?= $article_item['titre'] ?></h2>
+                                    <p><?= $article_item['date'] ?></p>
+                                    <p><?= $article_item['summary'] ?></p>
+                                    <?php echo '<a href="article.php?id=' . $article_item['id'] . '">Lire la suite</a>'; ?>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
                 </ol>
-                    <?php
+            <?php
                     } ?>
 
             </section>
-            
-            <!-- HERO -->
+        </main>
 
-            <div class="container">
-                
+        <div class="push"></div>
 
-                
-                
-                
-                
-                </div> <!-- /container -->
-                
-            </main>
+    </div> <!-- /wrapper -->
 
-            <div class="push"></div>
-            
-        </div> <!-- /wrapper -->
+    <?php include 'includes/footer.php'; ?>
 
-        <?php include 'includes/footer.php'; ?>
+    <!-- >Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <!-- >Javascript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
 
-    </body>
-    </html>
+</html>

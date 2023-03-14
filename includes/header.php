@@ -17,6 +17,7 @@
                 header('Location: index.php');
             }
         }
+
         if ($user->isUserAdmin()) {
         ?>
 

@@ -7,7 +7,6 @@ $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
 $articles = $article->getAllArticles();
-var_dump($articles);
 $description = $article->getDescription();
 $summary = $article->createSummary($description);
 $articlesPerPage = 6;
