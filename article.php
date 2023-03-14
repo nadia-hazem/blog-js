@@ -45,7 +45,7 @@ $id = $_GET['id'];
     $titre = $item['titre'];
     $date = $item['date'];
     $auteur = $item['auteur'];
-    $categories = $item['categories'];
+    $categories = $item['categ'];
     $description = $item['description'];
     $image = $item['image'];
     ?>
