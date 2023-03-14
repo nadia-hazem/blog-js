@@ -8,7 +8,8 @@ $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
 $comment = new Comments($db);
-$id = $_GET['id'];
+
+$id_article = $_GET['id'];
 ?>
 
 <!--<!DOCTYPE html>-->
@@ -74,21 +75,28 @@ $id = $_GET['id'];
             </div> <!-- /container -->
 
             <h2>Commentaires</h2>
-            <section class="comments bg-light border radius p-2">
+            <section id="comments" class="container bg-light border radius p-2">
 
                 <?php
                 $comments = $comment->getComments($id);
-                if (is_array($comment->getComments($id))) {
-                    $id = $comment['id'];
-                    $auteur = $comment['auteur'];
-                    $date = $comment['date'];
-                    $commentaire = $comment['commentaire'];
-
-                    echo '<div class="comment">';
-                    echo '<h3>' . $auteur . '</h3>';
-                    echo '<small class="comment-meta">Publié le ' . $date . '</small>';
-                    echo '<p>' . $commentaire . '</p>';
-                    echo '</div>';
+                if ($comments !== null) {
+                    foreach($comments as $comment):
+                        $id = $comment['id'];
+                        $auteur = $comment['auteur'];
+                        $date = $comment['date'];
+                        $commentaire = $comment['commentaire'];
+                        $sujet = $comment['sujet'];
+                        ?>
+                        <div class="comment">
+                        <h3><?=$sujet?></h3>
+                        <small class="comment-meta">Publié le <?=$date?></small>
+                        <p><?=$commentaire?></p>
+                        <hr>
+                        </div>
+                    <?php
+                    endforeach;
+                } else {
+                    echo '<p>Aucun commentaire trouvé, soyez le premier !</p>';
                 }
                 ?>
 
@@ -96,13 +104,24 @@ $id = $_GET['id'];
 
             <h2>Laissez un commentaire</h2>
             <section class="container">
+                <?php
+                if (!$user->isConnected()) {
+                    echo '<p>Vous devez être connecté pour laisser un commentaire.</p>';
+                }
+                else {
+                ?>
+                <form action="assets/php/leaveComment.php" method="post" class="m-auto">
 
-                <form action="verification.php" method="post" class="m-auto">
-
-                    <textarea name="commentaire" cols="40" rows="10" placeholder="Votre commentaire :"></textarea>
-                    <input type="submit" class="" name="go" value="Signer">
+                    <input type="hidden" name="id_article" value="<?= $id_article ?>">
+                    <input type="sujet" class="" name="sujet" placeholder="Sujet">
+                    <label for="commentaire">Votre commentaire :</label>
+                    <textarea name="commentaire" cols="40" rows="10"></textarea>
+                    <input type="submit" class="" name="submit" value="Signer">
 
                 </form>
+                <?php
+                }
+                ?>
 
             </section>
 
