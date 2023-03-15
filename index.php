@@ -16,6 +16,7 @@ $articlesPerPage = 4;
 <!DOCTYPE html>
 <html lang="fr">
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,11 +66,11 @@ $articlesPerPage = 4;
 
 
             <section class="">
-                <div class="container">
+                <div class="container col">
                     <h1 class="franklin">Trippy Le blog de voyage</h1>
-                    <div class="row">
-                        <div class="col-33 float-right">
-                            <img src="assets/img/stamp.png" width="80%" alt="Tampons de douane">
+                    <div class="row wrap">
+                        <div class="col-33">
+                            <img src="assets/img/stamp.png" width="300px" alt="Tampons de douane">
                         </div>
                         <div class="col-60 mt-4">
                             <h3>Si vous êtes passionné(e) de voyage et que vous cherchez des idées d'itinéraires, des astuces pour économiser de l'argent et des conseils pour découvrir des endroits incroyables dans le monde entier, vous êtes au bon endroit !</h3>
@@ -86,7 +87,7 @@ $articlesPerPage = 4;
                 <div class="container my-5">
                     <h2 class="double">Conseils de voyage</h2>
 
-                    <div class="row ">
+                    <div class="row wrap">
                         <div class="col card mx-2">
                             <a href="#"><img src="assets/img/conseils.png" alt="guide">
                                 <div class="card-content">
@@ -119,41 +120,42 @@ $articlesPerPage = 4;
             </section>
 
             <section class="bg-sable h-50 py5">
-                <h2>Destinations</h2>
+                <h2 class="py-2">Destinations</h2>
 
-                <div class="row m-2 py-5">
+                <div class="row wrap m-2 py-5">
+                    
                     <a href="#">
-                        <div class="col continent px-3">
+                        <div class="col continent px-2">
                             <img src="assets/img/afrique.png" width="130px" alt="Afrique">
                             <h3>Afrique</h3>
                         </div>
                     </a>
                     <a href="#">
-                        <div class="col continent px-3">
+                        <div class="col continent px-2">
                             <img src="assets/img/ameriquenord.png" width="130px" alt="Amérique du Nord">
                             <h3>Amérique/Nord</h3>
                         </div>
                     </a>
                     <a href="#">
-                        <div class="col continent px-3">
+                        <div class="col continent px-2">
                             <img src="assets/img/ameriquesud.png" width="130px" alt="Amérique du Sud">
                             <h3>Amérique/Sud</h3>
                         </div>
                     </a>
                     <a href="#">
-                        <div class="col continent px-3">
+                        <div class="col continent px-2">
                             <img src="assets/img/asie.png" width="130px" alt="Asie">
                             <h3>Asie</h3>
                         </div>
                     </a>
                     <a href="#">
-                        <div class="col continent px-3">
+                        <div class="col continent px-2">
                             <img src="assets/img/europe.png" width="130px" alt="Europe">
                             <h3>Europe</h3>
                         </div>
                     </a>
                     <a href="#">
-                        <div class="col continent px-3">
+                        <div class="col continent px-2">
                             <img src="assets/img/oceanie.png" width="130px" alt="Océanie">
                             <h3>Océanie</h3>
                         </div>
@@ -162,8 +164,8 @@ $articlesPerPage = 4;
             </section>
 
 
-            <h2 class="title">Derniers articles</h2>
-            <section class="blog-slider">
+            <h2 class="title py-2">Derniers articles</h2>
+            <section class="blog-slider row wrap">
                 <ol>
                     <?php
                     $article = new Article($db);
@@ -171,7 +173,7 @@ $articlesPerPage = 4;
                     $articlesPerPage = 10;
                     foreach ($articles as $key => $article_item) { ?>
                         <li>
-                            <div class="thumb ">
+                            <div class="thumb">
                                 <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
                                 <div class="thumb-content">
                                     <h2><?= $article_item['titre'] ?></h2>
@@ -192,9 +194,15 @@ $articlesPerPage = 4;
         <div class="push"></div>
 
     </div> <!-- /wrapper -->
+        <div class="push"></div>
+
+    </div> <!-- /wrapper -->
 
     <?php include 'includes/footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 
+    <!-- >Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- >Javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
