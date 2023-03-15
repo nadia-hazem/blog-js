@@ -131,15 +131,35 @@ class Article
     }
 
 
-    public function getArticlesPerPage($start_index, $num_articles)
+    public function getArticlesPerPage($start_index, $num_articles, $category)
     {
         $query =
             "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
-        FROM articles 
-        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC 
-        LIMIT $start_index, $num_articles
-        ";
-        $result = $this->bdd->query($query);
+            FROM articles 
+            INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC 
+            LIMIT $start_index, $num_articles
+            ";
+
+        if ($category == 0) {
+            // preparation
+            $result = $this->bdd->prepare($query);
+            // execution avec liaison des paramètres
+            $result->execute();
+        } else {
+            $query =
+                "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
+                FROM articles 
+                INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id WHERE categories.id = :category ORDER BY date DESC 
+                LIMIT $start_index, $num_articles
+                ";
+            // preparation
+            $result = $this->bdd->prepare($query);
+            // execution avec liaison des paramètres
+            $result->execute([
+                'category' => $category
+            ]);
+        }
+
         $articles = array();
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $description = $row['description'];

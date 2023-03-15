@@ -6,7 +6,8 @@ require_once 'assets/class/Article.php';
 $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
-$articles = $article->getArticlesPerPage(0, 5);
+$categInt = 0;
+$articles = $article->getArticlesPerPage(0, 5, $categInt);
 $articlesPerPage = 4;
 ?>
 
@@ -48,7 +49,7 @@ $articlesPerPage = 4;
             <div class="ism-slider" data-play_type="loop" id="my-slider">
                 <ol>
                     <?php
-                    $articles = $article->getArticlesPerPage(0, 4);
+                    $articles = $article->getArticlesPerPage(0, 4, $categInt);
                     foreach ($articles as $key => $article) { ?>
                         <li>
                             <img src="assets/uploads/<?= $article['image'] ?>" alt="<?= $article['titre'] ?>">
@@ -166,7 +167,7 @@ $articlesPerPage = 4;
                 <ol>
                     <?php
                     $article = new Article($db);
-                    $articles = $article->getArticlesPerPage(0, $articlesPerPage);
+                    $articles = $article->getArticlesPerPage(0, $articlesPerPage, $categInt);
                     $articlesPerPage = 10;
                     foreach ($articles as $key => $article_item) { ?>
                         <li>
