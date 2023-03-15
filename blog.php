@@ -18,6 +18,7 @@ $articlesPerPage = 6;
 <!DOCTYPE html>
 <html lang="fr">
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,6 +48,7 @@ $articlesPerPage = 6;
 
             <section class="blog">
 
+
                 <h1>Trippy Blog</h1>
 
             </section>
@@ -58,11 +60,15 @@ $articlesPerPage = 6;
                 ?>
                     <a href="createArticle.php" class="text-white text-center"><button class="post">Créer un article</button></a>
                 <?php
+                ?>
+                    <a href="createArticle.php" class="text-white text-center"><button class="post">Créer un article</button></a>
+                <?php
                 }
                 ?>
 
                 <section class="articles my-3">
 
+                    <?php
                     <?php
                     // Récupérer le nombre total d'articles
                     $total_articles = count($article->getAllArticles());
@@ -79,9 +85,12 @@ $articlesPerPage = 6;
                     // Afficher les articles récupérés
                     foreach ($articles as $article) :
                     ?>
+                    foreach ($articles as $article) :
+                    ?>
                         <!-- CARD -->
                         <div class="card">
                             <img class="uploadedImg" src="assets/uploads/<?php echo $article['image']; ?>" alt="<?php echo $article['titre']; ?>">
+
 
                             <div class="card-content">
                                 <h2><?php echo $article['titre']; ?></h2>
@@ -131,7 +140,6 @@ $articlesPerPage = 6;
                 }
                 echo '</div>';
                 ?>
->>>>>>> 89a2d1e (resolution de bugs)
 
 <<<<<<< HEAD
                 if ($current_page < $total_pages) {

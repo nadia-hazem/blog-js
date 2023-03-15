@@ -1,15 +1,14 @@
 /* reset */
 
-body,
-html {
-margin: 0;
-padding: 0;
-width: 100%;
-font-family: "Bellota", cursive;
-font-size: 16px;
-line-height: 1.5;
-color: #333;
-background-color: #fff;
+body, html {
+    margin: 0;
+    padding: 0;
+    width:  100%;
+    font-family: 'Bellota', cursive;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
 }
 
 /*body backgrounds*/
@@ -76,6 +75,16 @@ align-items: center;
 display: flex;
 justify-content: center;
 align-items: center;
+gap : 1rem;
+flex-wrap: wrap;
+}
+.rowjustifybetween {
+    display: flex;
+    justify-content: space-between;
+}
+.col-60 {
+flex: 0 0 60%;
+max-width: 60%;
 }
 .col-60 {
 flex: 0 0 60%;
@@ -104,10 +113,10 @@ max-width: 10%;
 
 /*** TYPO ***/
 p {
-    font-family: "Bellota", cursive;
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+font-family: "Bellota", cursive;
+font-size: 1.2rem;
+line-height: 1.5;
+margin-bottom: 1rem;
 }
 .text-center {text-align: center;}
 .text-right {text-align: right;}
@@ -495,12 +504,6 @@ margin: 0 auto;
 text-align: justify;
 }
 
-mark {
-background-color: #5e6472;
-color: white;
-padding: 5px 15px;
-}
-
 /*** HERO ***/
 
 .hero {
@@ -513,15 +516,6 @@ padding: 5px 15px;
     align-items: center;
     text-align: center;
     text-shadow: 1px 1px #000;
-  background-image: url("../img/bg-index.jpg");
-  background-size: cover;
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  text-shadow: 1px 1px #000;
 }
 
 /*** BOUTON ***/
@@ -879,55 +873,16 @@ a#categories {
     font-size: 1.5rem;
 }
 .btnModifArticle:hover {
-  background: #b9e6b9;
-  border: none;
     background: #b9e6b9;
     border: none;
 }
 .btnDeleteArticle:hover {
-  background: rgb(240, 198, 198);
-  border: none;
     background: rgb(240, 198, 198);
     border: none;
 }
 .btnComments:hover {
-  background: #aef7f7;
-  border: none;
     background: #aef7f7;
     border: none;
-}
-/*** BLOG ***/
-
-.btnModifArticle,
-.btnDeleteArticle,
-.btnComments {
-  background: transparent;
-  color: black;
-  border: none;
-  font-size: 1.5rem;
-}
-.btnModifArticle:hover {
-background: #b9e6b9;
-border: none;
-}
-.btnDeleteArticle:hover {
-background: rgb(240, 198, 198);
-border: none;
-}
-.btnComments:hover {
-background: #aef7f7;
-border: none;
-}
-
-/***A PROPOS ***/
-
-.keyword {
-    font-size: 1rem;
-    line-height: 2rem;
-    background: #94bfbC;
-    border-radius: 25px;
-    padding: 10px;
-    margin: 1rem;
 }
 
 /***A PROPOS ***/

@@ -55,7 +55,10 @@ if (isset($_POST['create'])) {
 =======
             if (in_array($mimeType, $allowedTypes) && $file['size'] <= 4000000) {
                 /* $fileName = time() . '-' . $_FILES['image']['name']; */
+<<<<<<< HEAD
 >>>>>>> 89a2d1e (resolution de bugs)
+=======
+>>>>>>> c96e5d84eee2a5f0b32d7691bb7da8516dc72a06
                 move_uploaded_file($tmp_name, "assets/uploads/$fileName");
 
                 //insère data dans la bdd
@@ -126,6 +129,7 @@ if (isset($_POST['create'])) {
 <body>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     <?php
     include 'includes/header.php';
     $categories = $article->getCategories();
@@ -134,6 +138,10 @@ if (isset($_POST['create'])) {
     <?php include 'includes/header.php';
     $categories = $article->getCategories(); ?>
 >>>>>>> 89a2d1e (resolution de bugs)
+=======
+    <?php include 'includes/header.php';
+    $categories = $article->getCategories(); ?>
+>>>>>>> c96e5d84eee2a5f0b32d7691bb7da8516dc72a06
 
     <wrapper>
 
