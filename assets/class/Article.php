@@ -89,7 +89,9 @@ class Article
         // requete
         $request = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
         FROM articles 
-        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id WHERE articles.id = :id";
+        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id
+        WHERE articles.id = :id";
+
         $select = $this->bdd->prepare($request);
         // execution avec liaison des params
         $select->execute([
@@ -108,11 +110,10 @@ class Article
     }
 
     // récupération de tous les articles
-    public function getAllArticles()
-    {
-        // requete pour récup tous y compris les catégories
-        $request =
-            "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
+    public function getAllArticles() {
+
+        // requete
+        $request = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
         FROM articles 
         INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC";
 
@@ -133,10 +134,9 @@ class Article
 
     public function getArticlesPerPage($start_index, $num_articles)
     {
-        $query =
-            "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
+        $query = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
         FROM articles 
-        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC 
+        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC
         LIMIT $start_index, $num_articles
         ";
         $result = $this->bdd->query($query);
@@ -220,8 +220,8 @@ class Article
         $this->bdd = null;
     }
 
-    // récupération des catégorie
-    public function getCategories()
+    // récupération des catégories
+    public function getCategories() 
     {
         // requête
         $request = "SELECT * FROM categories";
@@ -236,7 +236,7 @@ class Article
         } else {
             // sinon on retourne le résultat
             return $categories;
-        }
+        } 
         $this->bdd = null;
     }
 }
