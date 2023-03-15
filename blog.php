@@ -81,7 +81,11 @@ if (isset($_SESSION['categInt'])) {
 
                     <?php
                     // Récupérer le nombre total d'articles
-                    $total_articles = count($article->getAllArticles());
+                    if ($categInt == 0) {
+                        $total_articles = count($article->getAllArticles());
+                    } else {
+                        $total_articles = count($article->countArticlesByCategory($categInt));
+                    }
                     // Définir le nombre d'articles à afficher par page
                     $num_articles = 6;
                     // Calculer le nombre total de pages

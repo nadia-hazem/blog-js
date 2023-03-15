@@ -110,7 +110,8 @@ class Article
     }
 
     // récupération de tous les articles
-    public function getAllArticles() {
+    public function getAllArticles()
+    {
 
         // requete
         $request = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
@@ -128,6 +129,32 @@ class Article
         } else {
             // sinon on retourne le résultat
             return $articles;
+        }
+    }
+
+    // compter le nombre d'article par catégorie
+    public function countArticlesByCategory($category)
+    {
+        // html special char
+        $category = htmlspecialchars($category);
+
+        // requete
+        $request = "SELECT COUNT(*) as nb_articles FROM articles WHERE categories = :category";
+
+        $select = $this->bdd->prepare($request);
+        // execution avec liaison des params
+        $select->execute([
+            'category' => $category
+        ]);
+
+        // récupération des résultats
+        $nb_articles = $select->fetch(PDO::FETCH_ASSOC);
+        // Si $result produit une erreur, on retourne null
+        if (!$nb_articles) {
+            return null;
+        } else {
+            // sinon on retourne le résultat
+            return $nb_articles;
         }
     }
 
@@ -242,7 +269,7 @@ class Article
     }
 
     // récupération des catégories
-    public function getCategories() 
+    public function getCategories()
     {
         // requête
         $request = "SELECT * FROM categories";
@@ -257,7 +284,7 @@ class Article
         } else {
             // sinon on retourne le résultat
             return $categories;
-        } 
+        }
         $this->bdd = null;
     }
 
