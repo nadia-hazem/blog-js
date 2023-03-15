@@ -259,4 +259,86 @@ class Article
         }
         $this->bdd = null;
     }
+
+    // récupération d'une catégorie
+    public function getCategory($id)
+    {
+        // requête
+        $request = "SELECT * FROM categories WHERE id = :id";
+        $select = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $select->execute([
+            'id' => $id
+        ]);
+        // récupération des résultats
+        $category = $select->fetch(PDO::FETCH_ASSOC);
+
+        if (!$category) {
+            return null;
+        } else {
+            return $category;
+        }
+        $this->bdd = null;
+    }
+
+    // delete d'une catégorie
+    public function deleteCategory($id)
+    {
+        // requête
+        $request = "DELETE FROM categories WHERE id = :id";
+        $delete = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $delete->execute([
+            'id' => $id
+        ]);
+
+        if (!$delete) {
+            return null;
+        } else {
+            echo "ok";
+        }
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+    }
+
+    // ajout d'une catégorie
+    public function addCategory($category)
+    {
+        // requête
+        $request = "INSERT INTO categories (categorie) VALUES (:category)";
+        $insert = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $insert->execute([
+            'category' => $category
+        ]);
+
+        if (!$insert) {
+            return null;
+        } else {
+            echo "ok";
+        }
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+    }
+
+    // update d'une catégorie
+    public function updateCategory($id, $category)
+    {
+        // requête
+        $request = "UPDATE categories SET categorie = :category WHERE id = :id";
+        $update = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $update->execute([
+            'category' => $category,
+            'id' => $id
+        ]);
+
+        if (!$update) {
+            return null;
+        } else {
+            echo "ok";
+        }
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+    }
 }

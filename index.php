@@ -176,6 +176,7 @@ $articlesPerPage = 4;
                                 <div class="thumb-content">
                                     <h2><?= $article_item['titre'] ?></h2>
                                     <p><?= $article_item['date'] ?></p>
+                                    <p><?= $article_item['categ'] ?></p>
                                     <p><?= $article_item['summary'] ?></p>
                                     <?php echo '<a href="article.php?id=' . $article_item['id'] . '">Lire la suite</a>'; ?>
                                 </div>
