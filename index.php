@@ -6,7 +6,8 @@ require_once 'assets/class/Article.php';
 $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
-$articles = $article->getArticlesPerPage(0, 5);
+$categInt = 0;
+$articles = $article->getArticlesPerPage(0, 5, $categInt);
 $articlesPerPage = 4;
 ?>
 
@@ -49,7 +50,7 @@ $articlesPerPage = 4;
             <div class="ism-slider" data-play_type="loop" id="my-slider">
                 <ol>
                     <?php
-                    $articles = $article->getArticlesPerPage(0, 4);
+                    $articles = $article->getArticlesPerPage(0, 4, $categInt);
                     foreach ($articles as $key => $article) { ?>
                         <li>
                             <img src="assets/uploads/<?= $article['image'] ?>" alt="<?= $article['titre'] ?>">
@@ -168,8 +169,8 @@ $articlesPerPage = 4;
                 <ol>
                     <?php
                     $article = new Article($db);
-                    $articles = $article->getArticlesPerPage(0, $articlesPerPage);
-                    $articlesPerPage = 2;
+                    $articles = $article->getArticlesPerPage(0, $articlesPerPage, $categInt);
+                    $articlesPerPage = 10;
                     foreach ($articles as $key => $article_item) { ?>
                         <li>
                             <div class="thumb">
@@ -177,6 +178,7 @@ $articlesPerPage = 4;
                                 <div class="thumb-content">
                                     <h2><?= $article_item['titre'] ?></h2>
                                     <p><?= $article_item['date'] ?></p>
+                                    <p><?= $article_item['categ'] ?></p>
                                     <p><?= $article_item['summary'] ?></p>
                                     <?php echo '<a href="article.php?id=' . $article_item['id'] . '">Lire la suite</a>'; ?>
                                 </div>

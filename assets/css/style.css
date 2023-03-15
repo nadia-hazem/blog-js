@@ -845,11 +845,15 @@ a#categories {
 }
 .btnModifArticle,
 .btnDeleteArticle,
-.btnComments {
-    background: transparent;
-    color: black;
-    border: none;
-    font-size: 1.5rem;
+.btnComments,
+.btnModifComment,
+.btnDeleteComment,
+.btnModifCategorie,
+.btnDeleteCategorie {
+  background: transparent;
+  color: black;
+  border: none;
+  font-size: 1.5rem;
 }
 .btnModifArticle:hover {
     background: #b9e6b9;
