@@ -825,7 +825,11 @@ a#categories {
 }
 .btnModifArticle,
 .btnDeleteArticle,
-.btnComments {
+.btnComments,
+.btnModifComment,
+.btnDeleteComment,
+.btnModifCategorie,
+.btnDeleteCategorie {
   background: transparent;
   color: black;
   border: none;
