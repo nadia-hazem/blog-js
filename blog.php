@@ -68,9 +68,6 @@ if (isset($_SESSION['categInt'])) {
                 ?>
                     <a href="createArticle.php" class="text-white text-center"><button class="post">Créer un article</button></a>
                 <?php
-                ?>
-                    <a href="createArticle.php" class="text-white text-center"><button class="post">Créer un article</button></a>
-                <?php
                 }
                 ?>
 
@@ -82,7 +79,6 @@ if (isset($_SESSION['categInt'])) {
 
                 <section class="articles my-3">
 
-                    <?php
                     <?php
                     // Récupérer le nombre total d'articles
                     $total_articles = count($article->getAllArticles());
@@ -99,8 +95,6 @@ if (isset($_SESSION['categInt'])) {
                     // Afficher les articles récupérés
                     foreach ($articles as $article) :
                     ?>
-                    foreach ($articles as $article) :
-                    ?>
                         <!-- CARD -->
                         <div class="card">
                             <img class="uploadedImg" src="assets/uploads/<?php echo $article['image']; ?>" alt="<?php echo $article['titre']; ?>">
@@ -109,14 +103,7 @@ if (isset($_SESSION['categInt'])) {
                             <div class="card-content">
                                 <h2><?php echo $article['titre']; ?></h2>
                                 <p><small>Publié le <?php echo $article['date']; ?> par <?php echo $article['auteur']; ?></small></p>
-<<<<<<< HEAD
-                                <br>
-                                <p><small>Catégorie : <?php echo $article['categ'] ?></small></p>
-                                <br>
-
-=======
                                 <p><small>Catégories : <?php echo $article['categ']; ?></small></p>
->>>>>>> c96e5d8 (commit avant rebase)
                                 <p><?php echo $article['summary']; ?></p>
                                 <a href="article.php?id=<?php echo $article['id']; ?>">Lire la suite</a>
 
@@ -146,24 +133,12 @@ if (isset($_SESSION['categInt'])) {
                         echo ' - ';
                     }
                 }
-<<<<<<< HEAD
-=======
 
                 if ($current_page < $total_pages) {
                     echo '<a href="?page=' . ($current_page + 1) . ' ">&nbsp; Page suivante &nbsp;</a>';
                 }
                 echo '</div>';
                 ?>
-
-<<<<<<< HEAD
-                if ($current_page < $total_pages) {
-                    echo '<a href="?page=' . ($current_page + 1) . ' ">&nbsp; Page suivante &nbsp;</a>';
-                }
-                echo '</div>';
-                ?>
-
-=======
->>>>>>> c96e5d8 (commit avant rebase)
             </div> <!-- /container -->
 
         </main>
