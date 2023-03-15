@@ -1,0 +1,13 @@
+HTML
+CSS
+PHP
+JavaScript
+Python
+SQL
+JQuery
+Wordpress
+Bootstrap
+Tailwind
+Github
+PhpMyAdmin
+Database

@@ -86,10 +86,7 @@ $articlesPerPage = 6;
                             <div class="card-content">
                                 <h2><?php echo $article['titre']; ?></h2>
                                 <p><small>Publié le <?php echo $article['date']; ?> par <?php echo $article['auteur']; ?></small></p>
-                                <br>
                                 <p><small>Catégories : <?php echo $article['categ']; ?></small></p>
-                                <br>
-                                
                                 <p><?php echo $article['summary']; ?></p>
                                 <a href="article.php?id=<?php echo $article['id']; ?>">Lire la suite</a>
 
@@ -125,12 +122,6 @@ $articlesPerPage = 6;
                 }
                 echo '</div>';
                 ?>
-
-                <h2>Commentaires</h2>
-                <section class="comments bg-light border radius p-2">
-                    <p></p>
-
-                </section>
 
             </div> <!-- /container -->
 
