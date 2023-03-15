@@ -123,7 +123,7 @@ $articlesPerPage = 4;
                 <h2 class="py-2">Destinations</h2>
 
                 <div class="row wrap m-2 py-5">
-                    
+
                     <a href="#">
                         <div class="col continent px-2">
                             <img src="assets/img/afrique.png" width="130px" alt="Afrique">
@@ -194,18 +194,11 @@ $articlesPerPage = 4;
         <div class="push"></div>
 
     </div> <!-- /wrapper -->
-        <div class="push"></div>
 
-    </div> <!-- /wrapper -->
-
-    <?php include 'includes/footer.php'; ?>
     <?php include 'includes/footer.php'; ?>
 
     <!-- >Javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- >Javascript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 </body>
 
 </html>
