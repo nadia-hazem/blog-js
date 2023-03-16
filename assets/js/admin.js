@@ -436,12 +436,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // CATEGORIES
   function showCategories() {
+    gestion.innerHTML = "";
+    articleSection.innerHTML = "";
+    commentairesSection.innerHTML = "";
     fetch("assets/php/adminGestion.php?showCategories")
       .then((response) => response.json())
       .then((data) => {
-        gestion.innerHTML = "";
-        articleSection.innerHTML = "";
-        commentairesSection.innerHTML = "";
         const table = document.createElement("table");
         const thead = document.createElement("thead");
         const tr = document.createElement("tr");
@@ -482,14 +482,20 @@ document.addEventListener("DOMContentLoaded", function () {
         tdForm.setAttribute("colspan", "2");
         const formCateg = document.createElement("form");
         formCateg.setAttribute("id", "formAddCategorie");
+        formCateg.classList.add("my-2");
         tdForm.appendChild(formCateg);
+        const h2 = document.createElement("h2");
+        h2.textContent = "Ajouter une catégorie";
+        h2.classList.add("py-1");
+        formCateg.appendChild(h2);
         const input = document.createElement("input");
         input.setAttribute("type", "text");
         input.setAttribute("name", "category");
         input.setAttribute("id", "categorie");
+        input.classList.add("my-1", "py-1");
         const btn = document.createElement("button");
         btn.setAttribute("type", "submit");
-        btn.classList.add("fas", "fa-plus", "btnAddCategorie");
+        btn.classList.add("fas", "fa-plus", "btnAddCategorie", "py-1");
         formCateg.appendChild(input);
         formCateg.appendChild(btn);
         trLast.appendChild(tdForm);
@@ -591,6 +597,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ajouter une bordure sur le lien cliqué
     users.classList.add("active");
     articles.classList.remove("active");
+    categories.classList.remove("active");
   });
 
   // suppression d'un utilisateur ou changer les droits
@@ -614,6 +621,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ajouter une bordure sur le lien cliqué
     articles.classList.add("active");
     users.classList.remove("active");
+    categories.classList.remove("active");
   });
 
   // suppression d'un article ou modification ou affichage des commentaires
@@ -668,6 +676,10 @@ document.addEventListener("DOMContentLoaded", function () {
   categories.addEventListener("click", function (e) {
     e.preventDefault();
     showCategories();
+    // ajouter une bordure sur le lien cliqué
+    categories.classList.add("active");
+    users.classList.remove("active");
+    articles.classList.remove("active");
   });
 
   // ajout, suppression ou modification d'une catégorie
