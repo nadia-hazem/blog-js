@@ -28,7 +28,7 @@ $user = new User($db);
     <script src="assets/js/forms.js"></script>
     
 </head>
-<body>
+<body id="forms">
     <?php include 'includes/header.php'; ?>
 
     <div class="wrapper">
@@ -37,7 +37,7 @@ $user = new User($db);
 
             <div class="container mt-0">
 
-                <section id="inscription">
+                <section id="inscription" class="colcenter">
                     
                     <h1>Inscription</h1>
                     
@@ -45,7 +45,7 @@ $user = new User($db);
                         <p> Vous avez déjà un compte ? </p> <button id="switchConn" class="switch">Connexion</button>
                     </div>
                     
-                    <form method="post" width="50%">
+                    <form method="post"  class="auth_form">
                         <label for="login">login</label>
                         <input type="text" name="login" class="login" placeholder="login" required>
                         <p></p>
@@ -94,8 +94,8 @@ $user = new User($db);
                         <p></p>
                     </form>
                     <br>
-
                 </section>
+
             </div>
 
         </main>

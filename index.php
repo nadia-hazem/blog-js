@@ -68,10 +68,10 @@ $articlesPerPage = 4;
                 <div class="container col">
                     <h1 class="franklin">Trippy Le blog de voyage</h1>
                     <div class="row wrap">
-                        <div class="col-33">
+                        <div class="col my-2">
                             <img src="assets/img/stamp.png" width="300px" alt="Tampons de douane">
                         </div>
-                        <div class="col-60 mt-4">
+                        <div class="col my-2">
                             <h3>Si vous êtes passionné(e) de voyage et que vous cherchez des idées d'itinéraires, des astuces pour économiser de l'argent et des conseils pour découvrir des endroits incroyables dans le monde entier, vous êtes au bon endroit !</h3>
 
                             <p>Sur ce blog, nous partageons nos aventures de voyage et nos expériences, ainsi que nos coups de cœur et nos déceptions. Que vous soyez à la recherche d'inspiration pour votre prochaine destination ou que vous souhaitiez simplement en savoir plus sur les voyages, vous trouverez ici une mine d'informations pour vous aider à planifier votre prochaine aventure.</p>
@@ -84,36 +84,35 @@ $articlesPerPage = 4;
 
             <section>
                 <div class="container my-5">
-                    <h2 class="double">Conseils de voyage</h2>
+                    <h2 class="double py-5">Conseils de voyage</h2>
 
                     <div class="row wrap">
-                        <div class="col card mx-2">
-                            <a href="#"><img src="assets/img/conseils.png" alt="guide">
-                                <div class="card-content">
-                                    <h3 class="text-center my-1">Guide voyage</h3>
-
+                        <div class="col relative border-white card mx-1">
+                            <div class="hoverlayer"></div>
+                            <a href="#"><img src="assets/img/1.png" alt="guide">
+                                <div class="absolute-text">
+                                    <h3 class="text-center text-shadow my-1">Guide voyage</h3>
                                 </div>
                             </a>
                         </div> <!-- /col -->
 
-                        <div class="col card mx-2">
-                            <a href="#"><img src="assets/img/inspiration.png" alt="inspiration">
-                                <div class="card-content">
+                        <div class="col relative border-white card mx-1">
+                            <div class="hoverlayer"></div>
+                            <a href="#"><img src="assets/img/2.png" alt="inspiration">
+                                <div class="absolute-text">
                                     <h3 class="text-center my-1">Inspirations</h3>
-
                                 </div>
                             </a>
                         </div> <!-- /col -->
 
-                        <div class="col card mx-2">
-                            <a href="#"><img src="assets/img/bonsplans.png" alt="bons plans">
-                                <div class="card-content">
+                        <div class="col relative border-white card mx-1">
+                            <div class="hoverlayer"></div>
+                            <a href="#"><img src="assets/img/3.png" alt="bons plans">
+                                <div class="absolute-text">
                                     <h3 class="text-center my-1">Bons plans</h3>
-
                                 </div>
                             </a>
                         </div> <!-- /col -->
-
                     </div> <!-- /row -->
                 </div> <!-- /container -->
             </section>
@@ -172,13 +171,14 @@ $articlesPerPage = 4;
                     $articlesPerPage = 2;
                     foreach ($articles as $key => $article_item) { ?>
                         <li>
-                            <div class="thumb">
+                            <div class="thumb ">
                                 <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
                                 <div class="thumb-content">
                                     <h2><?= $article_item['titre'] ?></h2>
-                                    <p><?= $article_item['date'] ?></p>
+                                    <p><b><i>Publié le</i> <span class="text-sablefonce"><?= $article_item['date'] ?></span></b></p>
+                                    <p><b><i>Catégorie</i> : <span class="text-turquoise"><?= $article_item['categ'] ?></span></b></p>
                                     <p><?= $article_item['summary'] ?></p>
-                                    <?php echo '<a href="article.php?id=' . $article_item['id'] . '">Lire la suite</a>'; ?>
+                                    <?php echo '<a href="article.php?id=' . $article_item['id'] . '"><b>Lire la suite</b></a>'; ?>
                                 </div>
                             </div>
                         </li>
@@ -192,15 +192,9 @@ $articlesPerPage = 4;
         <div class="push"></div>
 
     </div> <!-- /wrapper -->
-        <div class="push"></div>
-
-    </div> <!-- /wrapper -->
 
     <?php include 'includes/footer.php'; ?>
-    <?php include 'includes/footer.php'; ?>
 
-    <!-- >Javascript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- >Javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

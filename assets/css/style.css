@@ -23,6 +23,11 @@ background: url(../img/bg-index.jpg) no-repeat center center fixed;
 }
 
 body#profil {
+    background: url(../img/plage.jpg) no-repeat top
+    center fixed;
+}
+
+body#forms {
     background: url(../img/plage.jpg) no-repeat center center fixed;
 }
 
@@ -82,6 +87,9 @@ flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
 }
+.aligncenter {
+    align-items: center;
+}
 .col-60 {
 flex: 0 0 60%;
 max-width: 60%;
@@ -122,10 +130,15 @@ margin-bottom: 1rem;
 .text-right {text-align: right;}
 .text-left {text-align: left;}
 .text-mute {color: #adadad;}
+
 .text-white {color: #fff;}
 .text-black {color: #000;}
 .text-shadow {text-shadow: 1px 1px 1px #000;}
-
+.text-sable {color: #dfe0d8;}
+.text-sablefonce {color: #988f83;}
+.text-bleuclair {color: #94bfbc;}
+.text-bleumoyen {color: #72bbbe;}
+.text-turquoise {color: #0bb6e5;}
 
 h2, h3, h4, h5, h6 {
     font-family: "Oswald", sans-serif;
@@ -140,7 +153,7 @@ h1 {
     margin-bottom: 3rem;
 }
 h2 {
-    font-size: 30px!important;
+    font-size: 30px;
     text-align: center;
     color: grey;
     line-height: 45px;
@@ -175,6 +188,12 @@ a:hover {
 
 /*** UTILITIES ***/
 
+.absolute {
+    position: absolute;
+}
+.relative {
+    position: relative;
+}
 mark {
     background-color: #5e6472;
     color: white;
@@ -435,15 +454,11 @@ nav {
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    /* padding: 20px; */
 }
 
 /*** BLOCS ***/
 
 header {
-    top: 0;
-    left: 0;
-    z-index: 100;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -772,15 +787,40 @@ table tr:hover {
     margin: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
+/*hover sur image*/
+.hoverlayer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+    background:rgba(0, 0, 0, 0.5);
+}
+.hoverlayer:hover {
+    background:rgba(0, 0, 0, 0.2);
+}
+.absolute-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 800;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 1px 1px 1px #000;
+}
+.border-white {
+    border: 20px solid #FFF;
+}
+/***/
 .thumb {
     display: flex;
-    width: 400px;
+    width: 250px;
     flex-direction: column;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 1rem;
-    background: fafafa;
+    background: #fafafa;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -796,21 +836,20 @@ table tr:hover {
 }
 
 .thumb-content h2 {
-    font-size: 1rem;
+    font-size: 25px!important;
     margin: 0;
     margin-bottom: 5px;
 }
 
 .thumb-content p {
     font-size: 0.8rem;
-    padding: 1rem;
     margin: 0;
     margin-bottom: 5px;
 }
 
 .thumb-content a {
     font-size: 1rem;
-    color: #0479f5;
+    color: #0bb6e5;
     text-decoration: none;
 }
 .continent {
@@ -944,12 +983,16 @@ footer {
     align-items: center;
     margin: 0 auto;
     padding: 20px;
-    background: #fafafa;
-    border-top: 1px solid #ccc;
 }
 /*** MEDIA QUERY ***/
 
 @media (max-width: 767px) {
+    .container {
+        width: 100%;
+    }
+    .card {
+        width: 100%;
+    }
 }
 
 @media (max-width: 1020px) {
