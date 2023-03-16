@@ -110,7 +110,8 @@ class Article
     }
 
     // récupération de tous les articles
-    public function getAllArticles() {
+    public function getAllArticles()
+    {
 
         // requete
         $request = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
@@ -131,15 +132,62 @@ class Article
         }
     }
 
-
-    public function getArticlesPerPage($start_index, $num_articles)
+    // compter le nombre d'article par catégorie
+    public function countArticlesByCategory($category)
     {
-        $query = "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
-        FROM articles 
-        INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC
-        LIMIT $start_index, $num_articles
-        ";
-        $result = $this->bdd->query($query);
+        // html special char
+        $category = htmlspecialchars($category);
+
+        // requete
+        $request = "SELECT COUNT(*) as nb_articles FROM articles WHERE categories = :category";
+
+        $select = $this->bdd->prepare($request);
+        // execution avec liaison des params
+        $select->execute([
+            'category' => $category
+        ]);
+
+        // récupération des résultats
+        $nb_articles = $select->fetch(PDO::FETCH_ASSOC);
+        // Si $result produit une erreur, on retourne null
+        if (!$nb_articles) {
+            return null;
+        } else {
+            // sinon on retourne le résultat
+            return $nb_articles;
+        }
+    }
+
+
+    public function getArticlesPerPage($start_index, $num_articles, $category)
+    {
+        $query =
+            "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
+            FROM articles 
+            INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id ORDER BY date DESC 
+            LIMIT $start_index, $num_articles
+            ";
+
+        if ($category == 0) {
+            // preparation
+            $result = $this->bdd->prepare($query);
+            // execution avec liaison des paramètres
+            $result->execute();
+        } else {
+            $query =
+                "SELECT articles.*, DATE_FORMAT(articles.date, '- %d %b %Y à %H:%i -') as date, utilisateurs.login AS auteur, categories.categorie as categ, articles.summary 
+                FROM articles 
+                INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id INNER JOIN categories ON articles.categories = categories.id WHERE categories.id = :category ORDER BY date DESC 
+                LIMIT $start_index, $num_articles
+                ";
+            // preparation
+            $result = $this->bdd->prepare($query);
+            // execution avec liaison des paramètres
+            $result->execute([
+                'category' => $category
+            ]);
+        }
+
         $articles = array();
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $description = $row['description'];
@@ -221,7 +269,7 @@ class Article
     }
 
     // récupération des catégories
-    public function getCategories() 
+    public function getCategories()
     {
         // requête
         $request = "SELECT * FROM categories";
@@ -236,7 +284,89 @@ class Article
         } else {
             // sinon on retourne le résultat
             return $categories;
-        } 
+        }
+        $this->bdd = null;
+    }
+
+    // récupération d'une catégorie
+    public function getCategory($id)
+    {
+        // requête
+        $request = "SELECT * FROM categories WHERE id = :id";
+        $select = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $select->execute([
+            'id' => $id
+        ]);
+        // récupération des résultats
+        $category = $select->fetch(PDO::FETCH_ASSOC);
+
+        if (!$category) {
+            return null;
+        } else {
+            return $category;
+        }
+        $this->bdd = null;
+    }
+
+    // delete d'une catégorie
+    public function deleteCategory($id)
+    {
+        // requête
+        $request = "DELETE FROM categories WHERE id = :id";
+        $delete = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $delete->execute([
+            'id' => $id
+        ]);
+
+        if (!$delete) {
+            return null;
+        } else {
+            echo "ok";
+        }
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+    }
+
+    // ajout d'une catégorie
+    public function addCategory($category)
+    {
+        // requête
+        $request = "INSERT INTO categories (categorie) VALUES (:category)";
+        $insert = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $insert->execute([
+            'category' => $category
+        ]);
+
+        if (!$insert) {
+            return null;
+        } else {
+            echo "ok";
+        }
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+    }
+
+    // update d'une catégorie
+    public function updateCategory($id, $category)
+    {
+        // requête
+        $request = "UPDATE categories SET categorie = :category WHERE id = :id";
+        $update = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $update->execute([
+            'category' => $category,
+            'id' => $id
+        ]);
+
+        if (!$update) {
+            return null;
+        } else {
+            echo "ok";
+        }
+        // fermeture de la co a la bdd
         $this->bdd = null;
     }
 }

@@ -7,9 +7,16 @@ $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
 $articles = $article->getAllArticles();
+$categories = $article->getCategories();
 $description = $article->getDescription();
 $summary = $article->createSummary($description);
 $articlesPerPage = 6;
+if (isset($_SESSION['categInt'])) {
+    $categInt = $_SESSION['categInt'];
+} else {
+    $categInt = 0;
+}
+
 
 ?>
 
@@ -36,6 +43,7 @@ $articlesPerPage = 6;
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/blog.js"></script>
 </head>
 
 <body id="blog">
@@ -62,11 +70,21 @@ $articlesPerPage = 6;
                 }
                 ?>
 
+                <div id="divCateg">
+                    <label for="category">Catégorie</label>
+                    <select name="categorie" id="selectCategory">
+                    </select>
+                </div>
+
                 <section class="articles my-3">
 
                     <?php
                     // Récupérer le nombre total d'articles
-                    $total_articles = count($article->getAllArticles());
+                    if ($categInt == 0) {
+                        $total_articles = count($article->getAllArticles());
+                    } else {
+                        $total_articles = count($article->countArticlesByCategory($categInt));
+                    }
                     // Définir le nombre d'articles à afficher par page
                     $num_articles = 6;
                     // Calculer le nombre total de pages
@@ -76,7 +94,7 @@ $articlesPerPage = 6;
                     // Calculer l'indice de départ pour la requête LIMIT
                     $start_index = ($current_page - 1) * $num_articles;
                     // Récupérer les articles pour la page courante en utilisant LIMIT
-                    $articles = $article->getArticlesPerPage($start_index, $num_articles);
+                    $articles = $article->getArticlesPerPage($start_index, $num_articles, $categInt);
                     // Afficher les articles récupérés
                     foreach ($articles as $article) :
                     ?>
@@ -88,10 +106,7 @@ $articlesPerPage = 6;
                             <div class="card-content">
                                 <h2><?php echo $article['titre']; ?></h2>
                                 <p><small>Publié le <?php echo $article['date']; ?> par <?php echo $article['auteur']; ?></small></p>
-                                <br>
-                                <p><small>Catégorie : <?php echo $article['categ'] ?></small></p>
-                                <br>
-
+                                <p><small>Catégorie : <?php echo $article['categ']; ?></small></p>
                                 <p><?php echo $article['summary']; ?></p>
                                 <a href="article.php?id=<?php echo $article['id']; ?>">Lire la suite</a>
 

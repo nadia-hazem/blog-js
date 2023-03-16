@@ -7,7 +7,7 @@ class Comments
     private $password;
     private $bdd;
 
-    
+
     public function __construct(DbConnect $bdd)
     {
         /* $this->bdd = $bdd; */
@@ -19,7 +19,7 @@ class Comments
             $this->password = $_SESSION['user']['password'];
         }
     }
-    
+
     // fonction pour récupérer tous les commentaires
     public function getComments($id)
     {
@@ -43,11 +43,11 @@ class Comments
         }
     }
 
-    // fonction pour récupérer un commentaire en particulier
+    // fonction pour récupérer un commentaire en particulier avec l'auteur et tout ce qui va avec
     public function getComment($id)
     {
-        $this->bdd->query('SELECT * FROM commentaires WHERE id = :id');
-        $request = "SELECT commentaires.*, DATE_FORMAT(commentaires.created_at, '%d %m %Y - %H:%i') as date, utilisateurs.login AS auteur FROM commentaires INNER JOIN utilisateurs ON commentaires.id_utilisateur = utilisateurs.id WHERE commentaires.id = :id ORDER BY date DESC";
+        $request = "SELECT commentaires.*, DATE_FORMAT(commentaires.date, '- %d %m %Y %H:%i -') as date, utilisateurs.login AS auteur FROM commentaires INNER JOIN utilisateurs ON commentaires.id_utilisateur = utilisateurs.id WHERE commentaires.id = :id";
+
         // requete
         $select = $this->bdd->prepare($request);
         // execution avec liaison des params
@@ -95,7 +95,7 @@ class Comments
             echo "erreur";
         }
         $this->bdd = null;
-    } 
+    }
 
     // fonction pour supprimer un commentaire
     public function deleteComment($id)
@@ -116,6 +116,31 @@ class Comments
             echo "erreur";
         }
     }
-}
 
-?>
+    // fonction pour modifier un commentaire
+    public function updateComment($id, $sujet, $commentaire)
+    {
+        // html special char
+        $sujet = htmlspecialchars($sujet);
+        $commentaire = htmlspecialchars($commentaire);
+
+        // requete
+        $request = "UPDATE commentaires SET sujet = :sujet, commentaire = :commentaire WHERE id = :id";
+
+        $update = $this->bdd->prepare($request);
+
+        // execution avec liaisons des param
+        $update->execute([
+            'sujet' => $sujet,
+            'commentaire' => $commentaire,
+            'id' => $id,
+        ]);
+
+        // echo "ok" si la requete s'est bien passée
+        if ($update) {
+            echo "ok";
+        } else {
+            echo "erreur";
+        }
+    }
+}
