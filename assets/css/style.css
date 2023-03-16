@@ -519,6 +519,9 @@ margin: 0 auto;
 text-align: justify;
 }
 
+.mainforms {
+    min-height: 100vh;
+}
 /*** HERO ***/
 
 .hero {
@@ -872,10 +875,11 @@ table tr:hover {
 .admin a {
     border-radius: 10px;
 }
-.admin a.active {
+.admin .col.active {
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-        rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset!important;
 }
+
 a#users,
 a#articles,
 a#categories {
@@ -939,6 +943,35 @@ a#categories {
     margin: 1rem;
 }
 /*** BLOG ***/
+
+#divCateg {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+}
+#divCateg > label{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+} 
+#divCateg > select{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    color:  #72bbbe;
+    background: rgba(255, 255, 255, 0.5);
+}
+select option .optioncat:hover{
+    color: #72bbbe;
+    background-color: #94bfbc!important;
+}
 
 .blog {
     width: 100%;

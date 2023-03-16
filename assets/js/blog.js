@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //création de l'option pour toutes les catégories
         const optionAll = document.createElement("option");
         optionAll.setAttribute("value", 0);
-        optionAll.textContent = "Toutes les catégories";
+        optionAll.textContent = "Toutes";
         if (categInt == 0) {
           optionAll.setAttribute("selected", "selected");
         }
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const responseTrim = response.trim();
         if (responseTrim !== "") {
           // reload la page
-          window.location.reload();
+          window.location.href='blog.php';
         }
       })
       .catch((error) => {

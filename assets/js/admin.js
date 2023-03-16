@@ -591,6 +591,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ajouter une bordure sur le lien cliqué
     users.classList.add("active");
     articles.classList.remove("active");
+    categories.classList.remove("active");
   });
 
   // suppression d'un utilisateur ou changer les droits
@@ -614,6 +615,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ajouter une bordure sur le lien cliqué
     articles.classList.add("active");
     users.classList.remove("active");
+    categories.classList.remove("active");
   });
 
   // suppression d'un article ou modification ou affichage des commentaires
@@ -668,6 +670,10 @@ document.addEventListener("DOMContentLoaded", function () {
   categories.addEventListener("click", function (e) {
     e.preventDefault();
     showCategories();
+    // ajouter une bordure sur le lien cliqué
+    categories.classList.add("active");
+    users.classList.remove("active");
+    articles.classList.remove("active");
   });
 
   // ajout, suppression ou modification d'une catégorie

@@ -33,7 +33,7 @@ $user = new User($db);
 
     <div class="wrapper">
 
-        <main>
+        <main class="mainforms">
 
             <div class="container mt-0">
 

@@ -123,37 +123,37 @@ $articlesPerPage = 4;
 
                 <div class="row wrap m-2 py-5">
 
-                    <a href="#">
+                    <a href="blog.php?categInt=3">
                         <div class="col continent px-2">
                             <img src="assets/img/afrique.png" width="130px" alt="Afrique">
                             <h3>Afrique</h3>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="blog.php?categInt=1">
                         <div class="col continent px-2">
                             <img src="assets/img/ameriquenord.png" width="130px" alt="Amérique du Nord">
                             <h3>Amérique/Nord</h3>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="blog.php?categInt=2">
                         <div class="col continent px-2">
                             <img src="assets/img/ameriquesud.png" width="130px" alt="Amérique du Sud">
                             <h3>Amérique/Sud</h3>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="blog.php?categInt=4">
                         <div class="col continent px-2">
                             <img src="assets/img/asie.png" width="130px" alt="Asie">
                             <h3>Asie</h3>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="blog.php?categInt=5">
                         <div class="col continent px-2">
                             <img src="assets/img/europe.png" width="130px" alt="Europe">
                             <h3>Europe</h3>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="blog.php?categInt=6">
                         <div class="col continent px-2">
                             <img src="assets/img/oceanie.png" width="130px" alt="Océanie">
                             <h3>Océanie</h3>

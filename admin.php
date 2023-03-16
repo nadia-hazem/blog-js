@@ -51,7 +51,7 @@ if (!$user->isUserAdmin()) {
 
                     <h1 class="m-0">Administration</h1>
 
-                    <div class="admin wrap row">
+                    <div class="admin row">
 
                         <a id="users" href="" class="col text-center p-1">
                             <h3>Gestion des utilisateurs </h3><i class="fas fa-users"></i>

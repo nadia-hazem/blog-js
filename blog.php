@@ -16,7 +16,10 @@ if (isset($_SESSION['categInt'])) {
 } else {
     $categInt = 0;
 }
-
+if (isset($_GET['categInt'])) {
+    $categInt = $_GET['categInt'];
+    $_SESSION['categInt'] = $categInt;
+}
 
 ?>
 
@@ -71,9 +74,8 @@ if (isset($_SESSION['categInt'])) {
                 ?>
 
                 <div id="divCateg">
-                    <label for="category">Catégorie</label>
-                    <select name="categorie" id="selectCategory">
-                    </select>
+                    <label for="category" class="p-1"><h2>Catégorie</h2></label>
+                    <select name="categorie" id="selectCategory"></select>
                 </div>
 
                 <section class="articles my-3">
