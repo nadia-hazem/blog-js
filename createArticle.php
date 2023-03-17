@@ -103,7 +103,10 @@ if (isset($_POST['create'])) {
         function previewImage(event) {
             console.log('previewImage() function called')
             let input = event.target;
-            let preview = document.getElementById('preview');
+            let preview = document.createElement('img');
+            preview.setAttribute('id', 'preview');
+            // ajouter l'image à la suite de l'input
+            input.parentNode.insertBefore(preview, input.nextSibling);
             if (input.files && input.files[0]) {
                 let reader = new FileReader();
 
@@ -163,8 +166,6 @@ if (isset($_POST['create'])) {
 
                     <label for="image">Télécharger une image</label>
                     <input type="file" id="image" name="image" accept="img/*" onchange="previewImage(event)">
-
-                    <img id="preview" src="" alt="Image preview">
 
 
                     <input type="submit" value="Publier" name="create" class="btn">
