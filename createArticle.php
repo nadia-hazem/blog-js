@@ -7,6 +7,11 @@ $db = new DbConnect();
 $user = new User($db);
 $article = new Article($db);
 
+// verify if user is mode or admin
+if (!$user->isUserMode()){
+    header('Location: index.php');
+}
+
 //check if form is submitted  
 if (isset($_POST['create'])) {
 
