@@ -24,6 +24,8 @@ $articlesPerPage = 4;
     <title>Accueil</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
@@ -67,12 +69,12 @@ $articlesPerPage = 4;
 
             <section class="">
                 <div class="container col">
-                    <h1 class="franklin">Trippy Le blog de voyage</h1>
+                    <h1 class="franklin title" data-aos="zoom-in">Trippy Le blog de voyage</h1>
                     <div class="row wrap">
-                        <div class="col my-1 colcenter">
+                        <div class="col my-1 colcenter" data-aos="fade-up-right">
                             <img src="assets/img/stamp.png" class="" width="300px" alt="Tampons de douane">
                         </div>
-                        <div class="col my-2 p-2">
+                        <div class="col my-2 p-2" data-aos="fade-up-left">
                             <h3>Si vous êtes passionné(e) de voyage et que vous cherchez des idées d'itinéraires, des astuces pour économiser de l'argent et des conseils pour découvrir des endroits incroyables dans le monde entier, vous êtes au bon endroit !</h3>
                             <p>En parcourant notre blog, vous découvrirez des récits de voyages passionnants, des astuces pour voyager à petit budget, des guides et des conseils pour la sécurité en voyage et bien plus encore.</p>
                             <p>Vous trouverez ici une mine d'informations pour vous aider à planifier votre prochaine aventure.</p>
@@ -86,7 +88,7 @@ $articlesPerPage = 4;
                     <h2 class="double py-5">Conseils de voyage</h2>
 
                     <div class="row wrap">
-                        <div class=" colcenter relative border-white cardimg mx-1">
+                        <div class=" colcenter relative border-white cardimg mx-1" data-aos="fade-right" data-aos-duration="1300">
                             <div class="hoverlayer"></div>
                             <a href="#"><img src="assets/img/1.png" alt="guide">
                                 <div class="absolute-text">
@@ -95,7 +97,7 @@ $articlesPerPage = 4;
                             </a>
                         </div> <!-- /col -->
 
-                        <div class=" relative border-white cardimg mx-1">
+                        <div class=" relative border-white cardimg mx-1" data-aos="flip-up" data-aos-duration="1300">
                             <div class="hoverlayer"></div>
                             <a href="#"><img src="assets/img/2.png" alt="inspiration">
                                 <div class="absolute-text">
@@ -104,7 +106,7 @@ $articlesPerPage = 4;
                             </a>
                         </div> <!-- /col -->
 
-                        <div class=" relative border-white cardimg mx-1">
+                        <div class=" relative border-white cardimg mx-1" data-aos="fade-left" data-aos-duration="1300">
                             <div class="hoverlayer"></div>
                             <a href="#"><img src="assets/img/3.png" alt="bons plans">
                                 <div class="absolute-text">
@@ -195,6 +197,9 @@ $articlesPerPage = 4;
 
     <?php include 'includes/footer.php'; ?>
 
+    <!-- Animations AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script> AOS.init(); </script>
     <!-- >Javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>

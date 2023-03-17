@@ -23,6 +23,7 @@ if (!$user->isUserAdmin()) {
     <title>Administration</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
@@ -49,7 +50,7 @@ if (!$user->isUserAdmin()) {
 
                 <section id="selection">
 
-                    <h1 class="m-0">Administration</h1>
+                    <h1 class="m-0" data-aos="fade-in">Administration</h1>
 
                     <div class="admin row">
 
@@ -84,6 +85,10 @@ if (!$user->isUserAdmin()) {
     </div> <!-- /wrapper -->
 
     <?php include 'includes/footer.php'; ?>
+
+    <!-- Animations AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script> AOS.init(); </script>
 </body>
 
 </html>

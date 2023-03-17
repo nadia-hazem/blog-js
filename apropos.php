@@ -39,7 +39,7 @@ $user = new User($db);
 
             <section class="hero">
 
-                <h1 class="title">A Propos</h1>
+                <h1 class="title" data-aos="fade-in">A Propos</h1>
 
             </section>
             
@@ -62,7 +62,7 @@ $user = new User($db);
             <div class="container present"> <!-- Présentation du projet -->
 
                 <div class="row wrap"> 
-                    <div class="col gap card bg-light p-1" data-aos="fade-right"> 
+                    <div class="col gap card bg-light p-1" data-aos="fade-right" data-aos-duration="2000"> 
                         <h3 class="text-center"><i class="fas fa-info"></i>&nbsp; Le sujet</h3>
                         <p>Il s'agit de réaliser un blog avec les langages suivants :</p>
                         <ul>
@@ -73,7 +73,7 @@ $user = new User($db);
                             <li class="square">Javascript</li>
                         </ul>
                     </div>
-                    <div class="col gap card bg-light p-1" data-aos="flip-up">
+                    <div class="col gap card bg-light p-1" data-aos="flip-up" data-aos-duration="2000">
                         <h3 class="text-center"><i class="fas fa-sitemap"></i>&nbsp; Compétences visées</h3>
                         <ul>                            
                             <li class="square">Architecture de base de données : MCD / MLD / MPD</li>
@@ -83,7 +83,7 @@ $user = new User($db);
                             <li class="square">Utilisation des paramètre de l’URL</li>
                         </ul>
                     </div>
-                    <div class="col gap card bg-light p-1" data-aos="fade-left">
+                    <div class="col gap card bg-light p-1" data-aos="fade-left" data-aos-duration="2000">
                         <h3 class="text-center"><i class="fas fa-wrench"></i>&nbsp; Compétences du REAC validées</h3>
                         <ul>
                             <li class="square">Développer une interface utilisateur web dynamique</li>
@@ -138,10 +138,10 @@ $user = new User($db);
                     <div class="col p-1">
                         <p class="gap text-white">N'hésitez pas à y faire une petite visite pour y découvrir ce que nous réalisons en backend et frontend.</p>
 
-                        <div class="row m-1">
-                            <a class="text-center gap" href="https://nadia-hazem.students-laplateforme.io/" title="Portfolio nadia" target="_blank"><img src="assets/img/logo-nadia.jpg" width="120px" class="shadow"></a>
+                        <div class="row m-1" >
+                            <a class="text-center gap" href="https://nadia-hazem.students-laplateforme.io/" title="Portfolio nadia" target="_blank"><img src="assets/img/logo-nadia.jpg" width="120px" class="shadow" data-aos="zoom-in"></a>
 
-                            <a class="text-center gap" href="https://thomas-spinec.students-laplateforme.io/" title="Portfolio thomas" target="_blank"><img src="assets/img/logo-thomas.jpg" width="120px" class="shadow"></a>
+                            <a class="text-center gap" href="https://thomas-spinec.students-laplateforme.io/" title="Portfolio thomas" target="_blank"><img src="assets/img/logo-thomas.jpg" width="120px" class="shadow" data-aos="zoom-in"></a>
 
                         </div>
                     </div>
@@ -181,8 +181,8 @@ $user = new User($db);
 
     <?php include 'includes/footer.php'; ?>
 
+    <!-- Animations AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
     <script> AOS.init(); </script>
     
 </body>

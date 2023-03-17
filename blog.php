@@ -36,6 +36,7 @@ if (isset($_GET['categInt'])) {
     <title>Blog</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
@@ -59,7 +60,7 @@ if (isset($_GET['categInt'])) {
 
             <section class="blog">
 
-                <h1 class="title">Trippy Blog</h1>
+                <h1 class="title" data-aos="fade-in">Trippy Blog</h1>
 
             </section>
 
@@ -153,6 +154,10 @@ if (isset($_GET['categInt'])) {
     </div> <!-- /wrapper -->
 
     <?php include 'includes/footer.php'; ?>
+
+    <!-- Animations AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script> AOS.init(); </script>
 
 </body>
 

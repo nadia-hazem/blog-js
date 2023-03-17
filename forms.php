@@ -17,6 +17,7 @@ $user = new User($db);
     <title>Formulaires</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +30,7 @@ $user = new User($db);
     
 </head>
 <body id="forms">
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header.php' ?>
 
     <div class="wrapper">
 
@@ -106,5 +107,9 @@ $user = new User($db);
 
     <?php include 'includes/footer.php'; ?>
     
+    <!-- Animations AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script> AOS.init(); </script>
+
 </body>
 </html>

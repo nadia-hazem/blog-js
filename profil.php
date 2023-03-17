@@ -22,6 +22,7 @@ $login = $user->getLogin();
     <title>Profil</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
@@ -44,12 +45,13 @@ $login = $user->getLogin();
 
         <main>
 
-            <h1 class="title">Profil</h1>
+            <h1 class="title" data-aos="fade-in">Profil</h1>
+            
             <div class="row wrap w-100">
 
                 <div id="login" class="row">
 
-                    <form action="" method="post" id="loginForm" class="col gap mb-2">
+                    <form action="" method="post" id="loginForm" class="col gap mb-2" data-aos="fade-right">
                         <h2 class="mb-1">Modifier le login</h2>
                         <label for="login">login</label>
                         <input type="text" name="login" class="login" value="<?= $login ?>" required>
@@ -65,7 +67,7 @@ $login = $user->getLogin();
 
                 <div id="password" class="row">
 
-                    <form action="" method="post" id="passwordForm" class="col gap mb-2">
+                    <form action="" method="post" id="passwordForm" class="col gap mb-2" data-aos="fade-left">
                         <h2 class="mb-1">Modifier le mot de passe</h2>
                         <label for="password">Ancien mot de passe</label>
                         <input type="password" name="password" class="password" placeholder="Mot de passe" id="oldPassword" required>
@@ -90,6 +92,10 @@ $login = $user->getLogin();
     </div> <!-- /wrapper -->
 
     <?php include 'includes/footer.php'; ?>
+
+    <!-- Animations AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script> AOS.init(); </script>
 
 </body>
 
