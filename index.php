@@ -70,7 +70,7 @@ $articlesPerPage = 4;
             <section class="">
                 <div class="container col">
                     <h1 class="franklin title" data-aos="zoom-in">Trippy Le blog de voyage</h1>
-                    <div class="row wrap">
+                    <div class="row wrap indextext">
                         <div class="col my-1 colcenter" data-aos="fade-up-right">
                             <img src="assets/img/stamp.png" class="" width="300px" alt="Tampons de douane">
                         </div>

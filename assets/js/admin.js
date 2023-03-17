@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // création d'un formulaire
         const form = document.createElement("form");
         form.setAttribute("enctype", "multipart/form-data");
+        form.classList.add("w-50");
         // titre
         const labelTitre = document.createElement("label");
         labelTitre.setAttribute("for", "titre");
@@ -380,6 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
         commentairesSection.innerHTML = "";
         const form = document.createElement("form");
         form.setAttribute("id", "formModifComment");
+        form.classList.add("w-50" );
         // titre
         const labelTitre = document.createElement("label");
         labelTitre.setAttribute("for", "sujet");
@@ -545,6 +547,7 @@ document.addEventListener("DOMContentLoaded", function () {
         articleSection.innerHTML = "";
         commentairesSection.innerHTML = "";
         const form = document.createElement("form");
+        form.classList.add("w-50");
         // titre
         const labelTitre = document.createElement("label");
         labelTitre.setAttribute("for", "categorie");

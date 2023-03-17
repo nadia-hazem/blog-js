@@ -48,17 +48,9 @@ if (isset($_POST['create'])) {
             ];
 
             //Vérifie que le fichier téléchargé ne dépasse pas 4MB    
-<<<<<<< HEAD
             if (in_array($mimeType, $allowedTypes) && $_FILES['image']['size'] <= 4000000) {
                 // $fileName = time() . '-' . $_FILES['image']['name'];
 
-=======
-            if (in_array($mimeType, $allowedTypes) && $file['size'] <= 4000000) {
-                /* $fileName = time() . '-' . $_FILES['image']['name']; */
-<<<<<<< HEAD
->>>>>>> 89a2d1e (resolution de bugs)
-=======
->>>>>>> c96e5d84eee2a5f0b32d7691bb7da8516dc72a06
                 move_uploaded_file($tmp_name, "assets/uploads/$fileName");
 
                 //insère data dans la bdd
@@ -97,10 +89,11 @@ if (isset($_POST['create'])) {
     <title>Create Article</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@300&family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
@@ -126,28 +119,20 @@ if (isset($_POST['create'])) {
     </script>
 </head>
 
-<body>
+<body id="create">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     <?php
     include 'includes/header.php';
     $categories = $article->getCategories();
     ?>
-=======
-    <?php include 'includes/header.php';
-    $categories = $article->getCategories(); ?>
->>>>>>> 89a2d1e (resolution de bugs)
-=======
-    <?php include 'includes/header.php';
-    $categories = $article->getCategories(); ?>
->>>>>>> c96e5d84eee2a5f0b32d7691bb7da8516dc72a06
 
     <wrapper>
 
         <main>
             <div class="container">
-                <h1>Créer un article</h1>
+
+                <h1 class="title" data-aos="fade-in">Créer un article</h1>
+
                 <!-- Affiche les messages d'erreur et de succès -->
                 <?php
                 if (isset($errorMsg)) {
@@ -158,7 +143,7 @@ if (isset($_POST['create'])) {
                     echo '</p>';
                 }
                 ?>
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data" class=" w-50" data-aos="zoom-in">
                     <div>
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" required>
@@ -194,6 +179,11 @@ if (isset($_POST['create'])) {
         <div class="push"></div>
 
     </wrapper>
+
+    <!-- Animations AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script> AOS.init(); </script>
+
 </body>
 
 </html>
