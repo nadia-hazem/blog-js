@@ -41,8 +41,8 @@ $user = new User($db);
                     
                     <h1>Inscription</h1>
                     
-                    <div class="row">
-                        <p> Vous avez déjà un compte ? </p> <button id="switchConn" class="switch">Connexion</button>
+                    <div class="row m-2">
+                        <p><b>Vous avez déjà un compte ? </b></p> <button id="switchConn" class="switch">Connexion</button>
                     </div>
                     
                     <form method="post"  class="auth_form">
@@ -79,8 +79,8 @@ $user = new User($db);
                     
                     <h1>Connexion</h1>
                     
-                    <div class="row">
-                        <p> Vous n'avez pas encore de compte ? </p> <button id="switchInsc" class="switch">Inscription</button>
+                    <div class="row m-2">
+                        <p><b>Vous n'avez pas encore de compte ? </b></p> <button id="switchInsc" class="switch">Inscription</button>
                     </div>
 
                     <form method="post" class="auth_form">

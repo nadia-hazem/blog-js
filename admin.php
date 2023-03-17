@@ -69,11 +69,11 @@ if (!$user->isUserAdmin()) {
 
                 </section> <!-- /selection -->
 
-                <section id="gestion"> </section>
+                <section id="gestion" class="mb-2 p-1"> </section>
 
-                <section id="article"> </section>
+                <section id="article" class="mb-2 p-1"> </section>
 
-                <section id="commentaires"> </section>
+                <section id="commentaires" class="mb-2 p-1"> </section>
 
             </div> <!-- /container -->
 

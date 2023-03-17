@@ -44,52 +44,44 @@ $login = $user->getLogin();
 
         <main>
 
-            <div class="m-2">
+            <h1 class="title">Profil</h1>
+            <div class="row wrap w-100">
 
-                <h1>Profil</h1>
-                <div class="row wrap">
-                    <div id="login" class="col">
+                <div id="login" class="row">
 
-                        <form action="" method="post" id="loginForm">
-                            <h2 class="mb-1">Modifier le login</h2>
-                            <label for="login">login</label>
-                            <input type="text" name="login" class="login" value="<?= $login ?>" required>
-                            <p></p>
-                            <label for="password">Mot de passe</label>
-                            <input type="password" name="password" class="password" placeholder="Mot de passe" required>
-                            <p></p>
-                            <input type="submit" value="Modifier" name="send" id="btnModifLogin">
-                            <p></p>
-                        </form>
+                    <form action="" method="post" id="loginForm" class="col gap mb-2">
+                        <h2 class="mb-1">Modifier le login</h2>
+                        <label for="login">login</label>
+                        <input type="text" name="login" class="login" value="<?= $login ?>" required>
+                        <p></p>
+                        <label for="password">Mot de passe</label>
+                        <input type="password" name="password" class="password" placeholder="Mot de passe" required>
+                        <p></p>
+                        <input type="submit" value="Modifier" name="send" id="btnModifLogin">
+                        <p></p>
+                    </form>
 
-                    </div>
+                </div>
 
-                    <div id="password" class="col">
+                <div id="password" class="row">
 
-                        <form action="" method="post" id="passwordForm">
-                            <h2 class="mb-1">Modifier le mot de passe</h2>
-                            <label for="password">Ancien mot de passe</label>
-                            <input type="password" name="password" class="password" placeholder="Mot de passe" id="oldPassword" required>
-                            <p></p>
-                            <label for="newPassword">Nouveau mot de passe</label>
-                            <input type="password" name="newPassword" id="newPassword" class="password" placeholder="nouveau mot de passe" required>
-                            <p></p>
-                            <label for="newPassword2">Confirmation</label>
-                            <input type="password" name="newPassword2" id="newPassword2" class="password" placeholder="Confirmation du nouveau mot de passe" required>
-                            <p></p>
-                            <input type="submit" value="Modifier" name="send" id="btnModifPass">
-                            <p></p>
-                        </form>
+                    <form action="" method="post" id="passwordForm" class="col gap mb-2">
+                        <h2 class="mb-1">Modifier le mot de passe</h2>
+                        <label for="password">Ancien mot de passe</label>
+                        <input type="password" name="password" class="password" placeholder="Mot de passe" id="oldPassword" required>
+                        <p></p>
+                        <label for="newPassword">Nouveau mot de passe</label>
+                        <input type="password" name="newPassword" id="newPassword" class="password" placeholder="nouveau mot de passe" required>
+                        <p></p>
+                        <label for="newPassword2">Confirmation</label>
+                        <input type="password" name="newPassword2" id="newPassword2" class="password" placeholder="Confirmez mot de passe" required>
+                        <p></p>
+                        <input type="submit" value="Modifier" name="send" id="btnModifPass">
+                        <p></p>
+                    </form>
 
-                    </div>
                 </div>
             </div>
-
-            <div class="container">
-
-                <!-- contenu -->
-
-            </div> <!-- /container -->
 
         </main>
 

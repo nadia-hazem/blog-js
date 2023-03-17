@@ -59,7 +59,7 @@ if (isset($_GET['categInt'])) {
 
             <section class="blog">
 
-                <h1>Trippy Blog</h1>
+                <h1 class="title">Trippy Blog</h1>
 
             </section>
 
@@ -73,7 +73,7 @@ if (isset($_GET['categInt'])) {
                 }
                 ?>
 
-                <div id="divCateg">
+                <div id="divCateg" class="text-center radius">
                     <label for="category" class="p-1"><h2>Catégorie</h2></label>
                     <select name="categorie" id="selectCategory"></select>
                 </div>

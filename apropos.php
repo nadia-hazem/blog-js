@@ -16,6 +16,7 @@ $user = new User($db);
     <title>A Propos</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
@@ -38,20 +39,20 @@ $user = new User($db);
 
             <section class="hero">
 
-                <h1>A Propos</h1>
+                <h1 class="title">A Propos</h1>
 
             </section>
             
             <h5 class="text-center text-mute">Développé par Nadia et Thomas</h5>
 
-            <div class="container bg-sable px-1 radius"> <!-- Présentation -->
-                <div class="row wrap">
-                    <div class="col p-1 franklin">                    
+            <div class="container bg-sable radius"> <!-- Présentation -->
+                <div class="row wrap m-auto">
+                    <div class="col p-2 franklin">                    
                         <p>Ce site est un projet de formation en développement web dans le cadre de la formation de développeur web, Titre RNCP5 au sein du Campus numérique de "La Plateforme_". C'est un projet en groupe de 2 personnes, réalisé par <a href="https://github.com/nadia-hazem/blog-js" target="_blank">Nadia Hazem</a> et <a href="https://github.com/thomas-spinec/blog-js" target="_blank">Thomas Spinec.</a></p>
                         <p>L'objectif est de mettre en pratique nos compétences en matière de code et création de sites web et de vous offrir une expérience de navigation agréable.</p>
                     </div>
                     <div class="col p-1 colcenter">
-                        <a href="https://laplateforme.io/" target="_blank"><img src="assets/img/logo_laplateforme_bleu3.png" width="300px" alt="logo plateforme"></a>
+                        <a href="https://laplateforme.io/" target="_blank"><img src="assets/img/logo_laplateforme_bleu3.png" width="300px" alt="logo plateforme" data-aos="fade-in"></a>
                         <p>Campus numérique Méditérranéen</p>
                         <p><small>Marseille 13002</small></p>
                     </div>
@@ -61,7 +62,7 @@ $user = new User($db);
             <div class="container present"> <!-- Présentation du projet -->
 
                 <div class="row wrap"> 
-                    <div class="col gap card bg-light p-1">
+                    <div class="col gap card bg-light p-1" data-aos="fade-right"> 
                         <h3 class="text-center"><i class="fas fa-info"></i>&nbsp; Le sujet</h3>
                         <p>Il s'agit de réaliser un blog avec les langages suivants :</p>
                         <ul>
@@ -72,7 +73,7 @@ $user = new User($db);
                             <li class="square">Javascript</li>
                         </ul>
                     </div>
-                    <div class="col gap card bg-light p-1">
+                    <div class="col gap card bg-light p-1" data-aos="flip-up">
                         <h3 class="text-center"><i class="fas fa-sitemap"></i>&nbsp; Compétences visées</h3>
                         <ul>                            
                             <li class="square">Architecture de base de données : MCD / MLD / MPD</li>
@@ -82,7 +83,7 @@ $user = new User($db);
                             <li class="square">Utilisation des paramètre de l’URL</li>
                         </ul>
                     </div>
-                    <div class="col gap card bg-light p-1">
+                    <div class="col gap card bg-light p-1" data-aos="fade-left">
                         <h3 class="text-center"><i class="fas fa-wrench"></i>&nbsp; Compétences du REAC validées</h3>
                         <ul>
                             <li class="square">Développer une interface utilisateur web dynamique</li>
@@ -97,54 +98,50 @@ $user = new User($db);
 
             <div class="container"> <!-- Descriptif du projet -->
 
-                <section class="description bg-light p-1 radius shadow">
+                <section class="description bg-light m-1 p-2 radius shadow">
                     <div class="row wrap">
                         <h2>Descriptif du projet &nbsp;
-                        <i class="fab fa-php"></i>
-                        <i class="fab fa-js"></i>
-                        <i class="fab fa-html5"></i>
-                        <i class="fab fa-css3-alt"></i></h2>
+                        <i class="fab fa-php" data-aos="fade-left"></i>
+                        <i class="fab fa-js" data-aos="fade-left"></i>
+                        <i class="fab fa-html5" data-aos="fade-left"></i>
+                        <i class="fab fa-css3-alt" data-aos="fade-left"></i></h2>
                     </div>
                     <p>Créer un blog afin de publier des articles personnels et d’échanger avec
                     les visiteurs. Choix du thème du blog, libre. Travailler l’esthétique pour
                     avoir le rendu le plus professionnel possible.</p>
                     <p>Voici la liste des fonctionnalités que tout blog digne de ce nom se doit d'avoir :</p>
-                    <ul class="square">
-                        <li class="square">Une page d'accueil : Elle contient les derniers articles mis en ligne et quelques call-to-actions.</li>
-                        <li class="square">Une page permettant aux utilisateurs de s'authentifier. Faire apparaître un formulaire de connexion et d'inscription au clic d'un bouton. L'inscription doit se faire avec une requête asynchrone et les vérifications des formulaires doivent être faites en front et en back.</li>
-                        <li class="square">Une fois inscrit et connecté, vous êtes redirigé vers une page affichant les informations du profil. L'utilisateur doit pouvoir modifier ses informations et ce sans rechargement de page.</li>
-                        <li class="square">Une page qui présente les différents articles du blog. La page présente un nombre limité d'articles (entre 5 et 20) avec une pagination pour voir les autres articles. Cette pagination doit se faire avec un paramètre GET dans la requête (exemple : ?page=1).</li>
-                        <li class="square">Une page qui permet de créer des articles : La page est accessible uniquement aux personnes qui possèdent les rôles permettant de rédiger un article (modérateurs et administrateurs). Chaque article est lié à une catégorie.</li>
-                        <li class="square">Une page qui affiche le contenu d’un article et les commentaires associés : La récupération de l’article est gérée via un paramètre dans la requête GET (ex :
-                        ?article=1). Cette page est donc une template remplie avec les informations de
-                        l’article correspondant à chaque fois.</li>
-                        <li class="square">Une page d’administration : Ce panel admin permet aux administrateurs de votre site de gérer l’ensemble des utilisateurs, articles, commentaires, catégories, droits, etc.</li>
-                        <li class="square">Toutes les pages doivent présenter un header et un footer contenant les mêmes liens et ayant les mêmes informations.</li> 
-                    </ul>
                     
-                    </p>
+                    <p><i class="fas fa-caret-right"></i>&nbsp;Une page d'accueil : Elle contient les derniers articles mis en ligne et quelques call-to-actions.</p>
+                    <p><i class="fas fa-caret-right"></i>&nbsp;Une page permettant aux utilisateurs de s'authentifier. Faire apparaître un formulaire de connexion et d'inscription au clic d'un bouton. L'inscription doit se faire avec une requête asynchrone et les vérifications des formulaires doivent être faites en front et en back.</p>
+                    <p><i class="fas fa-caret-right"></i>&nbsp;Une fois inscrit et connecté, vous êtes redirigé vers une page affichant les informations du profil. L'utilisateur doit pouvoir modifier ses informations et ce sans rechargement de page.</p>
+                    <p><i class="fas fa-caret-right"></i>&nbsp;Une page qui présente les différents articles du blog. La page présente un nombre limité d'articles (entre 5 et 20) avec une pagination pour voir les autres articles. Cette pagination doit se faire avec un paramètre GET dans la requête (exemple : ?page=1).</p>
+                    <p><i class="fas fa-caret-right"></i>&nbsp;Une page qui permet de créer des articles : La page est accessible uniquement aux personnes qui possèdent les rôles permettant de rédiger un article (modérateurs et administrateurs). Chaque article est lié à une catégorie.</p>
+                    <p><i class="fas fa-caret-right"></i>&nbsp;Une page qui affiche le contenu d’un article et les commentaires associés : La récupération de l’article est gérée via un paramètre dans la requête GET (ex : ?article=1). Cette page est donc une template remplie avec les informations de l’article correspondant à chaque fois.</p>
+                    <p><i class="fas fa-caret-right"></i>&nbsp;Une page d’administration : Ce panel admin permet aux administrateurs de votre site de gérer l’ensemble des utilisateurs, articles, commentaires, catégories, droits, etc.</p>
+                    <p><i class="fas fa-caret-right"></i>&nbsp;Toutes les pages doivent présenter un header et un footer contenant les mêmes liens et ayant les mêmes informations.</p> 
                 
                 </section>
             </div> <!-- /container -->
 
-            <div class="container bg-bleumoyen p-2"> <!-- Répartition des tâches -->
+            <div class="container bg-bleumoyen"> <!-- Répartition des tâches -->
 
-                <div class="row wrap">
+                <div class="row wrap w-100">
+                    
                     <div class="col bg-sable shadow py-4">
-                        <h4 class="text-center"> Code source du projet sur GitHub</h4><br>
+                        <h3 class="text-center p-1"> Code source du projet sur GitHub</h3><br>
                         <a class="text-center colcenter" href="https://github.com/nadia-hazem/blog-js" title="Github" target="_blank"><img src="assets/img/github.svg" width="50"></a>
 
                     </div>
-                    <div class="col">
+                    <div class="col p-1">
                         <p class="gap text-white">Vous trouverez d'autres projets réalisés tout au long de ce cursus de développeur web ainsi que nos CV, sur nos portfolio respectifs</p>
                     </div>
-                    <div class="col ">
+                    <div class="col p-1">
                         <p class="gap text-white">N'hésitez pas à y faire une petite visite pour y découvrir ce que nous réalisons en backend et frontend.</p>
 
-                        <div class="rowjustifybetween m-2">
-                            <a class="text-center" href="https://nadia-hazem.students-laplateforme.io/" title="Portfolio nadia" target="_blank"><img src="assets/img/logo-nadia.jpg" width="120px" class="shadow"></a>
+                        <div class="row m-1">
+                            <a class="text-center gap" href="https://nadia-hazem.students-laplateforme.io/" title="Portfolio nadia" target="_blank"><img src="assets/img/logo-nadia.jpg" width="120px" class="shadow"></a>
 
-                            <a class="text-center" href="https://thomas-spinec.students-laplateforme.io/" title="Portfolio thomas" target="_blank"><img src="assets/img/logo-thomas.jpg" width="120px" class="shadow"></a>
+                            <a class="text-center gap" href="https://thomas-spinec.students-laplateforme.io/" title="Portfolio thomas" target="_blank"><img src="assets/img/logo-thomas.jpg" width="120px" class="shadow"></a>
 
                         </div>
                     </div>
@@ -184,5 +181,9 @@ $user = new User($db);
 
     <?php include 'includes/footer.php'; ?>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script> AOS.init(); </script>
+    
 </body>
 </html>

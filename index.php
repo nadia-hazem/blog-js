@@ -69,15 +69,13 @@ $articlesPerPage = 4;
                 <div class="container col">
                     <h1 class="franklin">Trippy Le blog de voyage</h1>
                     <div class="row wrap">
-                        <div class="col my-2">
-                            <img src="assets/img/stamp.png" width="300px" alt="Tampons de douane">
+                        <div class="col my-1 colcenter">
+                            <img src="assets/img/stamp.png" class="" width="300px" alt="Tampons de douane">
                         </div>
-                        <div class="col my-2">
+                        <div class="col my-2 p-2">
                             <h3>Si vous êtes passionné(e) de voyage et que vous cherchez des idées d'itinéraires, des astuces pour économiser de l'argent et des conseils pour découvrir des endroits incroyables dans le monde entier, vous êtes au bon endroit !</h3>
-
-                            <p>Sur ce blog, nous partageons nos aventures de voyage et nos expériences, ainsi que nos coups de cœur et nos déceptions. Que vous soyez à la recherche d'inspiration pour votre prochaine destination ou que vous souhaitiez simplement en savoir plus sur les voyages, vous trouverez ici une mine d'informations pour vous aider à planifier votre prochaine aventure.</p>
-
                             <p>En parcourant notre blog, vous découvrirez des récits de voyages passionnants, des astuces pour voyager à petit budget, des guides et des conseils pour la sécurité en voyage et bien plus encore.</p>
+                            <p>Vous trouverez ici une mine d'informations pour vous aider à planifier votre prochaine aventure.</p>
                         </div>
                     </div>
                 </div>
@@ -88,7 +86,7 @@ $articlesPerPage = 4;
                     <h2 class="double py-5">Conseils de voyage</h2>
 
                     <div class="row wrap">
-                        <div class="col relative border-white card mx-1">
+                        <div class=" colcenter relative border-white cardimg mx-1">
                             <div class="hoverlayer"></div>
                             <a href="#"><img src="assets/img/1.png" alt="guide">
                                 <div class="absolute-text">
@@ -97,7 +95,7 @@ $articlesPerPage = 4;
                             </a>
                         </div> <!-- /col -->
 
-                        <div class="col relative border-white card mx-1">
+                        <div class=" relative border-white cardimg mx-1">
                             <div class="hoverlayer"></div>
                             <a href="#"><img src="assets/img/2.png" alt="inspiration">
                                 <div class="absolute-text">
@@ -106,7 +104,7 @@ $articlesPerPage = 4;
                             </a>
                         </div> <!-- /col -->
 
-                        <div class="col relative border-white card mx-1">
+                        <div class=" relative border-white cardimg mx-1">
                             <div class="hoverlayer"></div>
                             <a href="#"><img src="assets/img/3.png" alt="bons plans">
                                 <div class="absolute-text">
@@ -118,10 +116,10 @@ $articlesPerPage = 4;
                 </div> <!-- /container -->
             </section>
 
-            <section class="bg-sable h-50 py5">
+            <section class="bg-sable h-50 mb-4">
                 <h2 class="py-2">Destinations</h2>
 
-                <div class="row wrap m-2 py-5">
+                <div class="row wrap m-2 py-2">
 
                     <a href="blog.php?categInt=3">
                         <div class="col continent px-2">
@@ -160,6 +158,7 @@ $articlesPerPage = 4;
                         </div>
                     </a>
                 </div>
+                <br>
             </section>
 
 

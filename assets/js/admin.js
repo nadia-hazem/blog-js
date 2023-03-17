@@ -482,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tdForm.setAttribute("colspan", "2");
         const formCateg = document.createElement("form");
         formCateg.setAttribute("id", "formAddCategorie");
-        formCateg.classList.add("my-2");
+        formCateg.classList.add("my-2", "formcateg");
         tdForm.appendChild(formCateg);
         const h2 = document.createElement("h2");
         h2.textContent = "Ajouter une catégorie";
@@ -571,7 +571,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateCategorie(target, id) {
     const form = new FormData(target);
     if (form.get("category") == "") {
-      alert("Veuillez remplir tout les champs");
+      alert("Veuillez remplir tous les champs");
     }
     fetch("assets/php/adminGestion.php?updateCategory=" + id, {
       method: "POST",
