@@ -23,6 +23,8 @@ $id_article = $_GET['id'];
     <title>Article</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +33,7 @@ $id_article = $_GET['id'];
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/article.js"></script>
 
 </head>
 
@@ -50,6 +53,8 @@ $id_article = $_GET['id'];
     $categories = $item['categ'];
     $description = $item['description'];
     $image = $item['image'];
+    $likes = $item['likes'];
+    $dislikes = $item['dislikes'];
     ?>
 
     <div class="wrapper">
@@ -72,7 +77,11 @@ $id_article = $_GET['id'];
 
                 </div> <!-- /content -->
 
+                <div class="vote " data-id="<?= $id_article ?>">
+
+                </div>
             </div> <!-- /container -->
+
 
             <h2>Commentaires</h2>
             <section id="comments" class="container bg-light border radius p-2">
@@ -80,20 +89,20 @@ $id_article = $_GET['id'];
                 <?php
                 $comments = $comment->getComments($id);
                 if ($comments !== null) {
-                    foreach($comments as $comment):
+                    foreach ($comments as $comment) :
                         $id = $comment['id'];
                         $auteur = $comment['auteur'];
                         $date = $comment['date'];
                         $commentaire = $comment['commentaire'];
                         $sujet = $comment['sujet'];
-                        ?>
+                ?>
                         <div class="comment">
-                        <h3><?=$sujet?></h3>
-                        <small class="comment-meta">Publié le <?=$date?></small>
-                        <p><?=$commentaire?></p>
-                        <hr>
+                            <h3><?= $sujet ?></h3>
+                            <small class="comment-meta">Publié le <?= $date ?></small>
+                            <p><?= $commentaire ?></p>
+                            <hr>
                         </div>
-                    <?php
+                <?php
                     endforeach;
                 } else {
                     echo '<p>Aucun commentaire trouvé, soyez le premier !</p>';
@@ -107,18 +116,17 @@ $id_article = $_GET['id'];
                 <?php
                 if (!$user->isConnected()) {
                     echo '<p>Vous devez être connecté pour laisser un commentaire.</p>';
-                }
-                else {
+                } else {
                 ?>
-                <form action="assets/php/leaveComment.php" method="post" class="m-auto">
+                    <form action="assets/php/leaveComment.php" method="post" class="m-auto">
 
-                    <input type="hidden" name="id_article" value="<?= $id_article ?>">
-                    <input type="sujet" class="" name="sujet" placeholder="Sujet">
-                    <label for="commentaire">Votre commentaire :</label>
-                    <textarea name="commentaire" cols="40" rows="10"></textarea>
-                    <input type="submit" class="" name="submit" value="Signer">
+                        <input type="hidden" name="id_article" value="<?= $id_article ?>">
+                        <input type="sujet" class="" name="sujet" placeholder="Sujet">
+                        <label for="commentaire">Votre commentaire :</label>
+                        <textarea name="commentaire" cols="40" rows="10"></textarea>
+                        <input type="submit" class="" name="submit" value="Signer">
 
-                </form>
+                    </form>
                 <?php
                 }
                 ?>

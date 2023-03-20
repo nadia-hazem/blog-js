@@ -369,4 +369,146 @@ class Article
         // fermeture de la co a la bdd
         $this->bdd = null;
     }
+
+    // verif que l'article existe
+    private function articleExist($id_article)
+    {
+        // requête
+        $request = "SELECT * FROM articles WHERE id = :id_article";
+        $select = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $select->execute([
+            'id_article' => $id_article
+        ]);
+        if ($select->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // like d'un article
+    public function like($id_article, $id_utilisateur)
+    {
+        return $this->vote($id_article, $id_utilisateur, 1);
+    }
+
+    // dislike d'un article
+    public function dislike($id_article, $id_utilisateur)
+    {
+        return $this->vote($id_article, $id_utilisateur, -1);
+    }
+
+    // réalisation du vote
+    private function vote($id_article, $id_utilisateur, $valeur)
+    {
+        // verif que l'article existe
+        if ($this->articleExist($id_article) == false) {
+            return "article inexistant";
+            // return false;
+        }
+        // verif que l'utilisateur n'a pas déjà voté
+        $request = "SELECT * FROM votes WHERE id_article = :id_article AND id_utilisateur = :id_utilisateur";
+        $select = $this->bdd->prepare($request);
+        $select->execute([
+            'id_article' => $id_article,
+            'id_utilisateur' => $id_utilisateur
+        ]);
+        $vote = $select->fetch(PDO::FETCH_ASSOC);
+        if ($vote) {
+            if ($vote['valeur'] == $valeur) {
+                // delete
+                $request = "DELETE FROM votes WHERE id_article = :id_article AND id_utilisateur = :id_utilisateur";
+                $delete = $this->bdd->prepare($request);
+                $delete->execute([
+                    'id_article' => $id_article,
+                    'id_utilisateur' => $id_utilisateur
+                ]);
+                return true;
+            }
+            // update
+            $request = "UPDATE votes SET valeur = :valeur WHERE id_article = :id_article AND id_utilisateur = :id_utilisateur";
+            $update = $this->bdd->prepare($request);
+            $update->execute([
+                'valeur' => $valeur,
+                'id_article' => $id_article,
+                'id_utilisateur' => $id_utilisateur
+            ]);
+            return true;
+        }
+        // requête
+        $request = "INSERT INTO votes SET id_article = :id_article, id_utilisateur = :id_utilisateur, valeur = :valeur";
+        $insert = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $insert->execute([
+            'id_article' => $id_article,
+            'id_utilisateur' => $id_utilisateur,
+            'valeur' => $valeur
+        ]);
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+        return true;
+    }
+
+    // update des likes et dislikes d'un article
+    public function updateLikes($id_article)
+    {
+        // verif que l'article existe
+        if ($this->articleExist($id_article) == false) {
+            return false;
+        }
+        // requête
+        $request = "SELECT COUNT(valeur) AS total, valeur FROM votes WHERE id_article = :id_article GROUP BY valeur";
+        $select = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $select->execute([
+            'id_article' => $id_article
+        ]);
+        // récupération des résultats
+        $likes = $select->fetchAll();
+        $counts = [
+            '1' => 0,
+            '-1' => 0
+        ];
+        foreach ($likes as $like) {
+            $counts[$like['valeur']] = $like['total'];
+        }
+
+        // requête
+        $request = "UPDATE articles SET likes = :likes, dislikes = :dislikes WHERE id = :id_article";
+        $update = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $update->execute([
+            'likes' => $counts['1'],
+            'dislikes' => $counts['-1'],
+            'id_article' => $id_article
+        ]);
+        // fermeture de la co a la bdd
+        $this->bdd = null;
+        return true;
+    }
+
+    // check si un utilisateur a déjà voté pour un article
+    public function checkVote($id_article, $id_utilisateur)
+    {
+        // verif que l'article existe
+        if ($this->articleExist($id_article) == false) {
+            return false;
+        }
+        // requête
+        $request = "SELECT valeur FROM votes WHERE id_article = :id_article AND id_utilisateur = :id_utilisateur";
+        $select = $this->bdd->prepare($request);
+        // execution avec liaison des param
+        $select->execute([
+            'id_article' => $id_article,
+            'id_utilisateur' => $id_utilisateur
+        ]);
+        // récupération des résultats
+        $vote = $select->fetch(PDO::FETCH_ASSOC);
+        if ($vote) {
+            return $vote['valeur'];
+        } else {
+            return 0;
+        }
+    }
 }
