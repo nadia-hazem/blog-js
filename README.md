@@ -17,3 +17,5 @@ A blog to publish personal articles and exchange with your visitors. Here is the
 - An administration page: This admin panel allows administrators of your site to manage all users, articles, comments, categories, rights, etc.
 
 - All pages must have a header and a footer containing the same links and having the same information.
+
+[Accueil blog-js](https://github.com/nadia-hazem/blog-js/blob/7df8ca373e356d4872fbeee1ad5c8df2dd01748d/assets/img/screenshot-1.png)
