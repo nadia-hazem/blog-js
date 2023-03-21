@@ -1,37 +1,19 @@
 # blog-js
 
-Un blog afin de publier des articles personnels et d’échanger avec
-vos visiteurs.
-Voici la liste des fonctionnalités :
-- Une page d'accueil : Elle contient les derniers articles mis en ligne et quelques
-call-to-actions.
+A blog to publish personal articles and exchange with your visitors. Here is the list of features:
 
-- Une page permettant aux utilisateurs de s'authentifier. Sur cette page vous
-avec un formulaire de connexion et d'inscription au clic d'un bouton. 
-L'inscription doit se faire avec une requête asynchrone et les vérifications
-des formulaires doivent être faites en front et en back.
+- A home page: It contains the latest articles put online and some call-to-actions.
 
-- Une fois inscrit et connecté, vous êtes redirigé vers une page affichant les
-informations du profil. L'utilisateur doit pouvoir modifier ses informations et ce
-sans rechargement de page.
+- A page allowing users to authenticate. On this page, a login and registration form at the click of a button. Registration must be done with an asynchronous request and form checks must be done front and back.
 
-- Une page qui présente les différents articles du blog. La page présente un
-nombre limité d'articles (entre 5 et 20) avec une pagination pour voir les autres
-articles. Cette pagination doit se faire avec un paramètre GET dans la requête
-(exemple : ?page=1).
+- Once registered and logged in, you are redirected to a page displaying profile information. The user must be able to modify his information without reloading the page.
 
-- Une page qui permet de créer des articles : La page est accessible uniquement
-aux personnes qui possèdent les rôles permettant de rédiger un article
-(modérateurs et administrateurs). Chaque article est lié à une catégorie.
+- A page that presents the different articles of the blog. The page presents a limited number of articles (between 5 and 20) with pagination to see the other articles. This pagination must be done with a GET parameter in the request (example: ?page=1).
 
-- Une page qui affiche le contenu d’un article et les commentaires associés : La
-récupération de l’article est gérée via un paramètre dans la requête GET (ex :
-?article=1). Cette page est donc une template remplie avec les informations de
-l’article correspondant à chaque fois.
+- A page that allows you to create articles: The page is only accessible to people who have the roles to write an article (moderators and administrators). Each article is linked to a category.
 
-- Une page d’administration : Ce panel admin permet aux administrateurs de votre
-site de gérer l’ensemble des utilisateurs, articles, commentaires, catégories,
-droits, etc.
+- A page that displays the content of an article and the associated comments: The retrieval of the article is managed via a parameter in the GET request (ex: ?article=1). This page is therefore a template filled with the information of the corresponding article each time.
 
-Toutes les pages doivent présenter un header et un footer contenant les mêmes liens et
-ayant les mêmes informations.
+- An administration page: This admin panel allows administrators of your site to manage all users, articles, comments, categories, rights, etc.
+
+- All pages must have a header and a footer containing the same links and having the same information.
