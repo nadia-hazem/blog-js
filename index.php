@@ -184,7 +184,8 @@ $articlesPerPage = 4;
                                 </div>
                             </div>
                         </li>
-                        <?php
+                        </ol>
+                    <?php
                     } ?>
 
                 </ul>
@@ -199,7 +200,9 @@ $articlesPerPage = 4;
 
     <!-- Animations AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init(); </script>
+    <script>
+        AOS.init();
+    </script>
     <!-- >Javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
