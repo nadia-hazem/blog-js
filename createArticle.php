@@ -162,7 +162,7 @@ if (isset($_POST['create'])) {
 
                     <div>
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
                     </div>
                     <div>
                         <label for="category">Catégorie</label>

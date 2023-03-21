@@ -773,6 +773,11 @@ button:hover {
   color: #72bbbe;
   background-color: #94bfbc !important;
 }
+
+#preview {
+    width: 100%;
+    margin-bottom: 2rem;
+}
 /*** TABLE ***/
 
 /* Style de la table */
