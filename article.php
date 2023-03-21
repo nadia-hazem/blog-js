@@ -34,6 +34,23 @@ $id_article = $_GET['id'];
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/article.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const articleDesc = document.querySelector('.article-description');
+            // récupérer l'id de l'article via la variable get
+            const id = new URLSearchParams(window.location.search).get('id');
+            // récupération de la description via la page description.php
+            fetch(`assets/php/description.php?desc=${id}`)
+                .then(response => response.text())
+                .then(text => {
+                    // enlever les guillemets de la description
+                    const desc = text.replace(/"/g, '');
+                    // afficher la description
+                    articleDesc.innerHTML = desc;
+
+                });
+        });
+    </script>
 
 </head>
 

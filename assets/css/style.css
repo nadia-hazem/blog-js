@@ -581,18 +581,18 @@ header ul li a {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 5% auto;
-    width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5% auto;
+  width: 90%;
 }
 
 main {
-width: 100%;
-min-height: 100%;
-margin: 0;
-text-align: justify;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  text-align: justify;
 }
 /*fixe le bug de la hauteur du screen à l'animation*/
 .mainforms {
@@ -693,36 +693,37 @@ placeholder {
   padding-left: 10px;
 }
 form {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    padding: 3rem;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #dfe0d8;   
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 3rem;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #dfe0d8;
+  margin: 0 auto;
 }
 
 form label {
-    margin-right: 0px;
-    margin-left: 0px;
-    width: 100%;
-    text-align: left;
+  margin-right: 0px;
+  margin-left: 0px;
+  width: 100%;
+  text-align: left;
 }
 
 form input[type="text"],
 form input[type="password"],
 form input[type="file"],
 form select,
-form textarea, .password {
-    padding: 5px;
-    border: 1px solid #dfe0d8;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
-    resize: vertical;
+form textarea,
+.password {
+  padding: 5px;
+  border: 1px solid #dfe0d8;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
 }
 
 form input[type="file"] {
@@ -733,12 +734,12 @@ form input[type="file"] {
 }
 
 form input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #0bb6e5;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px 20px;
+  background-color: #0bb6e5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 form input[type="submit"]:hover,
@@ -859,11 +860,10 @@ table tr:hover {
 }
 
 .cardimg {
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 /*** ARTICLE ***/
@@ -984,14 +984,14 @@ table tr:hover {
 }
 /***/
 .thumb {
-    display: flex;
-    width: 240px;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 1rem;
-    background: #fafafa;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  width: 240px;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 1rem;
+  background: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .thumb img {
@@ -1100,20 +1100,11 @@ a#categories {
 
 /***A PROPOS ***/
 
-.presentation {
-    display: flex;
-}
-
-.langages {
-    display: flex;
-}
-.langages>div {
-
-}
-.github:hover, .perso:hover {
-    transform: scale(1.2);
-    transition: 0.5s;
-    text-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+.github:hover,
+.perso:hover {
+  transform: scale(1.2);
+  transition: 0.5s;
+  text-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
 }
 
 .keyword {
@@ -1204,113 +1195,84 @@ select option .optioncat:hover {
 }
 
 .current_page.active {
-    color: #65a9d7;
-    font-weight: bold;
+  color: #65a9d7;
+  font-weight: bold;
 }
 
 /*** FOOTER ***/
 
 footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
 }
 /*** MEDIA QUERY ***/
 @media all and (max-width: 940px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent !important;
+    border: none;
+  }
 
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: transparent !important;
-        border: none;
-    }
-    
-    .presentation {
-        display: flex;
-        flex-direction: column;
-    }
+  .presentation {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .langages>div {
-        flex-basis: 45%;
-    }
-
-    .blog-cards {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /***mobile nav***/
-    burgerButton {
-        display: block;
-        width: 60px;
-        height: 60px;
-        color: black;
-        font-weight: 600;
-        cursor: pointer;
-        margin-bottom: 5px;
-        position: absolute;
-        top: 3px;
-    }
-    burgerButton:hover {
-        content: "\2261";
-    }
-    burgerButton:after {
-        position: absolute;
-        left: 20px;
-        top: 3px;
-        font-size: 40px;
-    }
-    nav {
-        width: 100%;
-        margin: 0;
-    }
-
-    nav.open burgerButton:after {
-        content: "\00d7";
-    }
-
-    nav.close burgerButton:after {
-        content: "\2261";
-    }
-    nav.close ul {
-        display: none;
-    }
-    nav.open ul {
-        display: flex;
-        flex-direction: column;
-    }
-    nav.open ul li {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-        border-bottom: 1px solid #ddd;
-        background: #fafafa;
-    }
-    nav.open ul li:hover {
-        background-color: #53c8e8;
-        color: #fff;
-    }
-    /***end mobile nav***/
-
-  .container {
+  burgerButton {
+    display: block;
+    width: 60px;
+    height: 60px;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 3px;
+  }
+  burgerButton:hover {
+    content: "\2261";
+  }
+  burgerButton:after {
+    position: absolute;
+    left: 20px;
+    top: 3px;
+    font-size: 40px;
+  }
+  nav {
     width: 100%;
-  }
-  .card {
-    width: 75%;
+    margin: 0;
   }
 
-  .formulaire {
+  nav.open burgerButton:after {
+    content: "\00d7";
+  }
+
+  nav.close burgerButton:after {
+    content: "\2261";
+  }
+  nav.close ul {
+    display: none;
+  }
+  nav.open ul {
     display: flex;
     flex-direction: column;
   }
-
-  .indextext {
-    display: flex;
-    flex-direction: column;
+  nav.open ul li {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    background: #fafafa;
   }
+  nav.open ul li:hover {
+    background-color: #53c8e8;
+    color: #fff;
+  }
+  /***end mobile nav***/
 }
