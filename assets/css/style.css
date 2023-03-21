@@ -858,13 +858,14 @@ table tr:hover {
     flex-direction: column;
     width: 250px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
 }
+
 /*** ARTICLE ***/
 
 .article {
   display: flex;
   flex-direction: column;
-  width: 100%;
   height: 100%;
   border-radius: 5px;
   margin-bottom: 5rem;
@@ -941,7 +942,7 @@ table tr:hover {
 
 /*** INDEX ***/
 
-.blog-slider {
+.blog-cards {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1094,6 +1095,16 @@ a#categories {
 
 /***A PROPOS ***/
 
+.presentation {
+    display: flex;
+}
+
+.langages {
+    display: flex;
+}
+.langages>div {
+
+}
 .github:hover, .perso:hover {
     transform: scale(1.2);
     transition: 0.5s;
@@ -1188,45 +1199,46 @@ select option .optioncat:hover {
 }
 
 .current_page.active {
-  color: #65a9d7;
-  font-weight: bold;
+    color: #65a9d7;
+    font-weight: bold;
 }
 
 /*** FOOTER ***/
 
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
 }
 /*** MEDIA QUERY ***/
+@media all and (max-width: 940px) {
 
-@media all and (max-width: 767px) {
-  /***mobile nav***/
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: transparent !important;
+        border: none;
+    }
+    
+    .presentation {
+        display: flex;
+        flex-direction: column;
+    }
 
-  .container {
-    width: 100%;
-  }
-  .card {
-    width: 100%;
-  }
-  form {
-    width: 100%;
-  }
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: transparent !important;
-    border: none;
-  }
-  .indextext {
-    display: flex;
-    flex-direction: column;
-  }
+    .langages>div {
+        flex-basis: 45%;
+    }
 
+    .blog-cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /***mobile nav***/
     burgerButton {
         display: block;
         width: 60px;
@@ -1279,4 +1291,21 @@ footer {
         color: #fff;
     }
     /***end mobile nav***/
+
+  .container {
+    width: 100%;
+  }
+  .card {
+    width: 75%;
+  }
+
+  .formulaire {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .indextext {
+    display: flex;
+    flex-direction: column;
+  }
 }

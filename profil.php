@@ -47,48 +47,39 @@ $login = $user->getLogin();
 
             <h1 class="title" data-aos="fade-in">Profil</h1>
             
-            <div class="row wrap m-5">
+            <div class="formulaire row wrap m-5">
+                <form action="" method="post" id="loginForm" class="col gap my-2" data-aos="fade-right">
+                    <h2 class="mb-1">Modifier le login</h2>
+                    <label for="login">login</label>
+                    <input type="text" name="login" class="login" value="<?= $login ?>" required>
+                    <p></p>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" class="password" placeholder="Mot de passe" required>
+                    <p></p>
+                    <input type="submit" value="Modifier" name="send" id="btnModifLogin">
+                    <p></p>
+                </form>
 
-                <div id="login" class="col gap">
-
-                    <form action="" method="post" id="loginForm" class="" data-aos="fade-right">
-                        <h2 class="mb-1">Modifier le login</h2>
-                        <label for="login">login</label>
-                        <input type="text" name="login" class="login" value="<?= $login ?>" required>
-                        <p></p>
-                        <label for="password">Mot de passe</label>
-                        <input type="password" name="password" class="password" placeholder="Mot de passe" required>
-                        <p></p>
-                        <input type="submit" value="Modifier" name="send" id="btnModifLogin">
-                        <p></p>
-                    </form>
-
-                </div>
-
-                <div id="password" class="col gap">
-
-                    <form action="" method="post" id="passwordForm" class="" data-aos="fade-left">
-                        <h2 class="mb-1">Modifier le mot de passe</h2>
-                        <label for="password">Ancien mot de passe</label>
-                        <input type="password" name="password" class="password" placeholder="Mot de passe" id="oldPassword" required>
-                        <p></p>
-                        <div class="row wrap">
-                            <div class="col gap">
-                                <label for="newPassword">Nouveau mot de passe</label>
-                                <input type="password" name="newPassword" id="newPassword" class="password" placeholder="nouveau mot de passe" required>
-                                <p></p>
-                            </div>
-                            <div class="col gap">
-                                <label for="newPassword2">Confirmation</label>
-                                <input type="password" name="newPassword2" id="newPassword2" class="password" placeholder="Confirmez mot de passe" required>
-                                <p></p>
-                            </div>
+                <form action="" method="post" id="passwordForm" class="col gap my-2" data-aos="fade-left">
+                    <h2 class="mb-1">Modifier le mot de passe</h2>
+                    <label for="password">Ancien mot de passe</label>
+                    <input type="password" name="password" class="password" placeholder="Mot de passe" id="oldPassword" required>
+                    <p></p>
+                    <div class="row wrap">
+                        <div class="col gap">
+                            <label for="newPassword">Nouveau</label>
+                            <input type="password" name="newPassword" id="newPassword" class="password" placeholder="nouveau mot de passe" required>
+                            <p></p>
                         </div>
-                        <input type="submit" value="Modifier" name="send" id="btnModifPass">
-                        <p></p>
-                    </form>
-
-                </div>
+                        <div class="col gap">
+                            <label for="newPassword2">Confirmation</label>
+                            <input type="password" name="newPassword2" id="newPassword2" class="password" placeholder="Confirmez mot de passe" required>
+                            <p></p>
+                        </div>
+                    </div>
+                    <input type="submit" value="Modifier" name="send" id="btnModifPass">
+                    <p></p>
+                </form>
             </div>
 
         </main>

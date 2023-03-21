@@ -165,15 +165,15 @@ $articlesPerPage = 4;
 
 
             <h2 class="title py-2">Derniers articles</h2>
-            <section class="blog-slider row wrap">
-                <ol>
+            <section>
+                <ul class="blog-cards row wrap">
                     <?php
                     $article = new Article($db);
                     $articles = $article->getArticlesPerPage(0, $articlesPerPage, $categInt);
                     $articlesPerPage = 10;
                     foreach ($articles as $key => $article_item) { ?>
                         <li>
-                            <div class="thumb ">
+                            <div class="thumb">
                                 <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
                                 <div class="thumb-content">
                                     <h2><?= $article_item['titre'] ?></h2>
@@ -184,10 +184,10 @@ $articlesPerPage = 4;
                                 </div>
                             </div>
                         </li>
-                </ol>
-            <?php
+                        <?php
                     } ?>
 
+                </ul>
             </section>
         </main>
 

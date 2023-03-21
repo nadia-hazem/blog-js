@@ -46,11 +46,12 @@ $user = new User($db);
             <h5 class="text-center text-mute">Développé par Nadia et Thomas</h5>
 
             <div class="container bg-sable radius"> <!-- Présentation -->
-                <div class="row wrap m-auto">
+                <div class="presentation wrap m-auto">
                     <div class="col p-2 franklin">                    
                         <p>Ce site est un projet de formation en développement web dans le cadre de la formation de développeur web, Titre RNCP5 au sein du Campus numérique de "La Plateforme_". C'est un projet en groupe de 2 personnes, réalisé par <a href="https://github.com/nadia-hazem/blog-js" target="_blank">Nadia Hazem</a> et <a href="https://github.com/thomas-spinec/blog-js" target="_blank">Thomas Spinec.</a></p>
                         <p>L'objectif est de mettre en pratique nos compétences en matière de code et création de sites web et de vous offrir une expérience de navigation agréable.</p>
                     </div>
+
                     <div class="col p-1 colcenter">
                         <a href="https://laplateforme.io/" target="_blank"><img src="assets/img/logo_laplateforme_bleu3.png" width="300px" alt="logo plateforme" data-aos="fade-in"></a>
                         <p>Campus numérique Méditérranéen</p>
@@ -61,7 +62,7 @@ $user = new User($db);
 
             <div class="container present"> <!-- Présentation du projet -->
 
-                <div class="row wrap"> 
+                <div class="langages wrap"> 
                     <div class="col gap card bg-light p-1" data-aos="fade-right" data-aos-duration="2000"> 
                         <h3 class="text-center"><i class="fas fa-info"></i>&nbsp; Le sujet</h3>
                         <p>Il s'agit de réaliser un blog avec les langages suivants :</p>

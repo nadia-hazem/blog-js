@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let validation = false;
   let msg = document.querySelector("#msg");
   // partie login
-  const loginSection = document.querySelector("#login");
   const loginForm = document.querySelector("#loginForm");
   let loginInput = loginForm.querySelector(".login");
   let passwordInput = loginForm.querySelector(".password");
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let user = loginInput.value;
 
   // partie password
-  const passwordSection = document.querySelector("#password");
   const passwordForm = document.querySelector("#passwordForm");
   let oldPasswordInput = passwordForm.querySelector("#oldPassword");
   let newPasswordInput = passwordForm.querySelector("#newPassword");
