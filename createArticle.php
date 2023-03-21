@@ -8,7 +8,7 @@ $user = new User($db);
 $article = new Article($db);
 
 // verify if user is mode or admin
-if (!$user->isUserMode()){
+if (!$user->isUserMode()) {
     header('Location: index.php');
 }
 
@@ -17,7 +17,7 @@ if (isset($_POST['create'])) {
 
     //valider les data côté serveur
     $title = trim(strip_tags($_POST['title']));
-    $description = trim(strip_tags($_POST['description']));
+    $description = trim($_POST['description']);
     $categorie = trim(strip_tags($_POST['categorie']));
 
     $errorMsg = '';
@@ -104,7 +104,7 @@ if (isset($_POST['create'])) {
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
     <!-- TinyMCE -->
-    <script src="assets/js/tinymce.min.js"type="text/javascript"></script>
+    <script src="assets/js/tinymce.min.js" type="text/javascript"></script>
 
 
     <script>
@@ -162,7 +162,7 @@ if (isset($_POST['create'])) {
 
                     <div>
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
                     </div>
                     <div>
                         <label for="category">Catégorie</label>
@@ -190,19 +190,17 @@ if (isset($_POST['create'])) {
 
     </wrapper>
 
-    
+
     <!-- TinyMCE textarea-editor-->
     <script type="text/javascript" language="javascript">
-        tinymce.init(
-        {
-        selector: "textarea",
-        height: 370,
-        menubar:false,
-        statusbar: false,
+        tinymce.init({
+            selector: "textarea",
+            height: 370,
+            menubar: false,
+            statusbar: false,
         });
 
-        function ajouter()
-        {
+        function ajouter() {
             tinymce.triggerSave(true, true);
             alert(document.getElementById("description").value);
         }
@@ -210,7 +208,9 @@ if (isset($_POST['create'])) {
 
     <!-- Animations AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init(); </script>
+    <script>
+        AOS.init();
+    </script>
 
 </body>
 
