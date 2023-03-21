@@ -99,10 +99,13 @@ if (isset($_POST['create'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@300&family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
-    <!-- JS -->
+    <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
+    <!-- TinyMCE -->
+    <script src="assets/js/tinymce.min.js"type="text/javascript"></script>
+
 
     <script>
         function previewImage(event) {
@@ -156,6 +159,7 @@ if (isset($_POST['create'])) {
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" required>
                     </div>
+
                     <div>
                         <label for="description">Description</label>
                         <textarea name="description" id="description" cols="30" rows="10" required></textarea>
@@ -185,6 +189,24 @@ if (isset($_POST['create'])) {
         <div class="push"></div>
 
     </wrapper>
+
+    
+    <!-- TinyMCE textarea-editor-->
+    <script type="text/javascript" language="javascript">
+        tinymce.init(
+        {
+        selector: "textarea",
+        height: 370,
+        menubar:false,
+        statusbar: false,
+        });
+
+        function ajouter()
+        {
+            tinymce.triggerSave(true, true);
+            alert(document.getElementById("description").value);
+        }
+    </script>
 
     <!-- Animations AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

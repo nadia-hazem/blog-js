@@ -519,13 +519,13 @@ header ul li a {
     flex-direction: column;
     justify-content: center;
     margin: 5% auto;
-    width: 80%;
+    width: 90%;
 }
 
 main {
 width: 100%;
 min-height: 100%;
-margin: 0 auto;
+margin: 0;
 text-align: justify;
 }
 /*fixe le bug de la hauteur du screen à l'animation*/
@@ -628,23 +628,21 @@ placeholder {
 }
 form {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    width: 50%;
-    margin: 0 auto;
     padding: 3rem;
-    background-color: #dfe0d8;
+    align-items: center;
     border: 1px solid #ddd;
     border-radius: 5px;
-}
-
-form div {
-    margin-bottom: 20px;
+    background-color: #dfe0d8;   
+    margin: 0 auto;
 }
 
 form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-right: 0px;
+    margin-left: 0px;
+    width: 100%;
+    text-align: left;
 }
 
 form input[type="text"],
@@ -652,11 +650,13 @@ form input[type="password"],
 form input[type="file"],
 form select,
 form textarea, .password {
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #dfe0d8;
     border-radius: 5px;
     font-size: 16px;
     width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
 }
 
 form input[type="file"] {
@@ -667,8 +667,7 @@ form input[type="file"] {
 }
 
 form input[type="submit"] {
-    width: auto;
-    padding: 10px 0;
+    padding: 10px 20px;
     background-color: #0bb6e5;
     color: #fff;
     border: none;
@@ -789,7 +788,7 @@ table tr:hover {
 .cardimg {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 250px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 /*** ARTICLE ***/
@@ -859,7 +858,7 @@ table tr:hover {
 /***/
 .thumb {
     display: flex;
-    width: 250px;
+    width: 240px;
     flex-direction: column;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -973,6 +972,12 @@ a#categories {
 }
 
 /***A PROPOS ***/
+
+.github:hover, .perso:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+}
 
 .keyword {
     font-size: 1rem;
@@ -1109,6 +1114,8 @@ footer {
         font-weight: 600;
         cursor: pointer;
         margin-bottom: 5px;
+        position: absolute;
+        top: 3px;
     }
     burgerButton:hover {
         content: "\2261";
@@ -1119,6 +1126,11 @@ footer {
         top: 3px;
         font-size: 40px;
     }
+    nav {
+        width: 100%;
+        margin: 0;
+    }
+
     nav.open burgerButton:after {
         content: "\00d7";
     }
@@ -1139,9 +1151,11 @@ footer {
         text-align: center;
         padding: 10px 0;
         border-bottom: 1px solid #ddd;
+        background: #fafafa;
     }
     nav.open ul li:hover {
         background-color: #53c8e8;
+        color: #fff;
     }
     /***end mobile nav***/
 }

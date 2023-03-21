@@ -129,7 +129,7 @@ $user = new User($db);
                     
                     <div class="col bg-sable shadow py-4">
                         <h3 class="text-center p-1"> Code source du projet sur GitHub</h3><br>
-                        <a class="text-center colcenter" href="https://github.com/nadia-hazem/blog-js" title="Github" target="_blank"><img src="assets/img/github.svg" width="50"></a>
+                        <a class="text-center colcenter" href="https://github.com/nadia-hazem/blog-js" title="Github" target="_blank"><img src="assets/img/github.svg" width="50" class="github"></a>
 
                     </div>
                     <div class="col p-1">
@@ -139,9 +139,9 @@ $user = new User($db);
                         <p class="gap text-white">N'hésitez pas à y faire une petite visite pour y découvrir ce que nous réalisons en backend et frontend.</p>
 
                         <div class="row m-1" >
-                            <a class="text-center gap" href="https://nadia-hazem.students-laplateforme.io/" title="Portfolio nadia" target="_blank"><img src="assets/img/logo-nadia.jpg" width="120px" class="shadow" data-aos="zoom-in"></a>
+                            <a class="text-center gap perso" href="https://nadia-hazem.students-laplateforme.io/" title="Portfolio nadia" target="_blank"><img src="assets/img/logo-nadia.jpg" width="120px" class="shadow" data-aos="zoom-in"></a>
 
-                            <a class="text-center gap" href="https://thomas-spinec.students-laplateforme.io/" title="Portfolio thomas" target="_blank"><img src="assets/img/logo-thomas.jpg" width="120px" class="shadow" data-aos="zoom-in"></a>
+                            <a class="text-center gap perso" href="https://thomas-spinec.students-laplateforme.io/" title="Portfolio thomas" target="_blank"><img src="assets/img/logo-thomas.jpg" width="120px" class="shadow" data-aos="zoom-in"></a>
 
                         </div>
                     </div>

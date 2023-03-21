@@ -42,7 +42,7 @@ if (isset($_GET['categInt'])) {
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@300&family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@400&family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
@@ -64,7 +64,7 @@ if (isset($_GET['categInt'])) {
 
             </section>
 
-            <div class="container">
+            <div class="container mt-0">
 
                 <?php
                 if ($user->isUserMode()) {
@@ -108,8 +108,8 @@ if (isset($_GET['categInt'])) {
 
                             <div class="card-content">
                                 <h2><?php echo $article['titre']; ?></h2>
-                                <p><small>Publié le <?php echo $article['date']; ?> par <?php echo $article['auteur']; ?></small></p>
-                                <p><small>Catégorie : <?php echo $article['categ']; ?></small></p>
+                                <p><small><i>Publié le </i><span class="text-turquoise"><?php echo $article['date']; ?></span> par <b><?php echo $article['auteur']; ?></b></small></p>
+                                <p><i>Catégorie : </i><span class="text-turquoise"><?php echo $article['categ']; ?></span></i></p>
                                 <p><?php echo $article['summary']; ?></p>
                                 <a href="article.php?id=<?php echo $article['id']; ?>">Lire la suite</a>
 
