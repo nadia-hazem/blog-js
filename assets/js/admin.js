@@ -194,6 +194,8 @@ document.addEventListener("DOMContentLoaded", function () {
         data = data.trim();
         if (data == "ok") {
           showArticles();
+        } else {
+          alert("Erreur lors de la suppression de l'article");
         }
       })
       .catch((error) => console.log(error));
@@ -381,7 +383,7 @@ document.addEventListener("DOMContentLoaded", function () {
         commentairesSection.innerHTML = "";
         const form = document.createElement("form");
         form.setAttribute("id", "formModifComment");
-        form.classList.add("w-50" );
+        form.classList.add("w-50");
         // titre
         const labelTitre = document.createElement("label");
         labelTitre.setAttribute("for", "sujet");

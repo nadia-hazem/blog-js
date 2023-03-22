@@ -61,21 +61,33 @@ class Article
     {
         // html special char
         $id = htmlspecialchars($id);
-
-        // requete
-        $request = "DELETE FROM articles WHERE id = :id";
-
-        $delete = $this->bdd->prepare($request);
-
-        // execution avec liaisons des param
-        $delete->execute([
+        // requete pour récupérer l'image
+        $request = "SELECT image FROM articles WHERE id = :id";
+        $select = $this->bdd->prepare($request);
+        $select->execute([
             'id' => $id
         ]);
+        $image = $select->fetch(PDO::FETCH_ASSOC);
+        // suppression de l'image
+        if (unlink('../uploads/' . $image['image'])) {
+            // requete
+            $request = "DELETE FROM articles WHERE id = :id";
 
-        // echo "ok" si la requête s'est bien passée
-        if ($delete) {
-            echo "ok";
+            $delete = $this->bdd->prepare($request);
+
+            // execution avec liaisons des param
+            $delete->execute([
+                'id' => $id
+            ]);
+
+            // echo "ok" si la requête s'est bien passée
+            if ($delete) {
+                echo "ok";
+            }
+        } else {
+            echo "error";
         }
+
 
         // fermeture de la co a la bdd
         $this->bdd = null;
