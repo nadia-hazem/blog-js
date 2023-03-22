@@ -24,8 +24,8 @@ $articlesPerPage = 4;
     <title>Accueil</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/slider.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/a05ac89949.js" crossorigin="anonymous"></script>
     <!-- FONT -->
@@ -34,11 +34,10 @@ $articlesPerPage = 4;
     <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@400&family=Libre+Franklin:wght@100&family=Oswald:wght@300&display=swap" rel="stylesheet">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <!-- ism -->
-    <link rel="stylesheet" href="ism/css/my-slider.css" />
-    <script src="ism/js/ism-2.2.min.js"></script>
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
+    <!-- Slider -->
+    <script src="assets/js/slider.js"></script>
 
 </head>
 
@@ -49,22 +48,26 @@ $articlesPerPage = 4;
         <main>
 
             <!-- SLIDER -->
-            <div class="ism-slider" data-play_type="loop" id="my-slider">
-                <ol>
-                    <?php
-                    $articles = $article->getArticlesPerPage(0, 4, $categInt);
-                    foreach ($articles as $key => $article) { ?>
-                        <li>
-                            <img src="assets/uploads/<?= $article['image'] ?>" alt="<?= $article['titre'] ?>">
-                            <div class="ism-caption ism-caption-0">
-                                <h1><?= $article['titre'] ?></h1>
-                                <p><?= $article['date'] ?></p>
+            <div id="slider">
+                <?php
+                $articles = $article->getArticlesPerPage(0, 6, $categInt);
+                foreach ($articles as $key => $article) { ?>
+                    <div class="slide">
+                        <a href="article.php?id=<?=$article['id']?>"><img src="assets/uploads/<?= $article['image'] ?>" alt="<?= $article['titre'] ?>">
+                            <div class="caption bg-dark">
+                                <h1 class="text-white"><?= $article['titre'] ?></h1>
+                                <p class="text-white"><small><?= $article['date'] ?></small></p>
+                                <p class="text-white"><small><?= $article['categ'] ?></small></p>
                                 <a href="article.php?id=<?= $article['id'] ?>">Lire la suite</a>
                             </div>
-                        </li>
-                    <?php } ?>
-                </ol>
-            </div>
+                        </a>
+                    </div>
+                <?php } ?>
+                <div class="text-center">
+                    <div class="next"><a onclick="return false;"><i class="fas fa-3x fa-chevron-right text-white"></i></a></div>
+                    <div class="prev"><a onclick="return false;"><i class="fas fa-3x fa-chevron-left text-white"></i></a></div>
+                </div>
+            </div> <!-- /slider -->
 
 
             <section class="">
