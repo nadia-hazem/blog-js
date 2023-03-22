@@ -64,3 +64,9 @@
     align-items: center;
     border: 1px solid #000;
 }
+
+@media all and (max-width: 940px) {
+    .caption {
+        height: auto;
+    }
+}

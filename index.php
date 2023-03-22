@@ -74,10 +74,10 @@ $articlesPerPage = 4;
                 <div class="container col">
                     <h1 class="franklin title" data-aos="zoom-in">Trippy Le blog de voyage</h1>
                     <div class="row wrap indextext">
-                        <div class="col my-1 colcenter" data-aos="fade-up-right">
+                        <div class="col colcenter" data-aos="fade-up-right">
                             <img src="assets/img/stamp.png" class="" width="300px" alt="Tampons de douane">
                         </div>
-                        <div class="col my-2 p-2" data-aos="fade-up-left">
+                        <div class="col mt-3" data-aos="fade-up-left">
                             <h3>Si vous êtes passionné(e) de voyage et que vous cherchez des idées d'itinéraires, des astuces pour économiser de l'argent et des conseils pour découvrir des endroits incroyables dans le monde entier, vous êtes au bon endroit !</h3>
                             <p>En parcourant notre blog, vous découvrirez des récits de voyages passionnants, des astuces pour voyager à petit budget, des guides et des conseils pour la sécurité en voyage et bien plus encore.</p>
                             <p>Vous trouverez ici une mine d'informations pour vous aider à planifier votre prochaine aventure.</p>
@@ -124,7 +124,7 @@ $articlesPerPage = 4;
             <section class="bg-sable h-50 mb-4">
                 <h2 class="py-2">Destinations</h2>
 
-                <div class="row wrap m-2 py-2">
+                <div class="row wrap py-2">
 
                     <a href="blog.php?categInt=3">
                         <div class="col continent px-2">
@@ -166,29 +166,27 @@ $articlesPerPage = 4;
                 <br>
             </section>
 
-
             <h2 class="title py-2">Derniers articles</h2>
             <section>
                 <ul class="blog-cards row wrap">
                     <?php
                     $article = new Article($db);
                     $articles = $article->getArticlesPerPage(0, $articlesPerPage, $categInt);
-                    $articlesPerPage = 10;
+                    $articlesPerPage = 4;
                     foreach ($articles as $key => $article_item) {
                     ?>
-                        <li>
-                            <div class="thumb">
-                                <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
-                                <div class="thumb-content">
-                                    <h2><?= $article_item['titre'] ?></h2>
-                                    <p><b><i>Publié le</i> <span class="text-sablefonce"><?= $article_item['date'] ?></span></b></p>
-                                    <p><b><i>Catégorie</i> : <span class="text-turquoise"><?= $article_item['categ'] ?></span></b></p>
-                                    <p><?= $article_item['summary'] ?></p>
-                                    <?php echo '<a href="article.php?id=' . $article_item['id'] . '"><b>Lire la suite</b></a>'; ?>
-                                </div>
+                    <li>
+                        <div class="thumb">
+                            <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
+                            <div class="thumb-content">
+                                <h2><?= $article_item['titre'] ?></h2>
+                                <p><b><i>Publié le</i> <span class="text-sablefonce"><?= $article_item['date'] ?></span></b></p>
+                                <p><b><i>Catégorie</i> : <span class="text-turquoise"><?= $article_item['categ'] ?></span></b></p>
+                                <p><?= $article_item['summary'] ?></p>
+                                <?php echo '<a href="article.php?id=' . $article_item['id'] . '"><b>Lire la suite</b></a>'; ?>
                             </div>
-                        </li>
-                        </ol>
+                        </div>
+                    </li>
                     <?php
                     } ?>
 

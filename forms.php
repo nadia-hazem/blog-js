@@ -38,7 +38,7 @@ $user = new User($db);
 
             <div class="container mt-0">
 
-                <section id="inscription" class="colcenter">
+                <section id="inscription" class="col">
                     
                     <h1>Inscription</h1>
                     
@@ -50,24 +50,13 @@ $user = new User($db);
                         <label for="login">login</label>
                         <input type="text" name="login" class="login" placeholder="login" required>
                         <p></p>
-                        <div class="row">
-                            <div class="col gap">
-                                <label for="password">Mot de passe</label>
-                            </div>
-                            <div class="col gap">
-                                <input type="password" name="password" class="password" placeholder="Mot de passe" autocomplete="off" required>
-                                <p></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col gap">
-                                <label for="password2">Confirmation du mot de passe</label>
-                            </div>
-                            <div class="col gap">
-                                <input type="password" name="password2" id="password2" class="password" placeholder="Confirmation" autocomplete="off" required>
-                                <p></p>
-                            </div>
-                        </div>
+                        <label for="password">Mot de passe</label>
+                        <input type="password" name="password" class="password" placeholder="Mot de passe" autocomplete="off" required>
+                        <p></p>
+                        <label for="password2">Confirmation du mot de passe</label>
+                        <input type="password" name="password2" id="password2" class="password" placeholder="Confirmation" autocomplete="off" required>
+                        <p></p>
+                        <br>
                         <input type="submit" value="S'inscrire" name="send" id="btnInsc">
                         <p></p>
                     </form>

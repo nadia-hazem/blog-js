@@ -47,11 +47,11 @@ $login = $user->getLogin();
 
             <h1 class="title" data-aos="fade-in">Profil</h1>
 
-            <div class="row wrap m-5">
+            <div class="row wrap">
 
-                <div id="login" class="col gap">
+                <div id="login" class="profilForm col">
 
-                    <form action="" method="post" id="loginForm" class="col gap my-2" data-aos="fade-right">
+                    <form action="" method="post" id="loginForm" class="col" data-aos="fade-right">
                         <h2 class="mb-1">Modifier le login</h2>
                         <label for="login">login</label>
                         <input type="text" name="login" class="login" value="<?= $login ?>" required>
@@ -83,8 +83,8 @@ $login = $user->getLogin();
                         <input type="submit" value="Modifier" name="send" id="btnModifPass">
                         <p></p>
                     </form>
-                </div>
-
+                </div> <!-- /col -->
+            </div> <!-- /row -->
         </main>
 
         <div class="push"></div>
