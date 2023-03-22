@@ -102,8 +102,6 @@ if (isset($_GET['categInt'])) {
                     $articles = $article->getArticlesPerPage($start_index, $num_articles, $categInt);
                     // Afficher les articles récupérés
                     foreach ($articles as $article) :
-                        //html-decode pour le summary
-                        $summary = html_entity_decode($article['summary']);
                     ?>
                         <!-- CARD -->
                         <div class="card">
@@ -114,7 +112,7 @@ if (isset($_GET['categInt'])) {
                                 <h2><?php echo $article['titre']; ?></h2>
                                 <p><small><i>Publié le </i><span class="text-turquoise"><?php echo $article['date']; ?></span> par <b><?php echo $article['auteur']; ?></b></small></p>
                                 <p><i>Catégorie : </i><span class="text-turquoise"><?php echo $article['categ']; ?></span></i></p>
-                                <p><?php echo $summary; ?></p>
+                                <p><?php echo $article['summary']; ?></p>
                                 <a href="article.php?id=<?php echo $article['id']; ?>">Lire la suite</a>
 
                             </div> <!-- /card-content -->

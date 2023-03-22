@@ -51,8 +51,6 @@ $id_article = $_GET['id'];
     $auteur = $item['auteur'];
     $categories = $item['categ'];
     $description = $item['description'];
-    $description = html_entity_decode($description);
-
     $image = $item['image'];
     $likes = $item['likes'];
     $dislikes = $item['dislikes'];
@@ -74,7 +72,7 @@ $id_article = $_GET['id'];
 
                     <small class="article-meta">Publié le <?= $date ?> par : <?= $auteur ?> | <span class="cat">catégorie : <?= $categories ?></span></small>
 
-                    <div class="article-description"><?= $description; ?></div>
+                    <p class="article-description"><?= $description; ?></p>
 
                 </div> <!-- /content -->
 
