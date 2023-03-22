@@ -103,9 +103,6 @@ if (isset($_POST['create'])) {
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
-    <!-- TinyMCE -->
-    <script src="assets/js/tinymce.min.js" type="text/javascript"></script>
-
 
     <script>
         function previewImage(event) {
@@ -189,22 +186,6 @@ if (isset($_POST['create'])) {
         <div class="push"></div>
 
     </wrapper>
-
-
-    <!-- TinyMCE textarea-editor-->
-    <script type="text/javascript" language="javascript">
-        tinymce.init({
-            selector: "textarea",
-            height: 370,
-            menubar: false,
-            statusbar: false,
-        });
-
-        function ajouter() {
-            tinymce.triggerSave(true, true);
-            alert(document.getElementById("description").value);
-        }
-    </script>
 
     <!-- Animations AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
