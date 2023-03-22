@@ -177,7 +177,7 @@ if (isset($_POST['create'])) {
                     <input type="file" id="image" name="image" accept="img/*" onchange="previewImage(event)">
 
 
-                    <input type="submit" value="Publier" name="create" class="btn">
+                    <input type="submit" value="Publier" name="create" class="btn" onclick="ajouter()">
 
 
                 </form>
@@ -198,11 +198,31 @@ if (isset($_POST['create'])) {
             height: 370,
             menubar: false,
             statusbar: false,
+
+            style_formats: [{
+                title: 'Headings',
+                items: [{
+                        title: 'Heading 1',
+                        format: 'h3'
+                    },
+                    {
+                        title: 'Heading 2',
+                        format: 'h4'
+                    },
+                    {
+                        title: 'Heading 3',
+                        format: 'h5'
+                    },
+                    {
+                        title: 'Heading 4',
+                        format: 'h6'
+                    }
+                ]
+            }]
         });
 
         function ajouter() {
             tinymce.triggerSave(true, true);
-            alert(document.getElementById("description").value);
         }
     </script>
 

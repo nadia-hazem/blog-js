@@ -171,7 +171,10 @@ $articlesPerPage = 4;
                     $article = new Article($db);
                     $articles = $article->getArticlesPerPage(0, $articlesPerPage, $categInt);
                     $articlesPerPage = 10;
-                    foreach ($articles as $key => $article_item) { ?>
+                    foreach ($articles as $key => $article_item) {
+                        // html-decode pour le summary
+                        $summary = html_entity_decode($article_item['summary']);
+                    ?>
                         <li>
                             <div class="thumb">
                                 <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
@@ -179,7 +182,7 @@ $articlesPerPage = 4;
                                     <h2><?= $article_item['titre'] ?></h2>
                                     <p><b><i>Publié le</i> <span class="text-sablefonce"><?= $article_item['date'] ?></span></b></p>
                                     <p><b><i>Catégorie</i> : <span class="text-turquoise"><?= $article_item['categ'] ?></span></b></p>
-                                    <p><?= $article_item['summary'] ?></p>
+                                    <p><?= $summary ?></p>
                                     <?php echo '<a href="article.php?id=' . $article_item['id'] . '"><b>Lire la suite</b></a>'; ?>
                                 </div>
                             </div>

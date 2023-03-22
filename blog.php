@@ -75,7 +75,9 @@ if (isset($_GET['categInt'])) {
                 ?>
 
                 <div id="divCateg" class="text-center radius">
-                    <label for="category" class="p-1"><h2>Catégorie</h2></label>
+                    <label for="category" class="p-1">
+                        <h2>Catégorie</h2>
+                    </label>
                     <select name="categorie" id="selectCategory"></select>
                 </div>
 
@@ -100,6 +102,8 @@ if (isset($_GET['categInt'])) {
                     $articles = $article->getArticlesPerPage($start_index, $num_articles, $categInt);
                     // Afficher les articles récupérés
                     foreach ($articles as $article) :
+                        //html-decode pour le summary
+                        $summary = html_entity_decode($article['summary']);
                     ?>
                         <!-- CARD -->
                         <div class="card">
@@ -110,7 +114,7 @@ if (isset($_GET['categInt'])) {
                                 <h2><?php echo $article['titre']; ?></h2>
                                 <p><small><i>Publié le </i><span class="text-turquoise"><?php echo $article['date']; ?></span> par <b><?php echo $article['auteur']; ?></b></small></p>
                                 <p><i>Catégorie : </i><span class="text-turquoise"><?php echo $article['categ']; ?></span></i></p>
-                                <p><?php echo $article['summary']; ?></p>
+                                <p><?php echo $summary; ?></p>
                                 <a href="article.php?id=<?php echo $article['id']; ?>">Lire la suite</a>
 
                             </div> <!-- /card-content -->
@@ -157,7 +161,9 @@ if (isset($_GET['categInt'])) {
 
     <!-- Animations AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init(); </script>
+    <script>
+        AOS.init();
+    </script>
 
 </body>
 
