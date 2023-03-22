@@ -75,7 +75,9 @@ if (isset($_GET['categInt'])) {
                 ?>
 
                 <div id="divCateg" class="text-center radius">
-                    <label for="category" class="p-1"><h2>Catégorie</h2></label>
+                    <label for="category" class="p-1">
+                        <h2>Catégorie</h2>
+                    </label>
                     <select name="categorie" id="selectCategory"></select>
                 </div>
 
@@ -157,7 +159,9 @@ if (isset($_GET['categInt'])) {
 
     <!-- Animations AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init(); </script>
+    <script>
+        AOS.init();
+    </script>
 
 </body>
 

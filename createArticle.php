@@ -174,7 +174,7 @@ if (isset($_POST['create'])) {
                     <input type="file" id="image" name="image" accept="img/*" onchange="previewImage(event)">
 
 
-                    <input type="submit" value="Publier" name="create" class="btn">
+                    <input type="submit" value="Publier" name="create" class="btn" onclick="ajouter()">
 
 
                 </form>

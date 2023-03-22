@@ -171,7 +171,8 @@ $articlesPerPage = 4;
                     $article = new Article($db);
                     $articles = $article->getArticlesPerPage(0, $articlesPerPage, $categInt);
                     $articlesPerPage = 10;
-                    foreach ($articles as $key => $article_item) { ?>
+                    foreach ($articles as $key => $article_item) {
+                    ?>
                         <li>
                             <div class="thumb">
                                 <img src="assets/uploads/<?= $article_item['image'] ?>" alt="<?= $article_item['titre'] ?>">
