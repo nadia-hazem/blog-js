@@ -92,6 +92,8 @@ if (isset($_POST['create'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Article</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="/blog-js/assets/img/favicon.png"/>   
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
