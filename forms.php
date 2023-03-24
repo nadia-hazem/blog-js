@@ -10,6 +10,7 @@ $user = new User($db);
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,8 +28,9 @@ $user = new User($db);
     <!-- JS -->
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/forms.js"></script>
-    
+
 </head>
+
 <body id="forms">
     <?php include 'includes/header.php' ?>
 
@@ -38,15 +40,15 @@ $user = new User($db);
 
             <div class="container mt-0">
 
-                <section id="inscription" class="col">
-                    
+                <section id="inscription" class="colcenter">
+
                     <h1>Inscription</h1>
-                    
+
                     <div class="row m-2">
                         <p><b>Vous avez déjà un compte ? </b></p> <button id="switchConn" class="switch">Connexion</button>
                     </div>
-                    
-                    <form method="post"  class="auth_form">
+
+                    <form method="post" class="auth_form">
                         <label for="login">login</label>
                         <input type="text" name="login" class="login" placeholder="login" required>
                         <p></p>
@@ -62,13 +64,13 @@ $user = new User($db);
                     </form>
                     <br>
                 </section>
-                
+
                 <!--------------------------------------------------------------------->
 
                 <section id="connexion" class="colcenter">
-                    
+
                     <h1>Connexion</h1>
-                    
+
                     <div class="row m-2">
                         <p><b>Vous n'avez pas encore de compte ? </b></p> <button id="switchInsc" class="switch">Inscription</button>
                     </div>
@@ -91,14 +93,17 @@ $user = new User($db);
         </main>
 
         <div class="push"></div>
-    
+
     </div> <!-- /wrapper -->
 
     <?php include 'includes/footer.php'; ?>
-    
+
     <!-- Animations AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init(); </script>
+    <script>
+        AOS.init();
+    </script>
 
 </body>
+
 </html>
