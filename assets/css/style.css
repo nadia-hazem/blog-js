@@ -703,21 +703,21 @@ placeholder {
 }
 form {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  padding: 3rem;
+  padding: 2rem;
   justify-content: center;
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #dfe0d8;
   margin: auto;
-  width: 40%;
+  width: 60%;
 }
 
 form label {
   margin-right: 0px;
   margin-left: 0px;
-  width: 100%;
   text-align: left;
 }
 
@@ -732,15 +732,12 @@ form textarea,
   border-radius: 5px;
   font-size: 16px;
   width: 100%;
-  box-sizing: border-box;
-  resize: vertical;
 }
 
 form input[type="file"] {
   margin-bottom: 10px;
   border-radius: 5px;
   color: grey;
-  border: 1px solid #72bbbe;
 }
 
 form input[type="submit"] {
@@ -833,8 +830,8 @@ table tr:hover {
 .card {
   display: flex;
   flex-direction: column;
-  /* width: 35%; */
-  /* min-height: 400px; */
+  width: 30%;
+  flex-basis: 30%;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -1228,6 +1225,27 @@ footer {
 
 /*** MEDIA QUERY ***/
 
+@media all and (max-width: 1060px){
+    .card {
+        flex-basis: 45%;
+    }
+}
+@media all and (max-width: 767px) {
+    .card {
+        flex-basis: 100%;
+    }
+    
+    .langages {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+    }
+    .langages.card {
+        width: 100%;
+    }
+}
+
 @media all and (max-width: 940px) {
 
     h1 {
@@ -1258,11 +1276,10 @@ footer {
 
     .langages {
         display: flex;
-        flex-direction: column;
         align-items: center;
     }
     .langages.card {
-        width: 100%;
+        width: 45%;
     }
 
     .profilForm {

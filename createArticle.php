@@ -151,17 +151,15 @@ if (isset($_POST['create'])) {
                     echo '</p>';
                 }
                 ?>
-                <form method="post" enctype="multipart/form-data" class=" w-50" data-aos="zoom-in">
-                    <div>
+                <form method="post" enctype="multipart/form-data" data-aos="zoom-in">
+
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" required>
-                    </div>
 
-                    <div>
                         <label for="description">Description</label>
                         <textarea name="description" id="description" cols="30" rows="10"></textarea>
-                    </div>
-                    <div>
+
+                    <div class="rowcenter">
                         <label for="category">Catégorie</label>
                         <select name="categorie" id="category">
                             <?php foreach ($categories as $category) : ?>
@@ -169,10 +167,10 @@ if (isset($_POST['create'])) {
                             <?php endforeach; ?>
                         </select>
                     </div>
-
-                    <label for="image">Télécharger une image</label>
-                    <input type="file" id="image" name="image" accept="img/*" onchange="previewImage(event)">
-
+                    <div class="colcenter">
+                        <label for="image">Télécharger une image</label>
+                        <input type="file" id="image" name="image" accept="img/*" onchange="previewImage(event)">
+                    </div>
 
                     <input type="submit" value="Publier" name="create" class="btn" onclick="ajouter()">
 
