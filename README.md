@@ -2,6 +2,8 @@
 
 A blog to publish personal articles and exchange with your visitors. Here is the list of features:
 
+## Description :
+
 - A home page: It contains the latest articles put online and some call-to-actions.
 
 - A page allowing users to authenticate. On this page, a login and registration form at the click of a button. Registration must be done with an asynchronous request and form checks must be done front and back.
