@@ -152,27 +152,27 @@ if (isset($_POST['create'])) {
                 }
                 ?>
                 <form method="post" enctype="multipart/form-data" data-aos="zoom-in">
-
+                    <div>
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" required>
 
                         <label for="description">Description</label>
                         <textarea name="description" id="description" cols="30" rows="10"></textarea>
 
-                    <div class="rowcenter">
-                        <label for="category">Catégorie</label>
-                        <select name="categorie" id="category">
-                            <?php foreach ($categories as $category) : ?>
-                                <option value="<?= $category['id'] ?>"><?= $category['categorie'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="colcenter">
-                        <label for="image">Télécharger une image</label>
-                        <input type="file" id="image" name="image" accept="img/*" onchange="previewImage(event)">
-                    </div>
+                        <div class="rowcenter">
+                            <label for="category">Catégorie</label>
+                            <select name="categorie" id="category">
+                                <?php foreach ($categories as $category) : ?>
+                                    <option value="<?= $category['id'] ?>"><?= $category['categorie'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="colcenter">
+                            <label for="image">Télécharger une image</label>
+                            <input type="file" id="image" name="image" accept="img/*" onchange="previewImage(event)">
+                        </div>
 
-                    <input type="submit" value="Publier" name="create" class="btn" onclick="ajouter()">
+                        <input type="submit" value="Publier" name="create" class="btn" onclick="ajouter()">
 
 
                 </form>

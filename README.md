@@ -2,6 +2,8 @@
 
 A blog to publish personal articles and exchange with your visitors. Here is the list of features:
 
+## Description :
+
 - A home page: It contains the latest articles put online and some call-to-actions.
 
 - A page allowing users to authenticate. On this page, a login and registration form at the click of a button. Registration must be done with an asynchronous request and form checks must be done front and back.
@@ -18,6 +20,6 @@ A blog to publish personal articles and exchange with your visitors. Here is the
 
 - All pages must have a header and a footer containing the same links and having the same information.
 
-<p center>
-<img src="https://github.com/nadia-hazem/blog-js/blob/7df8ca373e356d4872fbeee1ad5c8df2dd01748d/assets/img/screenshot-1.png">
+<p align="center">
+<img src="https://github.com/nadia-hazem/blog-js/blob/67b4c551425a4eb6bfdc20e6cb140494752b6808/screenshot.jpg">
 </p>
