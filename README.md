@@ -19,5 +19,5 @@ A blog to publish personal articles and exchange with your visitors. Here is the
 - All pages must have a header and a footer containing the same links and having the same information.
 
 <p center>
-<img src="">
+<img src="https://github.com/nadia-hazem/blog-js/blob/67b4c551425a4eb6bfdc20e6cb140494752b6808/screenshot.jpg">
 </p>
