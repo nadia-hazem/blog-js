@@ -17,7 +17,7 @@
 
 <p align="center">
 	
-  <img alt="Github top language" src="[https://img.shields.io/badge/Php-7.4.26-#56BEB8](https://img.shields.io/packagist/dependency-v/nadia-hazem/blog-js/php-7.4.26?style=for-the-badge)">
+  <img alt="Github top language" src="[https://img.shields.io/badge/Php-7.4.26-#56BEB8?style=for-the-badge]">
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
   <img alt="License" src="https://img.shields.io/github/license/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
