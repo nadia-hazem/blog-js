@@ -90,7 +90,7 @@ $ yarn start
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
 
 
-Made with :heart: by <a href="https://github.com/nadia-hazem" target="_blank">Nadia Hazem</a>
+Made with :heart: by <a href="https://github.com/nadia-hazem" target="_blank">Nadia Hazem</a> and <a href="https://github.com/thomas-spinec" target="_blank">Thomas Spinec</a>
 
 &#xa0;
 
