@@ -31,7 +31,7 @@ A blog to publish personal articles and exchange with your visitors. Here is the
 
 
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="{{app_name}}" />
+  <img src="./.github/app.gif" alt="BLOG-JS" />
 
   &#xa0;
 
@@ -41,19 +41,19 @@ A blog to publish personal articles and exchange with your visitors. Here is the
 <h1 align="center">{{app_name}}</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{github}}/{{repository}}?color=56BEB8">
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{github}}/{{repository}}?color=56BEB8">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{github}}/{{repository}}?color=56BEB8">
-  <img alt="License" src="https://img.shields.io/github/license/{{github}}/{{repository}}?color=56BEB8">
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{github}}/{{repository}}?color=56BEB8" /> -->
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{github}}/{{repository}}?color=56BEB8" /> -->
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{github}}/{{repository}}?color=56BEB8" /> -->
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/https://github.com/nadia-hazem/blog-js/?color=56BEB8" /> -->
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/https://github.com/nadia-hazem/blog-js/?color=56BEB8" /> -->
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/https://github.com/nadia-hazem/blog-js/?color=56BEB8" /> -->
 </p>
 
 <!-- Status -->
 
 <!-- <h4 align="center"> 
-	🚧  {{app_name}} 🚀 Under construction...  🚧
+	🚧  BLOG-JS 🚀 Under construction...  🚧
 </h4> 
 
 <hr> -->
@@ -65,14 +65,15 @@ A blog to publish personal articles and exchange with your visitors. Here is the
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{github}}" target="_blank">Author</a>
+  <a href="https://github.com//https://github.com/nadia-hazem" target="_blank">Author</a>
 </p>
 
 <br>
 
 ## :dart: About ##
 
-Describe your project
+A blog to publish personal articles and exchange with your visitors. Here is the list of features:
+
 
 ## :sparkles: Features ##
 
