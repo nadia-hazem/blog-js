@@ -4,7 +4,7 @@
 
   &#xa0;
 
-  <a href="https://nadia-hazem.students-laplateforme.io/blog-js/index.php"> DEMO </a>
+  <a href="https://nadia-hazem.students-laplateforme.io/blog-js/index.php" target="_blank"> DEMO </a>
 </div>
 
 <h1 align="center">BLOG-JS</h1>
@@ -16,7 +16,7 @@
 
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/badge/Php-7.4.26-?color=56BEB8">
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
   <img alt="License" src="https://img.shields.io/github/license/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
@@ -76,10 +76,10 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/{{github}}/{{repository}}
+$ git clone https://github.com/nadia-hazem/blog-js/
 
 # Access
-$ cd {{repository}}
+$ cd blog-js
 
 # Install dependencies
 $ yarn
@@ -95,7 +95,7 @@ $ yarn start
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
 
 
-Made with :heart: by <a href="https://github.com/{{github}}" target="_blank">{{author}}</a>
+Made with :heart: by <a href="https://github.com/nadia-hazem" target="_blank">Nadia Hazem</a>
 
 &#xa0;
 
