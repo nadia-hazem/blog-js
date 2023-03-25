@@ -2,6 +2,10 @@
 
 A blog to publish personal articles and exchange with your visitors. Here is the list of features:
 
+<p align=left>
+  <a href="https://nadia-hazem.students-laplateforme.io/blog-js/index.php">## DEMO :</a>
+ </p>
+
 ## Description :
 
 - A home page: It contains the latest articles put online and some call-to-actions.
