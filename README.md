@@ -52,7 +52,7 @@ A blog to publish personal articles and exchange with your visitors. Here is the
 :heavy_check_mark: Once registered and logged in, you are redirected to a profile page. The user is able to modify his information without reloading the page\;
 :heavy_check_mark: A blog page with a limited number of articles with pagination. Pagination done with a GET parameter in the request (example: ?page=1);\
 :heavy_check_mark: A create articles page only accessible to moderators and administrators. Each article is linked to a category;\
-:heavy_check_mark: A page displaying the article and associated comments: The article retrieval is managed via GET parameter request (ex: ?article=1). This page is 			therefore a template filled with the information of the corresponding article each time;\
+:heavy_check_mark: An article page template with associated comments: Article retrieval managed via GET parameter request (ex: ?article=1);\
 :heavy_check_mark: An administration page: the admin panel allows administrators of your site to manage all users, articles, comments, categories, rights, etc;\
 :heavy_check_mark: All pages have a header and a footer containing the same links and having the same information using 'includes';\
 
