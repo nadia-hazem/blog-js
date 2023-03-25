@@ -65,8 +65,7 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements ##
 
-You can dowload the zip repo folder or clone the repo as following.
-You need a server or local server (Wamp, Xamp...)
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
 ## :checkered_flag: Starting ##
 
