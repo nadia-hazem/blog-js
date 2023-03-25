@@ -61,7 +61,7 @@ A blog to publish personal articles and exchange with your visitors. Here is the
 
 The following tools were used in this project:
 
-- Vscode
+- Vscode :stuck_out_tongue_winking_eye: Hey ! still learning guys... the hard way !
 
 ## :white_check_mark: Requirements ##
 
