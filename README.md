@@ -16,6 +16,8 @@
 
 
 <p align="center">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="76" height="20" role="img" aria-label="php: 7.4.26"><title>php: 7.4.26</title><linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="r"><rect width="76" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#r)"><rect width="31" height="20" fill="#555"/><rect x="31" width="45" height="20" fill="#fe7d37"/><rect width="76" height="20" fill="url(#s)"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="165" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="210">php</text><text x="165" y="140" transform="scale(.1)" fill="#fff" textLength="210">php</text><text aria-hidden="true" x="525" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="350">7.4.26</text><text x="525" y="140" transform="scale(.1)" fill="#fff" textLength="350">7.4.26</text></g></svg>
+	
   <img alt="Github top language" src="https://img.shields.io/badge/Php-7.4.26-#56BEB8">
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/https://github.com/nadia-hazem/blog-js/?color=56BEB8">
