@@ -65,7 +65,11 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+## Getting Started
+
+To get started with this project, simply clone the repository to your local machine and open the index.php file in your web browser.
+
+There are no additional dependencies required for this project.
 
 ## :checkered_flag: Starting ##
 
@@ -76,13 +80,8 @@ $ git clone https://github.com/nadia-hazem/blog-js/
 # Access
 $ cd blog-js
 
-# Install dependencies
-$ yarn
-
 # Run the project
-$ yarn start
 
-# The server will initialize in the <http://localhost:3000>
 ```
 
 ## :memo: License ##
