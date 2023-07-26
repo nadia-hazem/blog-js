@@ -5,9 +5,9 @@ class DbConnect {
 
     public function __construct() {
         $host = 'localhost';
-        $dbname = 'blog';
-        $dbuser = 'root';
-        $dbpass = '';
+        $dbname = 'fqdbhzuh_blog';
+        $dbuser = 'fqdbhzuh_n0NAq79EJ';
+        $dbpass = 'tNvTEkztxMnhMWtURtBHPvB5EHROYGBf';
 
         try {
             $this->bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbuser, $dbpass);
